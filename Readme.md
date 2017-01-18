@@ -8,6 +8,7 @@ Create a list:
 * third   
 
 Syntax for creating a list
+
 ```
 * Item 1   
 * Item 2   
