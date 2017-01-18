@@ -1,3 +1,8 @@
 # Read me file
 
-# Annotating the ecological genomics course
+# Annotating the Ecological Genomics course
+
+Create a list:   
+* first   
+* second   
+* third   
