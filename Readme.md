@@ -25,3 +25,9 @@ Syntax:
 
 Implementation 
 [Andrew's Website](https://adnguyen.github.io/)
+
+Example of embedding an image:
+
+```
+![]()
+```
