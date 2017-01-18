@@ -29,5 +29,8 @@ Implementation
 Example of embedding an image:
 
 ```
-![]()
+![My Pic](https://cloud.githubusercontent.com/assets/19827507/22071548/7b750752-dd6d-11e6-94cd-6623035acb20.JPG)
 ```
+Using the image
+
+![My Pic](https://cloud.githubusercontent.com/assets/19827507/22071548/7b750752-dd6d-11e6-94cd-6623035acb20.JPG)
