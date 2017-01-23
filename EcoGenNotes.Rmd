@@ -2,7 +2,9 @@
 title: "Ecological Genomics Notes"
 author: "P. Alexander Burnham"
 date: "January 23, 2017"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # January 23, 2017: 
@@ -98,6 +100,7 @@ Uses PCR and sequences broken by faulty base pairs to work backwards
 Sheet of glass with 8 lanes with flow cells...(look up)
 
 
+
 **Take home messages**
 
 * Likely using Illumina seq. (just library tech. changes) usually SBS
@@ -119,7 +122,37 @@ Sheet of glass with 8 lanes with flow cells...(look up)
       
       
 
+## Paper Discussion: 
+
+### Three advances in biology:
+
+* Modern Synthesis (evolution (Darwin) and population genetics (Mendel))
+
+* Watson and Crick (molecular biology DNA)
+
+* Omics Era (genomics, preteomics etc.)
+
+
+### What do we think about this?
+
+Phylogenies -> reducing error bars or reshaping question?
+
+Do you throw out experimetnal design and scientific method for large scale shot gun blast sequencing? - > can still be used to do hypothesis driven science, but also something to be said for sending a teleoscope into deep space.
+
+Most journals and funding sources require all seq data be made public - leeds to a storage space issure -> genbank ran out of space and needed emergency funding from congress.
+
+data are not reviewed very well some gen bank sequences are kinda rough
 
 
 
-## Paper Discussion:
+
+
+
+
+
+
+
+
+
+
+![Illumina Sequencing](https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cluster_Generation.png/440px-Cluster_Generation.png)
