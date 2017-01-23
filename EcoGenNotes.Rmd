@@ -11,25 +11,27 @@ output: pdf_document
 
 * Advantages in Seq tech. 
 
-* Ranage of applications:   
+* Ranage of applications:
 
-          - WGS (whole genome sequencing)   
-          - RNAseq (seqencing RNA conveted to cDNA)    
-          - Targeted caputure seq. (string of probes mixed with sample, pulls immune related genes from organisim and seq just those)    
-          - Chipseq (chromatin imunoprecipitation seq, recognizezes and antibody and puls out all DNA bound to that portein)     
-          
+      - WGS (whole genome sequencing)
+      - RNAseq (seqencing RNA conveted to cDNA)
+      - Targeted caputure seq. (string of probes mixed with sample, pulls                immune related genes from organisim and seq just those)
+      - Chipseq (chromatin imunoprecipitation seq, recognizezes and antibody             and puls out all DNA bound to that portein)
+
 **Why one or the other?**
 
-Genetic variation   
+Genetic variation
 
-      -phenotypes
+
+      - phenotypes
       
-number of samples   
+number of samples 
 
-      -population   
-      -individual   
-      -comparitive studies   
-      -model or not  
+
+      - population   
+      - individual   
+      - comparitive studies   
+      - model or not  
       
 Demographic history
 
@@ -44,17 +46,32 @@ number of reads
 distribution
 
 
-Reads:
-
-      - short = 50bp
-      - long 100 bp, 150 bp, 300 bp (miseq)
-      - 10,000-60,000bp = SMRT
+      Reads:
+      - short = 50bp 
+      - long 100 bp, 150 bp, 300 bp (miseq) 
+      - 10,000-60,000bp = SMRT 
 
 Single vs. paired end
 
-* General library Prep. Workflow   
+* General library Prep. Workflow  
+      
+      - extraction (DNA, RNA -> to cDNA)
+      - fragment sample
+      - ligate adaptors (indvidual barcodes)
+      - add seq. adaptors
+      
+      *Reduced Rep*  
+      
+      - RNA -> coding
+      - GBS/RAD-seq
+      - near restriciton sites
 
 * Sequencing-by-synthesis (SBS)   
+
+      - bridge amp
+      - cluster gen.
+      - labeled dNTP (ATCG)
+      
 
 * Other Technologies   
 
@@ -63,10 +80,10 @@ Single vs. paired end
 
 **Human Genome Project (2001-2003)**
 
--ABI - Sanger   
--15 years   
--1 geneome (one person)   
--$3 billion   
+- ABI = Sanger   
+- 15 years   
+- 1 geneome (one person)   
+- $3 billion   
 
 Uses PCR and sequences broken by faulty base pairs to work backwards
 
@@ -80,4 +97,29 @@ Uses PCR and sequences broken by faulty base pairs to work backwards
 
 Sheet of glass with 8 lanes with flow cells...(look up)
 
-## PapeDiscussion:
+
+**Take home messages**
+
+* Likely using Illumina seq. (just library tech. changes) usually SBS
+
+* adaptors are markers (barcodes) used to identify samples during sequencing 
+
+      - first thing that's sample and gives ID barcode = seq adaptor 
+      - alago is a sequence of DNA that is attatched to plate binds to sample
+    
+* Model vs. non Model:
+
+      - short reads (assembly to create long sequnce based on short reads that shift)
+      - denavo assembly -> computer program (added variability with mixed sample)
+      - 15% error for SMRT can be reduced to less than 1 with repeated passes
+      
+      - illumina is much smaller but more accurate (0.05% error)
+      
+      - combine the two to have a higher degree of confidnece 
+      
+      
+
+
+
+
+## Paper Discussion:
