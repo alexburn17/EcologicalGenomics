@@ -26,14 +26,16 @@ Genetic variation
 
 
       - phenotypes
+
       
 number of samples 
 
+   
+      - population
+      - individual 
+      - comparitive studies 
+      - model or note
 
-      - population   
-      - individual   
-      - comparitive studies   
-      - model or not  
       
 Demographic history
 
@@ -47,11 +49,13 @@ number of reads
 
 distribution
 
-
-      Reads:
-      - short = 50bp 
+Reads:
+      
+      
+      - short = 50bp
       - long 100 bp, 150 bp, 300 bp (miseq) 
       - 10,000-60,000bp = SMRT 
+      
 
 Single vs. paired end
 
@@ -82,19 +86,22 @@ Single vs. paired end
 
 **Human Genome Project (2001-2003)**
 
-- ABI = Sanger   
-- 15 years   
-- 1 geneome (one person)   
-- $3 billion   
+
+      - ABI = Sanger 
+      - 15 years  
+      - 1 geneome (one person)    
+      - $3 billion    
+
 
 Uses PCR and sequences broken by faulty base pairs to work backwards
 
 **2014 X-Ten releases**
 
--Hiseq by Illumina (look up video of how it works)  
--1 day    
--45 whole genomes    
--$1000 bucks each   
+
+      - Hiseq by Illumina (look up video of how it works)
+      - 1 day  
+      - 45 whole genomes    
+      - $1000 bucks each  
 
 
 Sheet of glass with 8 lanes with flow cells...(look up)
@@ -135,21 +142,23 @@ Sheet of glass with 8 lanes with flow cells...(look up)
 
 ### What do we think about this?
 
-Phylogenies -> reducing error bars or reshaping question?
+* Phylogenies -> reducing error bars or reshaping question?   
 
-Do you throw out experimetnal design and scientific method for large scale shot gun blast sequencing? - > can still be used to do hypothesis driven science, but also something to be said for sending a teleoscope into deep space.
+* Do you throw out experimetnal design and scientific method for large scale shot gun blast sequencing? - > can still be used to do hypothesis driven science, but also something to be said for sending a teleoscope into deep space.   
 
-Most journals and funding sources require all seq data be made public - leeds to a storage space issure -> genbank ran out of space and needed emergency funding from congress.
+* Most journals and funding sources require all seq data be made public - leeds to a storage space issure -> genbank ran out of space and needed emergency funding from congress.   
 
-data are not reviewed very well some gen bank sequences are kinda rough
+* data are not reviewed very well some gen bank sequences are kinda rough   
 
+* reference genomes are a sample size of 1 so it might not be representative
 
+On Wednesday two papers to talk about:
 
+1) where do genomics data have limitations and why we use them
 
+2) discussion leaders (sign up via blackboard)
 
-
-
-
+3) next week talk about some of library preps (four of them) four differnt update people
 
 
 
