@@ -1,11 +1,10 @@
----
-title: "Ecological Genomics Notes"
-author: "P. Alexander Burnham"
-date: "January 23, 2017"
-output:
-  html_document: default
-  pdf_document: default
----
+# Ecological Genomics Notes
+
+
+
+##  P. Alexander Burnham
+
+
 
 # January 23, 2017: 
 
@@ -15,10 +14,10 @@ output:
 
 * Ranage of applications:
 
-      - WGS (whole genome sequencing)
-      - RNAseq (seqencing RNA conveted to cDNA)
-      - Targeted caputure seq. (string of probes mixed with sample, pulls                immune related genes from organisim and seq just those)
-      - Chipseq (chromatin imunoprecipitation seq, recognizezes and antibody             and puls out all DNA bound to that portein)
+     - WGS (whole genome sequencing)
+     - RNAseq (seqencing RNA conveted to cDNA)
+     - Targeted caputure seq. (string of probes mixed with sample, pulls immune related genes from organisim and seq just those)
+     - Chipseq (chromatin imunoprecipitation seq, recognizezes and antibody and puls out all DNA bound to that portein)
 
 **Why one or the other?**
 
@@ -27,16 +26,16 @@ Genetic variation
 
       - phenotypes
 
-      
+​      
 number of samples 
 
-   
+
       - population
       - individual 
       - comparitive studies 
       - model or note
 
-      
+
 Demographic history
 
 Adaptive geneitc varaitin
@@ -50,38 +49,37 @@ number of reads
 distribution
 
 Reads:
-      
-      
+​      
+​      
       - short = 50bp
       - long 100 bp, 150 bp, 300 bp (miseq) 
       - 10,000-60,000bp = SMRT 
-      
+
 
 Single vs. paired end
 
-* General library Prep. Workflow  
-      
-      - extraction (DNA, RNA -> to cDNA)
-      - fragment sample
-      - ligate adaptors (indvidual barcodes)
-      - add seq. adaptors
-      
-      *Reduced Rep*  
-      
-      - RNA -> coding
-      - GBS/RAD-seq
-      - near restriciton sites
+*    General library Prep. Workflow  
+     ​    
+     - extraction (DNA, RNA -> to cDNA)
+     - fragment sample
+     - ligate adaptors (indvidual barcodes)
+     - add seq. adaptors
 
-* Sequencing-by-synthesis (SBS)   
+     *Reduced Rep*  
 
-      - bridge amp
-      - cluster gen.
-      - labeled dNTP (ATCG)
-      
+     - RNA -> coding
+     - GBS/RAD-seq
+     - near restriciton sites
 
-* Other Technologies   
+*    Sequencing-by-synthesis (SBS)   
 
-* Learning Activity   
+     - bridge amp
+     - cluster gen.
+     - labeled dNTP (ATCG)
+
+*    Other Technologies   
+
+*    Learning Activity   
 
 
 **Human Genome Project (2001-2003)**
@@ -114,20 +112,19 @@ Sheet of glass with 8 lanes with flow cells...(look up)
 
 * adaptors are markers (barcodes) used to identify samples during sequencing 
 
-      - first thing that's sample and gives ID barcode = seq adaptor 
-      - alago is a sequence of DNA that is attatched to plate binds to sample
-    
+     - first thing that's sample and gives ID barcode = seq adaptor 
+     - alago is a sequence of DNA that is attatched to plate binds to sample
+
 * Model vs. non Model:
 
-      - short reads (assembly to create long sequnce based on short reads that shift)
-      - denavo assembly -> computer program (added variability with mixed sample)
-      - 15% error for SMRT can be reduced to less than 1 with repeated passes
-      
-      - illumina is much smaller but more accurate (0.05% error)
-      
-      - combine the two to have a higher degree of confidnece 
-      
-      
+     - short reads (assembly to create long sequnce based on short reads that shift)
+     - denavo assembly -> computer program (added variability with mixed sample)
+     - 15% error for SMRT can be reduced to less than 1 with repeated passes
+
+     - illumina is much smaller but more accurate (0.05% error)
+
+     - combine the two to have a higher degree of confidnece 
+
 
 ## Paper Discussion: 
 
@@ -338,7 +335,7 @@ They will argue that there will be knowledge to found using this information
 * Intertidal VS Subtidal
     - genetic differences (local adapt.) related to suseptabilty    
     - gene expression (immune related genes higher in SUB group)   
-    
+
 ### Other ideas:
 
 * Resistance genes (stayed healthy or recovered)
@@ -381,5 +378,5 @@ One page proposal for ideas for our project (1 per group) for next monday. Use h
 
 
 
-
+# February 1, 2017
 
