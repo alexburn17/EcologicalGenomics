@@ -1,11 +1,11 @@
-#Coinfection of Pathogens in Bombus spp.
+#Ecological Genomics Lab Notes
 
 ### Author: P. Alexander Burnham 
-###Affiliation     
+###University of Vermont   
 
-## Projects title/descriptions
+## Team Sherlock (reverse pathology)
 
-## Date started:
+## Date started:January 28, 2017
 ## Date end:
 
 
