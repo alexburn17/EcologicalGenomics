@@ -380,3 +380,199 @@ One page proposal for ideas for our project (1 per group) for next monday. Use h
 
 # February 1, 2017
 
+## Outline Today:
+
+* Announcements:
+  * send linkts to github notebooks to Andrew
+  * signups for discussion and info updates
+  * project proposals due by email next monday
+  * we start transcritomics next week 
+* Info update blitz on library preps
+*  UNIX turorial 
+
+
+
+### Whole Genome Sequencing 
+
+* Applications
+
+  * High Power and resolution
+  * population genetics
+  * local addpatatoins
+  * plastic responses of the environment
+  * inbreeding
+
+* Methods
+
+  * Somtimes you need a reference genome
+    * No: De Novo Assembly (gene expression, Adaptations)
+    * Yes: select important variation (DNA protein, epigenetic mod)
+  * Need money (servers, large storage etc)
+  * How to work with a server (command line)
+  * Python or Perl
+
+* Limitations
+
+  * Polymorphic genes + core genes (highly conserved)
+  * panalogs  
+  * Rapidly evolving genes  (poor resolution)
+  * large genes families (poor resolution)
+
+* Usually using one indivudal (could also pool samples)
+
+  * it is impossible to sequence everything (highly repetative regions and centro/telomeres etc. )
+
+  * somtimes DNA is bound up by cromotin so enzymes can't get to it
+
+  * genome will be a working hypothysis not a set entity 
+
+    ​
+
+* Seq. Platforms:
+
+  * short reads 
+    * illumina seq. 150bp 
+    * SOLID 50bp
+  * longer reads 
+    * Pacific bioscience 5 kb
+    * Ion torrent (500bp)
+    * illumine moleculo (10kb)
+
+* knowledge on organism
+
+  * genome size is important (k-ner approach short unique elements of DNA seq. of length K)
+
+* Wet lab procedures
+
+  * high quality DNA (tissue)
+  * no energetic tissue (muscle) contains too much mitchondrial DNA
+  * no gut and skin: other DNA that isn't from organism
+  * Quantity: 1mg -> 6ug (short)
+
+* Library Prep.
+
+  ->         ->     <-
+
+  ​      <-    ->    <-      single end
+
+  **->	       ->**
+
+  **<-          ->**             paired end   (bold is paired)
+
+  <—————————> mate pair
+
+  **->	       ->**
+
+  **<-          ->**             if gaps
+
+  contig        contig
+
+  <—— ……..——>
+
+  Scaffold
+
+* statistics: N50 = 50% of the assembly comes from contigs (# of base pairs in middle contig)
+
+* Annotate your sequence (use a related genome) how related to simalar organism's genome
+
+  * could be automated 
+  * or manually
+  * publish the genome 
+  * find them on NCBI
+
+
+
+### RNA SEQ.
+
+* advantage
+
+  * differential genome expression
+
+    * between populations
+    * treatments in experiment 
+
+  * allele specific expression
+
+    * envirnomental response
+    * adaptation
+
+  * functional relavent subset of them genome
+
+  * RNA Seq. VS Micro-array:
+
+    | RNA SEQ                              | Micro-array                              |
+    | :----------------------------------- | :--------------------------------------- |
+    | wide range of expression values      | x                                        |
+    | x                                    | saturation of analog-type flourscent signal |
+    | gives information on splicing events | x                                        |
+
+    ​
+
+* Limitation
+
+  * can tell you about differential gene expression but not protein expression so difficult to say something about the function
+
+* work flow
+
+  * set-up
+  * wet lab
+  * seq. stratagy
+  * bio-info
+  * statistical measures
+
+
+
+
+
+**Set Up**
+
+* purpose:
+  * coding or regualtory - non coding
+  * reference genome?
+  * alternative splicing?
+  * technology
+  * population or specific treatments?
+* stat: biological replication
+* choice of tissue
+  * circaidan rythme 
+  * embrilogical expression in animals 
+  * pooling tissue with small tissue
+
+**Wet Lab**
+
+* RNA Extration
+  * RNase free envirnment
+  * DNase treament
+  * Get rid of Ribosmal RNA and mRNA 
+  * enrich mRNA with poly-A tails
+* cDNA
+  * reverse transcribe RNA to cDNA
+* library
+  * single end and paired end
+
+**Seq. Strategy**
+
+* platform
+  * pyrosequencing by Roche
+  * Ion torrent
+  * GA/hiseq by illumina 
+* Error profiles
+* seq coverage:
+  * greater than 1000000 bp
+* programming:
+  * unix
+  * python 
+  * R!!!
+
+### Amplicon SEQ.
+
+* Methods
+  * library prep  ->  Extract -> PCR1 -> clean up product (gel) -> PCR2 (add barcodes + adaptors) -> SEQ
+  * sequencing 
+  * Data analysis 
+    * learning activity 
+  * Applications 
+* Data Analysis 
+  * trim adaptor 
+  * allign sequences
+  * compare genes with the same gene to look for mutations etc. 
