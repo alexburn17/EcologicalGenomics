@@ -388,7 +388,7 @@ One page proposal for ideas for our project (1 per group) for next monday. Use h
   * project proposals due by email next monday
   * we start transcritomics next week 
 * Info update blitz on library preps
-*  UNIX turorial 
+* UNIX turorial 
 
 
 
@@ -576,3 +576,106 @@ One page proposal for ideas for our project (1 per group) for next monday. Use h
   * trim adaptor 
   * allign sequences
   * compare genes with the same gene to look for mutations etc. 
+
+### STEVE  GBS rad-seq
+
+
+
+WGS					RNAseq			**GBS rad-seq.**		     amplicon
+
+<————————————————————————————————————>   
+
+everything			gene space					    				one gene      (comleteness of data)
+
+​					expressed											
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+single indv.			fewer indv.									many indv.     (sampling tradeoffs)															
+
+
+
+GBS = genotyping by sequencing (genotype by sequencing at each loci)
+
+RAD-seq = restriction assisted DNA sequencing (restriction enzymes - cuts double strand DNA - sticky ends add barcodes and addaptors like in all other library preps)
+
+ 
+
+* lots of individuals
+
+* lots of SNPs across the genome
+
+* dont care about sepcific genes
+
+* don't need complete genome
+
+  ​
+
+
+## Comand line
+
+
+
+Server log in:
+
+ssh pburnham@pbio381.uvm.edu
+
+my personal net id password:
+
+
+
+"top" shows how many cpus are being used and who is on the server
+
+"q" = quit
+
+everyone has a home directory ~/mainfolder 
+
+"pwd" finds working directory 
+
+"ll" = list in long format
+
+make new folder called "mydata" (mkdir mydata)
+
+cd "directory name" is change directory
+
+shared space goes to most basel directory in the entire machine /data/
+
+cp is copy
+
+how to peak into big files without opening them "head" and -n "number" allows you to specify number of rows
+
+tail is the last 10
+
+">" new file.txt" makes new file
+
+grep generalized regular expression (search and replace) grep "what im looking for" file.txt
+
+mv is move
+
+"anything after * is included" called a wild card
+
+unix help manual "man" then command 
+
+rm = remove 
+
+-a shows hidden files
+
+vim is built in text editor vim then file name
+
+i is insert mode and allows for us to edit 
+
+alias sets comman equal to another command (-i asks for conformation)
+
+:w save and :q is quit
+
+
+
+Used 38_6-21_H_0_R2.fq.gz as my file for class I missed 
+
+
+
+```
+38_6-21_H_0_R1.fq.gz
+38_6-18_S_2_R2.fq.gz
+```
+
