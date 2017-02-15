@@ -676,6 +676,301 @@ Used 38_6-21_H_0_R2.fq.gz as my file for class I missed
 
 ```
 38_6-21_H_0_R1.fq.gz
-38_6-18_S_2_R2.fq.gz
+38_6-21_H_0_R2.fq.gz
 ```
 
+
+
+## February 13, 2017
+
+Lauren info update:
+
+Transcriptanomics RNAseq experimental design 
+
+OUTLINE:
+
+* background
+* issues
+* R excersize 
+* general rules of thumb 
+
+**Background:**
+
+* enables differential expression examination 
+  * disease resistane
+  * mating behavior
+  * addaptive significane 
+* Molecular mech. -> phenotypic/behavioral plasticity (migration patterns) 
+* Some limitations:
+  * reference genome quality
+  * gene annotation availablity 
+  * expensive for sample library prep.
+
+**Issues:**
+
+* underutilization of biological replicates (usually differnt indivuals instead of same sample which is a tech replicate)
+  * reqiuire independant replications
+  * doesn't include pooled samples
+  * only 23/158 studies used greater than 3 biological replications 
+  * most studies derive broad biological conclusions with little to no bio rep.
+* studies usally prioritize seq. depth over replication 
+  * coverage is...
+  * depth is the amount of reads per sample
+* wide dynamic range of RNA seq data makes it noise (unexplained variation in the data set)
+  * poisson counting error
+  * non poisson technical variance (storage, processing, differences in lanes etc.)
+  * biological variance (natural variance due to difference in genetic or envirnmental variance)
+* power prob of rejecting a FALSE hypothesis (want 80% power)
+
+**Rules of Thumb:**
+
+1) More bio reps instead of increasing depths
+
+2) sequence depth > 10 reads pre transcript (sufficient)  
+
+3) ~ 10-20 mil mapped reads per sample is suffient 
+
+4) 3 biological replicates per condition 
+
+5) conduct a pilot experiment 
+
+- what is the best and most powerful experiment that I can afford
+- what is the smallest fold change I can detect 
+
+
+
+# February 15, 2017
+
+## Sam Info Update:
+
+**SNPs and population Genomics.**
+
+SNPs (single nucleatide polymorphism - different nucs at same locus)
+
+(Tissue -> sequence -> clean/trim -> assembly ->)(SNP detection/validation)
+
+===> practical applications
+
+
+
+1) Tissue: 
+
+* breadth of tissue
+* different stages (exon skipping)
+
+2) Pool and sequence libraries 
+
+* ~30-100 paired end long reads
+
+3) Process raw sequence data 
+
+* for errors
+* important for SNP detection
+
+4) digital normalization 
+
+* remove high coverage reads and thus errors contained therein
+* reduces sampling variation
+* not quantatative info anymore
+
+5) Assemble clean paired end reads
+
+6) prune reads to reduce: 
+
+* DNA contamination
+* non coding RNA 
+* gene fragments 
+
+7) Assembly Evaluation 
+
+* reference genome 
+* cogs (conserved genes in other eukaryotic species)
+
+**8) SNP Detection and Evaluation**
+
+* Find your SNPs
+* Software - constant patterns of sequence variations
+* probability of sequence error - eliminate SNPs of low frequency 
+* Artifacts caused by insertions and deletions (InDels) -> filter out SNP near indels
+* use quality score
+
+**Practical Application**
+
+* differines in pop structure
+* natural selection acting on a particular loci?
+
+**Using outliers:**
+
+* for a given locus, what's the level of differentiation compared to differances acrros genome (FST)
+* FST -> look up
+* Plotted FST in a a histogram is ~N()
+  * outliers in this plot can be used to look at differtional selction acting on the populaton of loci
+
+**Not Outlier approach:**
+
+* takes high FST values and tests them for other features associated with seection 
+  * how those features asssociated with inv. fitness
+  * enrichment for certain functional roles
+
+
+
+## Coding in Unix for today - working with my sam file I made last class:
+
+#### Let’s check out our .sam files! Try `head` and `tail`.
+
+```
+tail -n 100 YOURFILENAME.sam > tail.sam
+vim tail.sam
+
+:set nowrap
+```
+
+#### Let’s see how many of our reads map uniquely.
+
+Why is it important to consider whether a read maps uniquely (i.e., to one place in the transcriptome) for gene expression studies?
+
+```
+$ grep -c XT:A:U YOURFILENAME.sam 
+1177827
+
+$ grep -c X0:i:1 YOURFILENAME.sam
+1182952
+```
+
+You can check a number of other elements, total number of reads, search for the various flags…
+
+## Extract read counts from the .sam file from each sample
+
+We will use a custom python script (by my friend Dan Barshis and published with the Simple Fool’s Guide to Population Genomics) called **countxpression.py**. This script will take any number of input *.sam files and, for each .sam file, extract the number of reads that map to each gene (i.e. the “counts”). It will also generate a summary output of useful information including proportion of quality read alignments. The script requires 4 input variables: mapqualitythreshold, lengththreshold, outputstatsfilename, anynumberofinputfiles.
+
+```
+cd /data/scripts
+cp countxpression_pe.py ~/scripts      #or copy to your directory with the .sam file
+
+python countxpression_pe.py 20 35 countstatssummary.txt YOURFILENAME.sam
+```
+
+This python script will generate two files: a .txt file you named (3rd argument you passed the script) and a counts .txt file that includes the number of uniquely mapped reads to each gene in our transcriptome.
+
+Below are what the files should look like:
+
+```
+$ head NC_AD4_M3_bwaaln_counts.txt
+ContigName  UniqueTotReads  MultiTotReads   totalreadsgoodmapped
+OTAU000001-RA   11  207 218
+OTAU000002-RA   982 49  1031
+OTAU000003-RA   867 0   867
+OTAU000004-RA   338 0   338
+OTAU000005-RA   154 0   154
+OTAU000006-RA   26  0   26
+OTAU000007-RA   17  0   17
+OTAU000008-RA   1017    55  1072
+OTAU000009-RA   1984    0   1984
+```
+
+Once we have all the read counts extracted from each .sam file and in one directory, we can stitch them together with some bash scripting that I wrote.
+
+```
+# This loop takes the second column of data and renames the file to a shorter version of itself
+for filename in *counts.txt; do
+    myShort=`echo $filename | cut -c1-10` 
+    echo "$myShort" > $myShort"_uniqmaps.txt"    
+    cut -f 2 "$filename" > $myShort"_uniqmaps.txt"  
+done 
+# makes many individual files, but they don't have the header inserted
+
+# This loop uses the tail command to get rid of the the first line
+for filename in *_uniqmaps.txt; do
+    tail -n +2 -- "$filename" > $filename"_uniqmapsNH.txt"  
+done 
+
+# This loop inserts the shortened version of the filename as the first line using the echo (print) and cat functions
+for filename in *_uniqmapsNH.txt; do (myShort=`echo $filename | cut -c1-10`;echo "$myShort"; cat $filename) > tmp; mv tmp $filename; done
+
+# This combines all the single column datafiles into one!
+paste *_uniqmapsNH.txt > allcountsdata.txt
+
+# Add row/gene names to table
+cut -f 1 WA_PP1_M3__bwaaln_counts.txt | paste - allcountsdata.txt > allcountsdataRN.txt
+
+vim allcountsdata.txt
+
+# to view with tabs aligned.
+:set nowrap  
+
+# clean up files, get rid of intermediate files
+rm *uniqmaps*
+
+```
+
+## Processes going on in the background
+
+1. Making new assembly with more sequence data
+2. Testing assembly quality several ways:
+
+- stats (N50, number of contigs, etc.)
+- proportion with high quality blastp match to (a) uniprot, (b) Patiria miniata, and (c) Strongylocentrotus purpuratus
+- Proportion single-copy core eukaryotic genes represented.
+
+1. Cleaning the second half of the samples/reads that just finished downloading 2/14!
+2. Map all reads to new assembly
+3. Extract read counts using custom python script.
+
+Hopefully all of this will be done within a week by our next class session - next Wednesday
+
+------
+
+Clean up file names. Run script for the paired and unpaired files:
+
+```
+for file in *.fq.gz_*_clean_paired.fq ; do mv $file ${file//.fq.gz_*_clean_paired.fq/.cl.pd.fq} ; done
+
+for file in *.fq.gz_*_clean_unpaired.fq ; do mv $file ${file//.fq.gz_*_clean_unpaired.fq/.cl.un.fq} ; done
+```
+
+```
+cat 08_5-08_H_0_R1.cl.pd.fq 08_5-11_S_1_R1.cl.pd.fq 08_5-14_S_1_R1.cl.pd.fq 08_5-17_S_2_R1.cl.pd.fq 08_5-20_S_3_R1.cl.pd.fq 10_5-08_H_0_R1.cl.pd.fq 10_5-11_H_0_R1.cl.pd.fq 10_5-14_H_0_R1.cl.pd.fq 10_5-17_H_0_R1.cl.pd.fq 10_5-20_S_2_R1.cl.pd.fq 35_6-12_H_0_R1.cl.pd.fq 35_6-15_H_0_R1.cl.pd.fq 35_6-18_H_0_R1.cl.pd.fq 35_6-21_H_0_R1.cl.pd.fq 36_6-12_S_1_R1.cl.pd.fq 36_6-15_S_2_R1.cl.pd.fq 36_6-18_S_3_R1.cl.pd.fq > 08-11-35-36_R1.cl.pd.fq
+
+cat 08_5-08_H_0_R2.cl.pd.fq 08_5-11_S_1_R2.cl.pd.fq 08_5-14_S_1_R2.cl.pd.fq 08_5-17_S_2_R2.cl.pd.fq 08_5-20_S_3_R2.cl.pd.fq 10_5-08_H_0_R2.cl.pd.fq 10_5-11_H_0_R2.cl.pd.fq 10_5-14_H_0_R2.cl.pd.fq 10_5-17_H_0_R2.cl.pd.fq 10_5-20_S_2_R2.cl.pd.fq 35_6-12_H_0_R2.cl.pd.fq 35_6-15_H_0_R2.cl.pd.fq 35_6-18_H_0_R2.cl.pd.fq 35_6-21_H_0_R2.cl.pd.fq 36_6-12_S_1_R2.cl.pd.fq 36_6-15_S_2_R2.cl.pd.fq 36_6-18_S_3_R2.cl.pd.fq > 08-11-35-36_R2.cl.pd.fq
+```
+
+Install latest Trinity and bowtie2, based on directions [here](https://github.com/trinityrnaseq/trinityrnaseq/wiki/Installing%20Trinity):
+
+```
+wget https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v2.4.0.zip
+unzip Trinity-v2.4.0.zip
+rm Trinity-v2.4.0.zip
+cd trinityrnaseq-Trinity-v2.4.0
+make
+make plugins
+```
+
+```
+wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.0/bowtie2-2.3.0-linux-x86_64.zip
+unzip bowtie2-2.3.0-linux-x86_64.zip
+rm bowtie2-2.3.0-linux-x86_64.zip
+ln -s /data/popgen/bowtie2-2.3.0/bowtie2 /usr/local/bin
+ln -s /data/popgen/bowtie2-2.3.0/bowtie2-build /usr/local/bin
+```
+
+Start screen and run trinity.
+
+```
+screen -r 30308.pts-1.pbio381
+
+/data/popgen/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --max_memory 50G \
+    --left /data/project_data/fastq/cleanreads/08-11-35-36_R1.cl.pd.fq \
+    --right /data/project_data/fastq/cleanreads/08-11-35-36_R2.cl.pd.fq \
+    --CPU 20 > run.log 2>&1 &
+```
+
+### Let’s install DESeq2 in R studio and look at a script and example data file.
+
+[Here’s](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) the package website with installation instructions, manual, tutorials, etc.
+
+Love MI, Huber W and Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” *Genome Biology*, **15**, pp. 550. [doi: 10.1186/s13059-014-0550-8](http://doi.org/10.1186/s13059-014-0550-8).
+
+```
+source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
+```
