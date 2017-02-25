@@ -974,3 +974,23 @@ Love MI, Huber W and Anders S (2014). “Moderated estimation of fold change and
 source("https://bioconductor.org/biocLite.R")
 biocLite("DESeq2")
 ```
+# February 22, 2017
+
+## R Script from today's work:
+
+```
+
+```
+
+**Terminal Work**
+
+Moved files from server to my desktop to use in my WD in R
+
+```
+scp pburnham@pbio381.uvm.edu:/data/project_data/DGE/* .
+```
+
+
+
+
+
