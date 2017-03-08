@@ -681,7 +681,7 @@ Used 38_6-21_H_0_R2.fq.gz as my file for class I missed
 
 
 
-## February 13, 2017
+#February 13, 2017
 
 Lauren info update:
 
@@ -979,6 +979,215 @@ biocLite("DESeq2")
 ## R Script from today's work:
 
 ```
+# Eco Genomics - Lecture Script
+# 22, February 2017
+# P. Alexander Burnham
+
+
+##################################################################################
+# Preliminaries:
+# Clear memory of characters:
+ls()
+rm(list=ls())
+
+# set working directory: (files are in /222_Data)
+setwd("~/EcologicalGenomics")
+##################################################################################
+
+# source DESeq2 from bioconductor:
+source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
+
+countsTable <- read.delim('222_Data/countsdata_trim.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+head(countData)
+
+conds <- read.delim("222_Data/cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+head(conds)
+colData <- as.data.frame(conds)
+head(colData)
+
+#################### Build dataset, model, and run analyses
+
+dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ day + location + health)
+# In this typical model, the "sex effect" represents the overall effect controlling for differences due to population and devstage. page 26-27 manual DESeq2.pdf
+# The last term in the model is what is tested.  In this case sex.
+#  This is not the same as an interaction.
+
+
+dim(dds)
+
+
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+# at > 100; little more than an average of 10 reads per sample for the 93 samples
+
+colSums(counts(dds))
+hist(colSums(counts(dds)), breaks = 80, xlim=c(0,max(colSums(counts(dds)))))
+
+
+colData(dds)$health <- factor(colData(dds)$health, levels=c("H","S"))
+
+dds <- DESeq(dds)  # this step takes a loooong time ~4 minutes with the trimmed data set
+# estimating size factors
+# estimating dispersions
+# gene-wise dispersion estimates
+# mean-dispersion relationship
+# final dispersion estimates
+# fitting model and testing
+# -- replacing outliers and refitting for 3308 genes
+# -- DESeq argument 'minReplicatesForReplace' = 7 
+# -- original counts are preserved in counts(dds)
+# estimating dispersions
+# fitting model and testing
+
+save(dds, file="dds.trim.Robject")
+
+res <- results(dds)
+res <- res[order(res$padj),]
+head(res)
+# log2 fold change (MAP): health S vs H 
+# Wald test p-value: health S vs H 
+# DataFrame with 6 rows and 6 columns
+# baseMean log2FoldChange     lfcSE
+# <numeric>      <numeric> <numeric>
+# TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138 1950.0719       2.488783 0.4311875
+# TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110  902.2693       2.475891 0.4599085
+# TRINITY_DN43359_c0_g1_TRINITY_DN43359_c0_g1_i1_g.14658_m.14658  889.9707       1.163219 0.2482335
+# TRINITY_DN47215_c1_g4_TRINITY_DN47215_c1_g4_i3_g.25054_m.25054  774.1126       1.723917 0.3650258
+# TRINITY_DN47215_c0_g1_TRINITY_DN47215_c0_g1_i5_g.25051_m.25051  911.7634       1.586693 0.3431307
+# TRINITY_DN45416_c4_g2_TRINITY_DN45416_c4_g2_i3_g.19333_m.19333 1629.8753       1.775765 0.3873817
+# stat       pvalue         padj
+# <numeric>    <numeric>    <numeric>
+# TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138  5.771927 7.837024e-09 8.691260e-06
+# TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110  5.383443 7.307426e-08 4.051968e-05
+# TRINITY_DN43359_c0_g1_TRINITY_DN43359_c0_g1_i1_g.14658_m.14658  4.685987 2.786136e-06 7.724563e-04
+# TRINITY_DN47215_c1_g4_TRINITY_DN47215_c1_g4_i3_g.25054_m.25054  4.722727 2.327027e-06 7.724563e-04
+# TRINITY_DN47215_c0_g1_TRINITY_DN47215_c0_g1_i5_g.25051_m.25051  4.624166 3.761091e-06 8.342101e-04
+# TRINITY_DN45416_c4_g2_TRINITY_DN45416_c4_g2_i3_g.19333_m.19333  4.584018 4.561241e-06 8.430694e-04
+
+summary(res)
+# out of 13334 with nonzero total read count
+# adjusted p-value < 0.1
+# LFC > 0 (up)     : 50, 0.37% 
+# LFC < 0 (down)   : 8, 0.06% 
+# outliers [1]     : 539, 4% 
+# low counts [2]   : 11686, 88% 
+# (mean count < 80)
+# [1] see 'cooksCutoff' argument of ?results
+# [2] see 'independentFiltering' argument of ?results
+
+plotMA(res, main="DESeq2", ylim=c(-2,2))
+
+## Check out one of the genes to see if it's behaving as expected....
+d <- plotCounts(dds, gene="TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138", intgroup=(c("health","day","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= health, y=count, shape = day)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) + scale_y_log10(breaks=c(25,100,1000)) + ylim(0,2500)
+p
+
+# 2.2 Data quality assessment by sample clustering and visualization 
+
+vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
+
+plotPCA(vsd, intgroup=c("health"))
+plotPCA(vsd, intgroup=c("day"))
+plotPCA(vsd, intgroup=c("location"))
+plotPCA(vsd, intgroup=c("health","location"))
+
+# rld <- rlog(dds, blind=FALSE) # this takes too long with such a large data set!
+# plotPCA(rld, intgroup=c("status","date"))
+
+
+#to save the plot as a pdf
+pdf(file="PCA_1v2_allgenes.pdf", height=5.5, width=5.5)
+plotPCA(rld, intgroup=c("status","day","location"))
+dev.off()
+
+pdf(file="PCA_1v2.pdf", height=5.5, width=5.5)
+data <- plotPCA(rld, intgroup=c("status","day","location"), returnData=TRUE)
+percentVar <- round(100 * attr(data, "percentVar"))
+ggplot(data, aes(PC1, PC2, color=sex, shape=devstage)) +
+  geom_point(size=3) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance"))
+dev.off()
+
+
+
+
+#########
+library("pheatmap")
+select <- order(rowMeans(counts(dds,normalized=TRUE)), decreasing=TRUE)[1:20]
+nt <- normTransform(dds) # defaults to log2(x+1)
+log2.norm.counts <- assay(nt)[select,]
+df <- as.data.frame(colData(dds)[,c("condition","type")])
+pheatmap(log2.norm.counts, cluster_rows=FALSE, show_rownames=FALSE, cluster_cols=FALSE)
+
+pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE, cluster_cols=FALSE)
+pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE)
+pheatmap(assay(vsd)[select,], show_rownames=FALSE)
+
+
+################ testing for interactions between factors
+
+dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ health + location + health:location)
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+
+
+dds <- DESeq(dds, parallel=T)
+
+
+resultsNames(dds)
+# [1] "Intercept"           "health_S_vs_H"       "location_sub_vs_int" "healthS.locationsub"
+
+res <- results(dds, name="healthS.locationsub")
+res <- res[order(res$padj),]
+head(res)
+# log2 fold change (MLE): healthS.locationsub 
+# Wald test p-value: healthS.locationsub 
+# DataFrame with 6 rows and 6 columns
+# baseMean log2FoldChange     lfcSE
+# <numeric>      <numeric> <numeric>
+#   TRINITY_DN44444_c9_g1_TRINITY_DN44444_c9_g1_i4_g.17034_m.17034 126.60114     -28.469401  2.918454
+# TRINITY_DN2191_c0_g1_TRINITY_DN2191_c0_g1_i1_g.232_m.232        42.12038     -22.438459  3.335695
+# TRINITY_DN41408_c0_g3_TRINITY_DN41408_c0_g3_i1_g.11127_m.11127  23.90548     -21.338403  3.166769
+# TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322 414.33733      -8.743311  1.367619
+# TRINITY_DN47096_c0_g1_TRINITY_DN47096_c0_g1_i7_g.24574_m.24574 106.46107      -9.946944  1.616331
+# TRINITY_DN35881_c0_g1_TRINITY_DN35881_c0_g1_i1_g.5955_m.5955    28.47358     -21.035939  3.441188
+# stat       pvalue         padj
+# <numeric>    <numeric>    <numeric>
+#   TRINITY_DN44444_c9_g1_TRINITY_DN44444_c9_g1_i4_g.17034_m.17034 -9.754959 1.756711e-22 1.468610e-18
+# TRINITY_DN2191_c0_g1_TRINITY_DN2191_c0_g1_i1_g.232_m.232       -6.726773 1.734674e-11 4.833957e-08
+# TRINITY_DN41408_c0_g3_TRINITY_DN41408_c0_g3_i1_g.11127_m.11127 -6.738225 1.603329e-11 4.833957e-08
+# TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322 -6.393089 1.625680e-10 3.397670e-07
+# TRINITY_DN47096_c0_g1_TRINITY_DN47096_c0_g1_i7_g.24574_m.24574 -6.154026 7.554029e-10 1.263034e-06
+# TRINITY_DN35881_c0_g1_TRINITY_DN35881_c0_g1_i1_g.5955_m.5955   -6.112987 9.778343e-10 1.362449e-06
+
+summary(res)
+# out of 13321 with nonzero total read count
+# adjusted p-value < 0.1
+# LFC > 0 (up)     : 2, 0.015% 
+# LFC < 0 (down)   : 111, 0.83% 
+# outliers [1]     : 463, 3.5% 
+# low counts [2]   : 4511, 34% 
+# (mean count < 7)
+# [1] see 'cooksCutoff' argument of ?results
+# [2] see 'independentFiltering' argument of ?results
+
+
+d <- plotCounts(dds, gene="TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322", intgroup=(c("location","health","day")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= health, y=count, shape = location, colour = day, fill=location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 4, alpha=0.9) + scale_y_log10(breaks=c(25,100,4000)) + scale_x_discrete(limits=c("H","S")) + scale_shape_manual(values=c(21,24))
+p
+
+p <- ggplot(d, aes(x= health, y=count, shape = location, fill=location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 4, alpha=0.9) + scale_y_log10(breaks=c(25,100,4000)) + scale_x_discrete(limits=c("H","S")) + scale_shape_manual(values=c(21,24))
+p
+
+ggsave("dot_plot-TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322.png", p, width=8, height=4, dpi=300)
 
 ```
 
@@ -990,7 +1199,456 @@ Moved files from server to my desktop to use in my WD in R
 scp pburnham@pbio381.uvm.edu:/data/project_data/DGE/* .
 ```
 
+# February 27, 2017
+
+**Scott Edwards Talk:**
+
+Coalescent: teo lineage tracing backwards in time tio find common ancestor, can use differnt trees to come up with the average of what the species tree might look like.
+
+Reticulation: 
+
+Unifying/background selection:
+
+gene trees vs. species :
+
+introgression / recombination: 
+
+incomplete lineage sorting ILS: gene green tree in figure two, split in taxa before the species tree branches of creating an ILS.
+
+* how any loci does it take to get a true representation (close to it) of the phylogeny. 
+
+Why would ILS occur (gene tree differnt from species tree):
+
+* gene duplication
+* selection (to some extent)
+* horizontal gene transfer (from one species to another)
+
+**population size and time lead to ILS** (large population times short time)
+
+Drift is like pruning the gene tree to match the species tree (Avis)
+
+when t is small and N is large, small ratio and gene trees are scued to species tree, otherwise could be even proporitons of differnt trees.
+
+Sample size? -> loci or genes > than populations or indivuduals
+
+## Coding:
+
+```
+local server: cd ~/Desktop
+scp pburnham@pbio381.uvm.edu:/data/project_data/DGE/* .
+```
+
+30% mapping now and have a new R script. -> DESeq_SSW_round2.R
+
+(5 models using new mapped data)
 
 
 
+# March 1, 2017
+
+Talk on WGCNA -> Weighted Correlated network analysis 
+
+**Overview**
+
+* R package -> apply correlation network methods to describe correlation (coexpression) patterns among genes in micro-array (seq data) samples
+  * network construction ->
+  * module identification ->
+  * Relationship of modules to external information ->
+  * Relationship between/within modules ->
+  * Finding key drivers in modules of interest ->
+
+**Details**
+
+* Network Construction
+
+  * node -> gene (shows conection in network theory)
+
+  * edge is how strongly correlated they are in terms of (expression) (absolute value)
+
+  * package provides -> differential coexpression measures
+
+  * signed networks (positive or negative correlations)
+
+  * unsgned networks (absolute values of correlations and just looks at magnatude)
+
+    ​
+
+
+
+
+# March 6, 2017:
+
+## Info Update: Steve
+
+**population genomics**
+
+What is it?: 
+
+* SNPs & lots of them (transcriptome wide)
+* individuals are level of sampling 
+  * within species 
+
+What processes is it interested in?:
+
+* population structure between
+* Diversity within pops
+* selection 
+  * positive
+  * negative (purifying)
+
+The pipeline:
+
+* Raw reads -> clean -> assemble "draft transctiptome" -> mapping reads ->
+  * transcriptomics (count number of reads per transcript -> DGE)
+  * population genomics (call SNPs + Genotypes -> allele frequncies and nuecletide div. and SFS)
+* SNPs (stat problem -> sequencing error (illumina=1% (1 in 100 bases is called incorrectly)))
+  * Filters for this problem:
+  * Minor Allele Freq. -> how many indv. are they found in
+  * Depth -> number of reads in a given position 
+* Challenges of calling genotypes (AA AT or TT):
+  * multinomial distribution -> p(genotypes | nT/nA)
+  * predicts A = T = 0.5
+  * 100% hetero (SNPs where everybody is a hetero and filter out) based on HWE
+* pi = exected heterozygosty (for sequences i + j ) pi = sum x~i~x~j~pi~ij~ (estimate of nucleatide diversity)
+  * why do we care -> pi~synonomous~ = 4*N~e~/mu (pi is proportional to N~e~) (not acted on be selection)
+  * pi~nonsynonomous~  -> acted on by selction (almost always deleterious)
+  * pi~n~/pi~s~=1 (if no selection)
+
+
+
+## Coding for the day
+
+```
+# moved to working directory:
+$ cd /data/project_data/snps/reads2snps/
+
+# vim into head of file
+$ vim head_SSW_bamlist.txt.vcf
+: set nowrap # no wrapping on file
+
+# looked at summary of this file 
+$ vcftools --vcf SSW_bamlist.txt.vcf
+
+# search through file and count how many times it sees "unres"
+$ grep "unres" SSW_bamlist.txt.vcf | wc
+# 5631864 times in file (started with 7450000) lost 4354 to parology 
+# leaves us with 1.8 M SNPs
+
+# So, SNPs with >2 alleles probably reflect sequence or mapping errors. Also want to get 
+# rid of SNPs showing <2 alleles.
+$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2
+# After filtering, kept 20319 out of a possible 7472775 Sites
+
+# Minor allele freq. Gets rid of very rare SNPs (based on a user-defined threshold).
+# 20% missing data
+$ vcftools --vcf SSW_bamlist.txt.vcf --maf 0.2
+# After filtering, kept 5647846 out of a possible 7472775 Sites
+
+# Minor allele freq. Gets rid of very rare SNPs (based on a user-defined threshold).
+# 80% missing data
+$ vcftools --vcf SSW_bamlist.txt.vcf --max-missing 0.8
+# After filtering, kept 100219 out of a possible 7472775 Sites
+
+
+# combine filters and output file:
+$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2 --maf 0.2 --max-missing 0.8 --recode --out ~/biallelic.MAF0.02.Miss0.8
+# in home directory (1000 SNPs)
+
+# run vcftool hardy function:
+vcftools --vcf biallelic.MAF0.02.Miss0.8.recode.vcf --hardy
+
+# Outputting HWE statistics (but only for biallelic loci)
+	# HWE: Only using fully diploid SNPs.
+# After filtering, kept 82 out of a possible 82 Sites
+# head out.hwe
+
+# $ R (puts you into R code in terminal) all R comands work...
+
+> hardy <- read.table("out.hwe", header=TRUE)
+> str(hardy)
+
+# subset which are greater than 0.001 for p values for excess 
+> hardy[which(hardy$P_HET_EXCESS<0.001),]
+
+# Looking at deficit 
+> hardy[which(hardy$P_HET_DEFICIT<0.001),]
+
+> quit() gets you out of R
+
+$ vcftools --vcf biallelic.MAF0.02.Miss0.8.recode.vcf --geno-r2
+
+# go back into R and do this:
+
+> LD <- read.table("out.geno.ld", header=TRUE)
+> str(LD)
+
+```
+
+
+
+# Homework 1 (R Code)
+
+### March 6, 2017
+
+```
+##################################################################################
+
+# P. Alexander Burnham
+# Eco Genomics 
+# Homework 1
+# 6, March 2017
+
+##################################################################################
+# Preliminaries:
+# Clear memory of characters:
+ls()
+rm(list=ls())
+
+# set working directory: (files are in /RawData)
+setwd("~/EcologicalGenomics")
+
+# plot my quality plots (qual, qualINT and qualSUB together in one pannel)
+par(mfrow=c(1,3))
+
+##################################################################################
+# Loading packages, data and prepping the data
+
+library("DESeq2")
+library("ggplot2")
+
+countsTable <- read.delim("RawData/countsdata_trim2.txt",  
+                          stringsAsFactors=TRUE,
+                          header = TRUE,
+                          row.names=1)
+
+countData <- as.matrix(countsTable)
+
+head(countData)
+
+conds <- read.delim("RawData/cols_data_trim.txt",
+                    header=TRUE, 
+                    stringsAsFactors=TRUE, 
+                    row.names=1)
+
+colData <- as.data.frame(conds)
+head(colData)
+
+# dimensions of the two data structures:
+dim(countData)
+dim(colData)
+
+######################################################################################
+# Subsetting colData by health status (H/S)
+
+# colData
+x<- split(colData, colData$location)
+colDataInt <- x$int
+colDataSub <- x$sub
+
+# countData
+# get names of rows for INT and SUB
+i <- rownames(colDataInt)
+s <- rownames(colDataSub)
+
+# subsetting by INT and SUB
+countDataInt <- countData[,i]
+countDataSub <- countData[,s]
+dim(countDataInt)
+dim(countDataSub)
+
+################################################################################
+################# MODEL NUMBER 1: TEST EFFECT OF HEALTH CONTROLLING FOR LOCATION
+################################################################################
+
+# model looks for a main effect of health while controlling for the variance ascociated with location
+dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ location + health)
+
+# check dimensions of data
+dim(dds)
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+
+# For practice, let's work with fewer genes so that the models can run faster...
+#dds <- dds[sample(nrow(dds), 1200), ]
+#dim(dds)
+
+#sets that "healthy is the reference
+colData(dds)$health <- factor(colData(dds)$health, levels=c("H","S")) 
+
+# Run the model on the data
+dds <- DESeq(dds) 
+
+# summarise data
+res <- results(dds)
+res <- res[order(res$padj),]
+head(res)
+summary(res)
+
+
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------DATA VISUALIZATION (FIGURES) MODEL 1
+#--------------------------------------------------------------------------------
+
+# Data quality assessment by sample clustering and visualization 
+qual <- plotMA(res, main="DESeq2 Model 1 (controlling for location)", ylim=c(-2,2))
+
+# PCA plot for health
+vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
+plot <- plotPCA(vsd, intgroup=c("health"))
+plot
+
+# out of 12946 with nonzero total read count
+# adjusted p-value < 0.1
+# LFC > 0 (up)     : 206, 1.6% 
+# LFC < 0 (down)   : 58, 0.45% 
+# outliers [1]     : 396, 3.1% 
+# low counts [2]   : 7433, 57% 
+# (mean count < 22)
+
+################################################################################
+######################## MODEL NUMBER 2: TEST EFFECT OF HEALTH WITHIN INTERTIDAL
+################################################################################
+
+# model looks for a main effect of health within intertidal population:
+ddsINT <- DESeqDataSetFromMatrix(countData = countDataInt, colData = colDataInt, design = ~ health)
+
+# check dimensions of data
+dim(ddsINT)
+ddsINT <- ddsINT[ rowSums(counts(ddsINT)) > 100, ]
+dim(ddsINT)
+
+# For practice, let's work with fewer genes so that the models can run faster...
+#ddsINT <- ddsINT[sample(nrow(ddsINT), 1200), ]
+#dim(ddsINT)
+
+#sets that "healthy is the reference
+colData(ddsINT)$health <- factor(colData(ddsINT)$health, levels=c("H","S")) 
+
+# Run the model on the data
+ddsINT <- DESeq(ddsINT) 
+
+# summarise data
+resINT <- results(ddsINT)
+resINT <- resINT[order(resINT$padj),]
+head(resINT)
+summary(resINT)
+
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------DATA VISUALIZATION (FIGURES) MODEL 2
+#--------------------------------------------------------------------------------
+
+# Data quality assessment by sample clustering and visualization 
+qualINT <- plotMA(resINT, main="DESeq2 Model 2 (Intertidal Only)", ylim=c(-2,2))
+
+# PCA plot for health
+vsdINT <- varianceStabilizingTransformation(ddsINT, blind=FALSE)
+plotINT <- plotPCA(vsdINT, intgroup=c("health"))
+plotINT 
+
+# out of 12396 with nonzero total read count
+# adjusted p-value < 0.1
+# LFC > 0 (up)     : 204, 1.6% 
+# LFC < 0 (down)   : 33, 0.27% 
+# outliers [1]     : 0, 0% 
+# low counts [2]   : 9139, 74% 
+# (mean count < 39)
+
+################################################################################
+########################## MODEL NUMBER 3: TEST EFFECT OF HEALTH WITHIN SUBTIDAL
+################################################################################
+
+# model looks for a main effect of health within subtidal population:
+ddsSUB <- DESeqDataSetFromMatrix(countData = countDataSub, colData = colDataSub, design = ~ health)
+
+# check dimensions of data
+dim(ddsSUB)
+ddsSUB <- ddsSUB[ rowSums(counts(ddsSUB)) > 100, ]
+dim(ddsSUB)
+
+# For practice, let's work with fewer genes so that the models can run faster...
+#ddsSUB <- ddsSUB[sample(nrow(ddsSUB), 1200), ]
+#dim(ddsSUB)
+
+#sets that "healthy is the reference
+colData(ddsSUB)$health <- factor(colData(ddsSUB)$health, levels=c("H","S")) 
+
+# Run the model on the data
+ddsSUB <- DESeq(ddsSUB) 
+
+# summarise data
+resSUB <- results(ddsSUB)
+resSUB <- resSUB[order(resSUB$padj),]
+head(resSUB)
+summary(resSUB)
+
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------DATA VISUALIZATION (FIGURES) MODEL 3
+#--------------------------------------------------------------------------------
+
+# Data quality assessment by sample clustering and visualization 
+qualSUB <- plotMA(resSUB, main="DESeq2 Model 3 (Subtidal Only)", ylim=c(-2,2))
+
+# PCA plot for health
+vsdSUB <- varianceStabilizingTransformation(ddsSUB, blind=FALSE)
+plotSUB <- plotPCA(vsdSUB, intgroup=c("health"))
+plotSUB
+
+# out of 12392 with nonzero total read count
+# adjusted p-value < 0.1
+# LFC > 0 (up)     : 20, 0.16% 
+# LFC < 0 (down)   : 113, 0.91% 
+# outliers [1]     : 647, 5.2% 
+# low counts [2]   : 4289, 35% 
+# (mean count < 13)
+
+
+################################################################################
+########################################## FUNCTION TO PLOT GGPLOT FIGS TOGETHER
+################################################################################
+
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
+# Plot figures together:
+multiplot(plot, plotINT, plotSUB, cols=3)
+
+
+
+```
 

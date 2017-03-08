@@ -1,0 +1,1301 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>2016_Notebook.md</title><link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'><style type='text/css'>html, body {overflow-x: initial !important;}.CodeMirror { height: auto; }
+.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; }
+.CodeMirror-lines { padding: 4px 0px; }
+.CodeMirror pre { }
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { background-color: white; }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-color: rgb(247, 247, 247); white-space: nowrap; }
+.CodeMirror-linenumbers { }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.CodeMirror div.CodeMirror-cursor { border-left-width: 1px; border-left-style: solid; border-left-color: black; z-index: 3; }
+.CodeMirror div.CodeMirror-secondarycursor { border-left-width: 1px; border-left-style: solid; border-left-color: silver; }
+.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor { width: auto; border: 0px; background-color: rgb(119, 238, 119); z-index: 1; background-position: initial initial; background-repeat: initial initial; }
+.CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite { }
+.cm-tab { display: inline-block; }
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property { color: rgb(217, 79, 138); }
+.cm-s-typora-default pre.cm-header1:not(.cm-atom) :not(.cm-overlay) { font-size: 2rem; line-height: 2rem; }
+.cm-s-typora-default pre.cm-header2:not(.cm-atom) :not(.cm-overlay) { font-size: 1.4rem; line-height: 1.4rem; }
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number { color: rgb(149, 132, 134); }
+.cm-s-typora-default .cm-table-row, .cm-s-typora-default .cm-block-start { font-family: monospace; }
+.cm-s-typora-default .cm-comment, .cm-s-typora-default .cm-code { color: rgb(74, 90, 159); font-family: monospace; }
+.cm-s-typora-default .cm-tag { color: rgb(169, 68, 66); }
+.cm-s-typora-default .cm-string { color: rgb(126, 134, 169); }
+.cm-s-typora-default .cm-link { color: rgb(196, 122, 15); text-decoration: underline; }
+.cm-s-typora-default .cm-variable-2, .cm-s-typora-default .cm-variable-1 { color: inherit; }
+.cm-s-typora-default .cm-overlay { font-size: 1rem; font-family: monospace; }
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor { border-left-width: 3px; border-left-style: solid; border-left-color: rgb(228, 98, 154); }
+.cm-s-typora-default .CodeMirror-activeline-background { left: -60px; right: -30px; background-color: rgba(204, 204, 204, 0.2); background-position: initial initial; background-repeat: initial initial; }
+.cm-s-typora-default .CodeMirror-gutters { border-right-style: none; background-color: inherit; }
+.cm-s-typora-default .cm-trailing-space-new-line::after, .cm-startspace::after, .cm-starttab .cm-tab::after { content: '•'; position: absolute; left: 0px; opacity: 0; font-family: LetterGothicStd, monospace; }
+.os-windows .cm-startspace::after, .os-windows .cm-starttab .cm-tab::after { left: -0.1em; }
+.cm-starttab .cm-tab::after { content: ' '; }
+.cm-startspace, .cm-tab, .cm-starttab, .cm-trailing-space-a, .cm-trailing-space-b, .cm-trailing-space-new-line { font-family: monospace; position: relative; }
+.cm-s-typora-default .cm-trailing-space-new-line::after { content: '↓'; opacity: 0.3; }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: black; }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-property { color: black; }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: blue; }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: bold; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: rgb(255, 0, 0); }
+.cm-invalidchar { color: rgb(255, 0, 0); }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { margin-bottom: -30px; margin-right: -30px; padding-bottom: 30px; padding-right: 30px; height: 100%; outline: none; position: relative; box-sizing: content-box; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow-x: hidden; overflow-y: scroll; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow-y: hidden; overflow-x: scroll; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; background-color: transparent; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: initial initial; background-repeat: initial initial; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: -webkit-fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-widget { }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.CodeMirror-selected { background-color: rgb(217, 217, 217); background-position: initial initial; background-repeat: initial initial; }
+.CodeMirror-focused .CodeMirror-selected { background-color: rgb(215, 212, 240); background-position: initial initial; background-repeat: initial initial; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+.CodeMirror span { }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+.CodeMirror-lint-markers { width: 16px; }
+.CodeMirror-lint-tooltip { background-color: infobackground; border: 1px solid black; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; color: infotext; font-family: monospace; overflow: hidden; padding: 2px 5px; position: fixed; white-space: pre-wrap; z-index: 10000; max-width: 600px; opacity: 0; -webkit-transition: opacity 0.4s; transition: opacity 0.4s; font-size: 0.8em; }
+.CodeMirror-lint-mark-error, .CodeMirror-lint-mark-warning { background-position: 0% 100%; background-repeat: repeat no-repeat; }
+.CodeMirror-lint-mark-error { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJDw4cOCW1/KIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAHElEQVQI12NggIL/DAz/GdA5/xkY/qPKMDAwAADLZwf5rvm+LQAAAABJRU5ErkJggg==); }
+.CodeMirror-lint-marker-error, .CodeMirror-lint-marker-warning { cursor: pointer; display: inline-block; height: 16px; width: 16px; vertical-align: middle; position: relative; background-position: 50% 50%; background-repeat: no-repeat no-repeat; }
+.CodeMirror-lint-message-error, .CodeMirror-lint-message-warning { padding-left: 18px; background-position: 0% 0%; background-repeat: no-repeat no-repeat; }
+.CodeMirror-lint-marker-error, .CodeMirror-lint-message-error { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAHlBMVEW7AAC7AACxAAC7AAC7AAAAAAC4AAC5AAD///+7AAAUdclpAAAABnRSTlMXnORSiwCK0ZKSAAAATUlEQVR42mWPOQ7AQAgDuQLx/z8csYRmPRIFIwRGnosRrpamvkKi0FTIiMASR3hhKW+hAN6/tIWhu9PDWiTGNEkTtIOucA5Oyr9ckPgAWm0GPBog6v4AAAAASUVORK5CYII=); }
+.CodeMirror-lint-marker-warning, .CodeMirror-lint-message-warning { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAANlBMVEX/uwDvrwD/uwD/uwD/uwD/uwD/uwD/uwD/uwD6twD/uwAAAADurwD2tQD7uAD+ugAAAAD/uwDhmeTRAAAADHRSTlMJ8mN1EYcbmiixgACm7WbuAAAAVklEQVR42n3PUQqAIBBFUU1LLc3u/jdbOJoW1P08DA9Gba8+YWJ6gNJoNYIBzAA2chBth5kLmG9YUoG0NHAUwFXwO9LuBQL1giCQb8gC9Oro2vp5rncCIY8L8uEx5ZkAAAAASUVORK5CYII=); }
+.CodeMirror-lint-marker-multiple { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAMAAADzjKfhAAAACVBMVEUAAAAAAAC/v7914kyHAAAAAXRSTlMAQObYZgAAACNJREFUeNo1ioEJAAAIwmz/H90iFFSGJgFMe3gaLZ0od+9/AQZ0ADosbYraAAAAAElFTkSuQmCC); width: 100%; height: 100%; background-position: 100% 100%; background-repeat: no-repeat no-repeat; }
+
+
+html { font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { background-color: rgb(181, 214, 252); text-shadow: none; background-position: initial initial; background-repeat: initial initial; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: auto; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+.typora-export #write { margin: 0px auto; }
+#write > p:first-child, #write > ul:first-child, #write > ol:first-child, #write > pre:first-child, #write > blockquote:first-child, #write > div:first-child, #write > table:first-child { margin-top: 30px; }
+#write li > table:first-child { margin-top: -20px; }
+img { max-width: 100%; vertical-align: middle; }
+input, button, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+::before, ::after, * { box-sizing: border-box; }
+#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write div, #write pre { width: inherit; }
+#write p, #write h1, #write h2, #write h3, #write h4, #write h5, #write h6 { position: relative; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0rem; -webkit-margin-after: 0rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: bold; font-style: italic; }
+a { cursor: pointer; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; margin: 4px 0px 0px; }
+tr { page-break-inside: avoid; page-break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; page-break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+pre { white-space: pre-wrap; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; page-break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences .CodeMirror.CodeMirror-wrap { top: -1.6em; margin-bottom: -1.6em; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; padding-top: 1em; padding-bottom: 1em; }
+.footnotes + .footnotes { margin-top: -1em; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background-color: transparent; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: normal; text-align: left; box-sizing: content-box; direction: ltr; background-position: initial initial; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li p, li .mathjax-block { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; }
+@media print { 
+  html, body { height: 100%; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  h1, h2, h3, h4, h5, h6 { page-break-after: avoid; orphans: 2; }
+  p { orphans: 4; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0mm; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 2.86rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+.mathjax-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: none; box-shadow: none; }
+.task-list { list-style-type: none; }
+.task-list-item { position: relative; padding-left: 1em; }
+.task-list-item input { position: absolute; top: 0px; left: 0px; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc::after, .md-toc-content::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: bold; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: '.'; }
+.md-tag { opacity: 0.5; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: monospace; }
+code { text-align: left; }
+h1 .md-tag, h2 .md-tag, h3 .md-tag, h4 .md-tag, h5 .md-tag, h6 .md-tag { font-weight: initial; opacity: 0.35; }
+a.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: none !important; background-color: transparent !important; text-shadow: initial !important; background-position: initial initial !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0em; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: normal; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { -webkit-transition: none; transition: none; }
+
+
+@include-when-export url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/**
+ * css forked from https://github.com/GitbookIO/gitbook 
+ * www.gitbook.com
+ * Apache License
+ * https://github.com/GitbookIO/gitbook/blob/master/LICENSE
+ **/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Open Sans Regular'),url('file:///Users/phillipburnham/Library/Application%20Support/abnerworks.Typora/themes/github/400.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Open Sans Italic'),url('file:///Users/phillipburnham/Library/Application%20Support/abnerworks.Typora/themes/github/400i.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Open Sans Bold'),url('file:///Users/phillipburnham/Library/Application%20Support/abnerworks.Typora/themes/github/700.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Open Sans Bold Italic'),url('file:///Users/phillipburnham/Library/Application%20Support/abnerworks.Typora/themes/github/700i.woff') format('woff')
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write{
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 20px 30px 40px 30px;
+	padding-top: 20px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    /*background: url("file:///Users/phillipburnham/Library/Application%20Support/images/modules/styleguide/para.png") no-repeat 10px center;*/
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 4px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    border-bottom: 1px solid #ddd;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dddddd;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+#write {
+    overflow-x: auto;
+}
+table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid #ddd;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 0.2em 1em;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:32px;
+}
+
+.task-list-item input {
+  top: 3px;
+  left: 8px;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag{
+	color: inherit;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><h1><a name='header-c6812' class='md-header-anchor '></a>Ecological Genomics Lab Notes</h1><h3><a name='header-c6814' class='md-header-anchor '></a>Author: P. Alexander Burnham</h3><h3><a name='header-c6815' class='md-header-anchor '></a>University of Vermont</h3><h2><a name='header-c6816' class='md-header-anchor '></a>Team Sherlock (reverse pathology)</h2><h2><a name='header-c6817' class='md-header-anchor '></a>Date started: January 28, 2017</h2><h2><a name='header-c6818' class='md-header-anchor '></a>Date end:</h2><h1><a name='header-c6820' class='md-header-anchor '></a>Table of contents (for 200 entries)</h1><ul><li><a href='#id-section1'>Page 1: 2017-23-01</a>. Class Notes</li><li><a href='#id-section2'>Page 2: 2017-25-01</a>. Class Notes</li><li><a href='#id-section3'>Page 3: 2017-30-01</a>. Class Notes</li><li><a href='#id-section4'>Page 4: 2017-01-02</a>. Class Notes (Server Log In)</li><li><a href='#id-section5'>Page 5: 2017-13-02</a>. Class Notes</li><li><a href='#id-section6'>Page 6: 2017-15-02</a>. Class Notes</li><li><a href='#id-section7'>Page 7: 2017-22-02:</a>. Class Notes (DESeq2)</li><li><a href='#id-section8'>Page 8: 2017-27-02:</a>. Class Notes (DESeq2)</li><li><a href='#id-section9'>Page 9: 2017-01-03</a>. Class Notes (WGCNA)</li><li><a href='#id-section10'>Page 10: 2017-06-03:</a>. Class Notes (Notes about R in Unix)</li><li><a href='#id-section11'>Page 11: 2017-06-03</a>. Homework 1 R Code</li><li><a href='#id-section12'>Page 12:</a>. Class Notes</li><li><a href='#id-section13'>Page 13:</a>. Class Notes</li><li><a href='#id-section14'>Page 14:</a>. Class Notes</li><li><a href='#id-section15'>Page 15:</a>. Class Notes</li><li><a href='#id-section16'>Page 16:</a>. Class Notes</li><li><a href='#id-section17'>Page 17:</a>. Class Notes</li><li><a href='#id-section18'>Page 18:</a>. Class Notes</li><li><a href='#id-section19'>Page 19:</a>.Class Notes</li><li><a href='#id-section20'>Page 20:</a>. Class Notes</li><li><a href='#id-section21'>Page 21:</a>.</li><li><a href='#id-section22'>Page 22:</a>.</li><li><a href='#id-section23'>Page 23:</a>.</li><li><a href='#id-section24'>Page 24:</a>.</li><li><a href='#id-section25'>Page 25:</a>.</li><li><a href='#id-section26'>Page 26:</a>.</li><li><a href='#id-section27'>Page 27:</a>.</li><li><a href='#id-section28'>Page 28:</a>.</li><li><a href='#id-section29'>Page 29:</a>.</li><li><a href='#id-section30'>Page 30:</a>.</li><li><a href='#id-section31'>Page 31:</a>.</li><li><a href='#id-section32'>Page 32:</a>.</li><li><a href='#id-section33'>Page 33:</a>.</li><li><a href='#id-section34'>Page 34:</a>.</li><li><a href='#id-section35'>Page 35:</a>.</li><li><a href='#id-section36'>Page 36:</a>.</li><li><a href='#id-section37'>Page 37:</a>.</li><li><a href='#id-section38'>Page 38:</a>.</li><li><a href='#id-section39'>Page 39:</a>.</li><li><a href='#id-section40'>Page 40:</a>.</li><li><a href='#id-section41'>Page 41:</a>.</li><li><a href='#id-section42'>Page 42:</a>.</li><li><a href='#id-section43'>Page 43:</a>.</li><li><a href='#id-section44'>Page 44:</a>.</li><li><a href='#id-section45'>Page 45:</a>.</li><li><a href='#id-section46'>Page 46:</a>.</li><li><a href='#id-section47'>Page 47:</a>.</li><li><a href='#id-section48'>Page 48:</a>.</li><li><a href='#id-section49'>Page 49:</a>.</li><li><a href='#id-section50'>Page 50:</a>.</li><li><a href='#id-section51'>Page 51:</a>.</li><li><a href='#id-section52'>Page 52:</a>.</li><li><a href='#id-section53'>Page 53:</a>.</li><li><a href='#id-section54'>Page 54:</a>.</li><li><a href='#id-section55'>Page 55:</a>.</li><li><a href='#id-section56'>Page 56:</a>.</li><li><a href='#id-section57'>Page 57:</a>.</li><li><a href='#id-section58'>Page 58:</a>.</li><li><a href='#id-section59'>Page 59:</a>.</li><li><a href='#id-section60'>Page 60:</a>.</li><li><a href='#id-section61'>Page 61:</a>.</li><li><a href='#id-section62'>Page 62:</a>.</li><li><a href='#id-section63'>Page 63:</a>.</li><li><a href='#id-section64'>Page 64:</a>.</li><li><a href='#id-section65'>Page 65:</a>.</li><li><a href='#id-section66'>Page 66:</a>.</li><li><a href='#id-section67'>Page 67:</a>.</li><li><a href='#id-section68'>Page 68:</a>.</li><li><a href='#id-section69'>Page 69:</a>.</li><li><a href='#id-section70'>Page 70:</a>.</li><li><a href='#id-section71'>Page 71:</a>.</li><li><a href='#id-section72'>Page 72:</a>.</li><li><a href='#id-section73'>Page 73:</a>.</li><li><a href='#id-section74'>Page 74:</a>.</li><li><a href='#id-section75'>Page 75:</a>.</li><li><a href='#id-section76'>Page 76:</a>.</li><li><a href='#id-section77'>Page 77:</a>.</li><li><a href='#id-section78'>Page 78:</a>.</li><li><a href='#id-section79'>Page 79:</a>.</li><li><a href='#id-section80'>Page 80:</a>.</li><li><a href='#id-section81'>Page 81:</a>.</li><li><a href='#id-section82'>Page 82:</a>.</li><li><a href='#id-section83'>Page 83:</a>.</li><li><a href='#id-section84'>Page 84:</a>.</li><li><a href='#id-section85'>Page 85:</a>.</li><li><a href='#id-section86'>Page 86:</a>.</li><li><a href='#id-section87'>Page 87:</a>.</li><li><a href='#id-section88'>Page 88:</a>.</li><li><a href='#id-section89'>Page 89:</a>.</li><li><a href='#id-section90'>Page 90:</a>.</li><li><a href='#id-section91'>Page 91:</a>.</li><li><a href='#id-section92'>Page 92:</a>.</li><li><a href='#id-section93'>Page 93:</a>.</li><li><a href='#id-section94'>Page 94:</a>.</li><li><a href='#id-section95'>Page 95:</a>.</li><li><a href='#id-section96'>Page 96:</a>.</li><li><a href='#id-section97'>Page 97:</a>.</li><li><a href='#id-section98'>Page 98:</a>.</li><li><a href='#id-section99'>Page 99:</a>.</li><li><a href='#id-section100'>Page 100:</a>.</li><li><a href='#id-section101'>Page 101:</a>.</li><li><a href='#id-section102'>Page 102:</a>.</li><li><a href='#id-section103'>Page 103:</a>.</li><li><a href='#id-section104'>Page 104:</a>.</li><li><a href='#id-section105'>Page 105:</a>.</li><li><a href='#id-section106'>Page 106:</a>.</li><li><a href='#id-section107'>Page 107:</a>.</li><li><a href='#id-section108'>Page 108:</a>.</li><li><a href='#id-section109'>Page 109:</a>.</li><li><a href='#id-section110'>Page 110:</a>.</li><li><a href='#id-section111'>Page 111:</a>.</li><li><a href='#id-section112'>Page 112:</a>.</li><li><a href='#id-section113'>Page 113:</a>.</li><li><a href='#id-section114'>Page 114:</a>.</li><li><a href='#id-section115'>Page 115:</a>.</li><li><a href='#id-section116'>Page 116:</a>.</li><li><a href='#id-section117'>Page 117:</a>.</li><li><a href='#id-section118'>Page 118:</a>.</li><li><a href='#id-section119'>Page 119:</a>.</li><li><a href='#id-section120'>Page 120:</a>.</li><li><a href='#id-section121'>Page 121:</a>.</li><li><a href='#id-section122'>Page 122:</a>.</li><li><a href='#id-section123'>Page 123:</a>.</li><li><a href='#id-section124'>Page 124:</a>.</li><li><a href='#id-section125'>Page 125:</a>.</li><li><a href='#id-section126'>Page 126:</a>.</li><li><a href='#id-section127'>Page 127:</a>.</li><li><a href='#id-section128'>Page 128:</a>.</li><li><a href='#id-section129'>Page 129:</a>.</li><li><a href='#id-section130'>Page 130:</a>.</li><li><a href='#id-section131'>Page 131:</a>.</li><li><a href='#id-section132'>Page 132:</a>.</li><li><a href='#id-section133'>Page 133:</a>.</li><li><a href='#id-section134'>Page 134:</a>.</li><li><a href='#id-section135'>Page 135:</a>.</li><li><a href='#id-section136'>Page 136:</a>.</li><li><a href='#id-section137'>Page 137:</a>.</li><li><a href='#id-section138'>Page 138:</a>.</li><li><a href='#id-section139'>Page 139:</a>.</li><li><a href='#id-section140'>Page 140:</a>.</li><li><a href='#id-section141'>Page 141:</a>.</li><li><a href='#id-section142'>Page 142:</a>.</li><li><a href='#id-section143'>Page 143:</a>.</li><li><a href='#id-section144'>Page 144:</a>.</li><li><a href='#id-section145'>Page 145:</a>.</li><li><a href='#id-section146'>Page 146:</a>.</li><li><a href='#id-section147'>Page 147:</a>.</li><li><a href='#id-section148'>Page 148:</a>.</li><li><a href='#id-section149'>Page 149:</a>.</li><li><a href='#id-section150'>Page 150:</a>.</li><li><a href='#id-section151'>Page 151:</a>.</li><li><a href='#id-section152'>Page 152:</a>.</li><li><a href='#id-section153'>Page 153:</a>.</li><li><a href='#id-section154'>Page 154:</a>.</li><li><a href='#id-section155'>Page 155:</a>.</li><li><a href='#id-section156'>Page 156:</a>.</li><li><a href='#id-section157'>Page 157:</a>.</li><li><a href='#id-section158'>Page 158:</a>.</li><li><a href='#id-section159'>Page 159:</a>.</li><li><a href='#id-section160'>Page 160:</a>.</li><li><a href='#id-section161'>Page 161:</a>.</li><li><a href='#id-section162'>Page 162:</a>.</li><li><a href='#id-section163'>Page 163:</a>.</li><li><a href='#id-section164'>Page 164:</a>.</li><li><a href='#id-section165'>Page 165:</a>.</li><li><a href='#id-section166'>Page 166:</a>.</li><li><a href='#id-section167'>Page 167:</a>.</li><li><a href='#id-section168'>Page 168:</a>.</li><li><a href='#id-section169'>Page 169:</a>.</li><li><a href='#id-section170'>Page 170:</a>.</li><li><a href='#id-section171'>Page 171:</a>.</li><li><a href='#id-section172'>Page 172:</a>.</li><li><a href='#id-section173'>Page 173:</a>.</li><li><a href='#id-section174'>Page 174:</a>.</li><li><a href='#id-section175'>Page 175:</a>.</li><li><a href='#id-section176'>Page 176:</a>.</li><li><a href='#id-section177'>Page 177:</a>.</li><li><a href='#id-section178'>Page 178:</a>.</li><li><a href='#id-section179'>Page 179:</a>.</li><li><a href='#id-section180'>Page 180:</a>.</li><li><a href='#id-section181'>Page 181:</a>.</li><li><a href='#id-section182'>Page 182:</a>.</li><li><a href='#id-section183'>Page 183:</a>.</li><li><a href='#id-section184'>Page 184:</a>.</li><li><a href='#id-section185'>Page 185:</a>.</li><li><a href='#id-section186'>Page 186:</a>.</li><li><a href='#id-section187'>Page 187:</a>.</li><li><a href='#id-section188'>Page 188:</a>.</li><li><a href='#id-section189'>Page 189:</a>.</li><li><a href='#id-section190'>Page 190:</a>.</li><li><a href='#id-section191'>Page 191:</a>.</li><li><a href='#id-section192'>Page 192:</a>.</li><li><a href='#id-section193'>Page 193:</a>.</li><li><a href='#id-section194'>Page 194:</a>.</li><li><a href='#id-section195'>Page 195:</a>.</li><li><a href='#id-section196'>Page 196:</a>.</li><li><a href='#id-section197'>Page 197:</a>.</li><li><a href='#id-section198'>Page 198:</a>.</li><li><a href='#id-section199'>Page 199:</a>.</li><li><a href='#id-section200'>Page 200:</a>.</li></ul><hr /><p><div id='id-section1'/></p><h3><a name='header-c7424' class='md-header-anchor '></a>Page 1:</h3><h1><a name='header-c7426' class='md-header-anchor '></a>January 23, 2017:</h1><h3><a name='header-c7427' class='md-header-anchor '></a>Info Update: Mellisa</h3><ul><li><p>Advantages in Seq tech. </p></li><li><p>Ranage of applications:</p><ul><li>WGS (whole genome sequencing)</li><li>RNAseq (seqencing RNA conveted to cDNA)</li><li>Targeted caputure seq. (string of probes mixed with sample, pulls immune related genes from organisim and seq just those)</li><li>Chipseq (chromatin imunoprecipitation seq, recognizezes and antibody and puls out all DNA bound to that portein)</li></ul></li></ul><p>Why one or the other?</p><p>Genetic variation</p><pre class='md-fences mock-cm' style='display:block;position:relative'>  - phenotypes</pre><p>​    <br/></p><p>number of samples </p><pre class='md-fences mock-cm' style='display:block;position:relative'>  - population
+  - individual 
+  - comparitive studies 
+  - model or note</pre><p>Demographic history</p><p>Adaptive geneitc varaitin</p><p>gene expression car.</p><p>length of reads</p><p>number of reads</p><p>distribution</p><p>Reads:</p><p>​    <br/></p><p>​    <br/></p><pre class='md-fences mock-cm' style='display:block;position:relative'>  - short = 50bp
+  - long 100 bp, 150 bp, 300 bp (miseq) 
+  - 10,000-60,000bp = SMRT </pre><p>Single vs. paired end</p><ul><li><p>General library Prep. Workflow<br/>
+​  <br/></p><ul><li>extraction (DNA, RNA -&gt; to cDNA)</li><li>fragment sample</li><li>ligate adaptors (indvidual barcodes)</li><li>add seq. adaptors
+Reduced Rep<br/></li><li>RNA -&gt; coding</li><li>GBS/RAD-seq</li><li>near restriciton sites</li></ul></li><li><p>Sequencing-by-synthesis (SBS) <br/></p><ul><li>bridge amp</li><li>cluster gen.</li><li>labeled dNTP (ATCG)</li></ul></li><li><p>Other Technologies <br/></p></li><li><p>Learning Activity <br/></p></li></ul><p>Human Genome Project (2001-2003)</p><pre class='md-fences mock-cm' style='display:block;position:relative'>  - ABI = Sanger 
+  - 15 years  
+  - 1 geneome (one person)    
+  - $3 billion    </pre><p>Uses PCR and sequences broken by faulty base pairs to work backwards</p><p>2014 X-Ten releases</p><pre class='md-fences mock-cm' style='display:block;position:relative'>  - Hiseq by Illumina (look up video of how it works)
+  - 1 day  
+  - 45 whole genomes    
+  - $1000 bucks each  </pre><p>Sheet of glass with 8 lanes with flow cells...(look up)</p><p></p><p>Take home messages</p><ul><li><p>Likely using Illumina seq. (just library tech. changes) usually SBS</p></li><li><p>adaptors are markers (barcodes) used to identify samples during sequencing </p><ul><li>first thing that&#39;s sample and gives ID barcode = seq adaptor </li><li>alago is a sequence of DNA that is attatched to plate binds to sample</li></ul></li><li><p>Model vs. non Model:</p><ul><li>short reads (assembly to create long sequnce based on short reads that shift)</li><li>denavo assembly -&gt; computer program (added variability with mixed sample)</li><li>15% error for SMRT can be reduced to less than 1 with repeated passes</li><li>illumina is much smaller but more accurate (0.05% error)</li><li>combine the two to have a higher degree of confidnece </li></ul></li></ul><p>Paper Discussion:</p><p>Three advances in biology:</p><ul><li>Modern Synthesis (evolution (Darwin) and population genetics (Mendel))</li><li>Watson and Crick (molecular biology DNA)</li><li>Omics Era (genomics, preteomics etc.)</li></ul><p>What do we think about this?</p><ul><li>Phylogenies -&gt; reducing error bars or reshaping question? <br/></li><li>Do you throw out experimetnal design and scientific method for large scale shot gun blast sequencing? - &gt; can still be used to do hypothesis driven science, but also something to be said for sending a teleoscope into deep space. <br/></li><li>Most journals and funding sources require all seq data be made public - leeds to a storage space issure -&gt; genbank ran out of space and needed emergency funding from congress. <br/></li><li>data are not reviewed very well some gen bank sequences are kinda rough <br/></li><li>reference genomes are a sample size of 1 so it might not be representative</li></ul><p>On Wednesday two papers to talk about:</p><p>1) where do genomics data have limitations and why we use them</p><p>2) discussion leaders (sign up via blackboard)</p><p>3) next week talk about some of library preps (four of them) four differnt update people</p><p><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cluster_Generation.png/440px-Cluster_Generation.png' alt='Illumina Sequencing' /></p><p></p><p></p><p></p><hr /><p><div id='id-section2'/></p><h3><a name='header-c7624' class='md-header-anchor '></a>Page 2:</h3><h1><a name='header-c7626' class='md-header-anchor '></a>January 25, 2017:</h1><h2><a name='header-c7627' class='md-header-anchor '></a>Info Update: Steve</h2><h3><a name='header-c7628' class='md-header-anchor '></a>Outline:</h3><ul><li><p>What are QTN</p></li><li><p>Quantitative Gentics</p><ul><li><p>theory of adaptive traits</p><ul><li>V<sub>a</sub></li><li>h<sup>2</sup></li></ul></li></ul></li><li><p>Methods</p><ul><li>linkage mapping</li><li>GWAS</li><li>selection scans</li></ul></li></ul><h3><a name='header-c7660' class='md-header-anchor '></a>Notes on topics in outline:</h3><ul><li><p>QTN = &quot;quantitative trait necleotides&quot;</p><ul><li>Flowering times (quantitative traits)</li><li>Flower color (more descrete - mendalian major effects traits)</li><li>THermal tolerance </li><li>venom potancy </li><li>defense compounds</li><li>toxin tolerance</li><li>drought tolerance</li><li>altitiude tolerance</li></ul></li></ul><p><strong>Looking at haldane and fishers work on Quant genetics:</strong> <br/></p><pre class='md-fences mock-cm' style='display:block;position:relative'>- addative effect at each locus and addative effect average our Additive genetic variance or V~a~   
+- the additive portion of the addedative variance or phenotypic variance equals heritiability $$(V_a/V_p = h^2)$$   
+- the differnce between pheotypic variance between loci is addative effect and average out to average affect which is usually a linear functiion   
+- most populations are at the value of trait where fitness is max (local addpatition)
+- mutation with small effect on trait (fisher thought most important mutation 50% of being beneficial)  
+- large effect mutation -&gt; tend not to be selected -&gt; to extreme and usually cause problems
+- best traits climb to the fitness peak through small incremental steps</pre><h2><a name='header-c7693' class='md-header-anchor '></a>Three main methods:</h2><h3><a name='header-c7694' class='md-header-anchor '></a>1) QTL mapping (linkage mapping)</h3><pre class='md-fences mock-cm' style='display:block;position:relative'>- assumed that two parents are homozygous (for continuos trats) 
+- F~1~ is heterozygous but no recombinance
+- mate the F~1~ generation and get one generation of recombination for these traits
+- **The Idea of QTL** use markers linked to chromosomes, crossing (over many generations)</pre><pre class='md-fences mock-cm' style='display:block;position:relative'>linkage
+|           QTN
+|             o
+|         o       o
+|       o           o
+| 
+|   o                 o
+|o                        o
+--------|-----------|-----------
+0                             5
+          Chromsome
+</pre><h3><a name='header-c7698' class='md-header-anchor '></a>2) GWAS:</h3><p><span class="MathJax_Preview"></span><span class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-1-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="65.014ex" height="2.694ex" viewBox="0 -806.1 27991.9 1160" role="img" focusable="false" style="vertical-align: -0.822ex;"><defs><path stroke-width="1" id="E1-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="E1-MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path stroke-width="1" id="E1-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="E1-MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="1" id="E1-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="E1-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="1" id="E1-MJMATHI-6D" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="E1-MJMATHI-75" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="E1-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="E1-MJMATHI-65" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path stroke-width="1" id="E1-MJMATHI-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path stroke-width="1" id="E1-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path stroke-width="1" id="E1-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="1" id="E1-MJMATHI-62" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path stroke-width="1" id="E1-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="1" id="E1-MJMATHI-73" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path stroke-width="1" id="E1-MJMATHI-7A" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path stroke-width="1" id="E1-MJMAIN-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path stroke-width="1" id="E1-MJMATHI-53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path stroke-width="1" id="E1-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path stroke-width="1" id="E1-MJMATHI-50" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path stroke-width="1" id="E1-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="1" id="E1-MJMATHI-76" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path stroke-width="1" id="E1-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMATHI-79" x="0" y="0"></use><g transform="translate(490,-150)"><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-74" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-72" x="361" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-61" x="812" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-69" x="1342" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-74" x="1688" y="0"></use></g><use xlink:href="#E1-MJMAIN-3D" x="2317" y="0"></use><use xlink:href="#E1-MJMATHI-6D" x="3373" y="0"></use><g transform="translate(4252,0)"><use xlink:href="#E1-MJMATHI-75" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-69" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-6E" x="345" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-74" x="946" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-65" x="1307" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-72" x="1774" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-63" x="2225" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-65" x="2659" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-70" x="3125" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-74" x="3629" y="0"></use></g></g><use xlink:href="#E1-MJMAIN-2B" x="7968" y="0"></use><use xlink:href="#E1-MJMATHI-62" x="8969" y="0"></use><use xlink:href="#E1-MJMATHI-65" x="9398" y="0"></use><use xlink:href="#E1-MJMATHI-74" x="9865" y="0"></use><g transform="translate(10226,0)"><use xlink:href="#E1-MJMATHI-61" x="0" y="0"></use><g transform="translate(529,-155)"><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-65" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-66" x="466" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-66" x="1017" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-65" x="1567" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-63" x="2034" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-74" x="2467" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-73" x="2828" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-69" x="3298" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-7A" x="3643" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-65" x="4112" y="0"></use></g></g><use xlink:href="#E1-MJMAIN-2217" x="14316" y="0"></use><use xlink:href="#E1-MJMATHI-53" x="15039" y="0"></use><use xlink:href="#E1-MJMATHI-4E" x="15684" y="0"></use><g transform="translate(16573,0)"><use xlink:href="#E1-MJMATHI-50" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-69" x="908" y="-213"></use></g><use xlink:href="#E1-MJMAIN-2B" x="17782" y="0"></use><use xlink:href="#E1-MJMATHI-63" x="18782" y="0"></use><use xlink:href="#E1-MJMATHI-6F" x="19216" y="0"></use><use xlink:href="#E1-MJMATHI-76" x="19701" y="0"></use><use xlink:href="#E1-MJMATHI-61" x="20187" y="0"></use><use xlink:href="#E1-MJMATHI-72" x="20716" y="0"></use><use xlink:href="#E1-MJMATHI-69" x="21168" y="0"></use><use xlink:href="#E1-MJMATHI-61" x="21513" y="0"></use><use xlink:href="#E1-MJMATHI-74" x="22043" y="0"></use><use xlink:href="#E1-MJMATHI-65" x="22404" y="0"></use><g transform="translate(22871,0)"><use xlink:href="#E1-MJMATHI-73" x="0" y="0"></use><g transform="translate(469,-150)"><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-70" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-6F" x="503" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-70" x="989" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-75" x="1492" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-6C" x="2065" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-61" x="2363" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-74" x="2893" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-69" x="3254" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-6F" x="3600" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-6E" x="4085" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-73" x="4686" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-69" x="5155" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-7A" x="5501" y="0"></use><use transform="scale(0.707)" xlink:href="#E1-MJMATHI-65" x="5969" y="0"></use></g></g></g></svg></span></span><script type="math/tex; mode=display" id="MathJax-Element-1">y_{trait} = mu_{intercept} + beta_{effectsize} * SNP_i + covariates_{population size}</script></p><p>collect data run regressions (millions)</p><p>**Manhatten plot</p><pre class='md-fences mock-cm' style='display:block;position:relative'>log_p
+|                       .
+|                       .
+|                       ..
+|                     ....
+|.....  ......  ..........
+|  ...............  ........
+--------------------------------
+1    2      3      4     5     6
+</pre><h3><a name='header-c7706' class='md-header-anchor '></a>3) Selection SCANS (based ons selection sweeps):</h3><pre class='md-fences mock-cm' style='display:block;position:relative'>
+x= SNPs
+selction favors mutation next to O
+
+pop1                                  pop1
+________x_________                  _xO__________________
+
+___x______x______x                  _xO__________________
+                          time
+_xO__________________     ------&gt;   _xO__________________  
+
+______________x____                 _xO__________________
+
+
+pop2
+________x_________ 
+
+___x______x______
+                      
+_xO__________________ 
+
+______________x____
+
+
+- lose variation as everything favors the mutation
+- diversity is higher in pop 2
+- FST is populations struction high FST will be for pop2 low for pop 1 after selction
+</pre><ul><li>we study the few large effect size mutations for QTL and QTN that we study because they are easy to find <br/></li><li>majority are small but hard to find</li></ul><h2><a name='header-c7715' class='md-header-anchor '></a>PAPER DISCUSSION:</h2><p>forward vs reverse approach</p><p>apply scientific method and don&#39;t assume that evrything is representing the sample of arge mutations we have mostly been studying</p><p>1) large effect allele mutation (mendelian)</p><p>2) basic theory in terms of gen. theoary neither requires or predicts the importance of large mutations</p><p>3) making assumption that the little parts we find act the same way the big parts act the sam way and thats probably not true</p><p>They will argue that there will be knowledge to found using this information</p><h2><a name='header-c7728' class='md-header-anchor '></a>DISCUSION OF GROUP PROJECT</h2><h3><a name='header-c7729' class='md-header-anchor '></a>Notes on Seastar Wasting Disease:</h3><p><strong>BACKGROUND ON DISEASE</strong> <br/></p><ul><li>High mortaility (between 70-100%) </li><li>many species impacted (not species specific) </li><li>loss of legs withing hours or days, turns inside out!</li><li>turn into goo</li><li>Alaska to Baha</li><li>First report in 2012, less severe currently (reported in the 1970s and 80s in isolation)</li><li>study (Hewson et al., 2014) linked Densovirus implicated but not very confidnet </li><li>potentially something in microbiom can lower host immunity and allow for opportunistic infection by pathogen</li><li><a href='http://data.piscoweb.org/marine1/seastardisease.html'>Seastar Disease Outbreak Distribution</a></li></ul><p><strong>INFO ON WHAT DATA WE HAVE</strong> <br/></p><ul><li><p>focusing on <em>Pisaster ercraceous</em></p></li><li><p>RNA extractions and polly a tail and sequenced mRNA on 3 illumina hiseq lanes</p></li><li><p>also pulled our ribosmal 16s structure</p></li><li><p>none of samples pos for densavirus (qPCR) positive control</p></li><li><p>DNA virus</p></li><li><p>is it cyclical</p><ul><li>1) never been so extreme before</li><li>2) do go through booms and busts though</li></ul></li><li><p>All arrived healthy</p></li><li><p>put into aquaria with artifial seawater (kept at 12<sup>o</sup>C)</p></li><li><p>From same site</p></li><li><p>were no infected; some developed SWD on there own </p></li><li><p>first and only time course study of this kind</p></li></ul><h2><a name='header-c7803' class='md-header-anchor '></a>Hypothesis ideas:</h2><h3><a name='header-c7804' class='md-header-anchor '></a>My idea: (Envirnomental Componant)</h3><ul><li><p>Intertidal VS Subtidal</p><ul><li>genetic differences (local adapt.) related to suseptabilty  <br/></li><li>gene expression (immune related genes higher in SUB group) <br/></li></ul></li></ul><h3><a name='header-c7816' class='md-header-anchor '></a>Other ideas:</h3><ul><li><p>Resistance genes (stayed healthy or recovered)</p></li><li><p>w/in Intertidal -&gt; gen. differences between three groups</p></li><li><p>both groups, Microbiome -&gt; H vs S (differences (yes or no))</p></li><li><p>Microbiome through time </p></li><li><p>h<sup>2</sup> of microbiome</p><ul><li>day as replicate <br/></li><li>relatedness VS microbiome trait</li></ul></li><li><p>immune related genes (Sam) </p><ul><li>what kind of pathogen based which genes are expressed <br/></li><li>which are the immune relatedness genes (conserved in other species)</li><li>potential problems -&gt; viruses that are opportunistic and enter at tail end of infection and immune repsonse genes still expressed (confounded?)</li></ul></li></ul><hr /><p><div id='id-section3'/></p><h3><a name='header-c7855' class='md-header-anchor '></a>Page 3:</h3><h1><a name='header-c7857' class='md-header-anchor '></a>January 30, 2017:</h1><h2><a name='header-c7858' class='md-header-anchor '></a>Info Update: Group</h2><p><strong>2 ideas i&#39;m interested in</strong></p><ul><li><p>Intertidal VS Subtidal</p><ul><li>genetic differences (local adapt.) related to suseptabilty  <br/></li><li>gene expression (immune related genes higher in SUB group) </li><li>same population but handeling was different (intertidal was more stressful)</li><li>gene expression differences</li><li>microbiome differences</li></ul></li><li><p>Immune-related gene expression</p><ul><li>reverse pathology</li><li>looking for specific classes of genes</li><li>a-priori tests for resitance genes (compaire indv. that got sick to healthy)</li><li>looking at the S -&gt; H transition </li></ul></li></ul><p><strong>To Do:</strong> Team Sherlock </p><p>Chose reverse gene exression </p><p>One page proposal for ideas for our project (1 per group) for next monday. Use handout as outline. Word and email. For wednesday, bioblitz (library prep types)</p><p></p><hr /><p><div id='id-section4'/></p><h3><a name='header-c7907' class='md-header-anchor '></a>Page 4:</h3><h1><a name='header-c7909' class='md-header-anchor '></a>February 1, 2017</h1><h2><a name='header-c7910' class='md-header-anchor '></a>Outline Today:</h2><ul><li><p>Announcements:</p><ul><li>send linkts to github notebooks to Andrew</li><li>signups for discussion and info updates</li><li>project proposals due by email next monday</li><li>we start transcritomics next week </li></ul></li><li><p>Info update blitz on library preps</p></li><li><p>UNIX turorial </p></li></ul><h3><a name='header-c7935' class='md-header-anchor '></a>Whole Genome Sequencing</h3><ul><li><p>Applications</p><ul><li>High Power and resolution</li><li>population genetics</li><li>local addpatatoins</li><li>plastic responses of the environment</li><li>inbreeding</li></ul></li><li><p>Methods</p><ul><li><p>Somtimes you need a reference genome</p><ul><li>No: De Novo Assembly (gene expression, Adaptations)</li><li>Yes: select important variation (DNA protein, epigenetic mod)</li></ul></li><li><p>Need money (servers, large storage etc)</p></li><li><p>How to work with a server (command line)</p></li><li><p>Python or Perl</p></li></ul></li><li><p>Limitations</p><ul><li>Polymorphic genes + core genes (highly conserved)</li><li>panalogs<br/></li><li>Rapidly evolving genes  (poor resolution)</li><li>large genes families (poor resolution)</li></ul></li><li><p>Usually using one indivudal (could also pool samples)</p><ul><li><p>it is impossible to sequence everything (highly repetative regions and centro/telomeres etc. )</p></li><li><p>somtimes DNA is bound up by cromotin so enzymes can&#39;t get to it</p></li><li><p>genome will be a working hypothysis not a set entity </p><p>​</p></li></ul></li><li><p>Seq. Platforms:</p><ul><li><p>short reads </p><ul><li>illumina seq. 150bp </li><li>SOLID 50bp</li></ul></li><li><p>longer reads </p><ul><li>Pacific bioscience 5 kb</li><li>Ion torrent (500bp)</li><li>illumine moleculo (10kb)</li></ul></li></ul></li><li><p>knowledge on organism</p><ul><li>genome size is important (k-ner approach short unique elements of DNA seq. of length K)</li></ul></li><li><p>Wet lab procedures</p><ul><li>high quality DNA (tissue)</li><li>no energetic tissue (muscle) contains too much mitchondrial DNA</li><li>no gut and skin: other DNA that isn&#39;t from organism</li><li>Quantity: 1mg -&gt; 6ug (short)</li></ul></li><li><p>Library Prep.</p><p>-&gt;         -&gt;     &lt;-</p><p>​      &lt;-    -&gt;    &lt;-      single end</p><p><strong>-&gt;	       -&gt;</strong></p><p><strong>&lt;-          -&gt;</strong>             paired end   (bold is paired)</p><p>&lt;—————————&gt; mate pair</p><p><strong>-&gt;	       -&gt;</strong></p><p><strong>&lt;-          -&gt;</strong>             if gaps</p><p>contig        contig</p><p>&lt;—— ……..——&gt;</p><p>Scaffold</p></li><li><p>statistics: N50 = 50% of the assembly comes from contigs (# of base pairs in middle contig)</p></li><li><p>Annotate your sequence (use a related genome) how related to simalar organism&#39;s genome</p><ul><li>could be automated </li><li>or manually</li><li>publish the genome </li><li>find them on NCBI</li></ul></li></ul><h3><a name='header-c8103' class='md-header-anchor '></a>RNA SEQ.</h3><ul><li><p>advantage</p><ul><li><p>differential genome expression</p><ul><li>between populations</li><li>treatments in experiment </li></ul></li><li><p>allele specific expression</p><ul><li>envirnomental response</li><li>adaptation</li></ul></li><li><p>functional relavent subset of them genome</p></li><li><p>RNA Seq. VS Micro-array:</p><table><thead><tr><th style='text-align:left;' >RNA SEQ</th><th style='text-align:left;' >Micro-array</th></tr></thead><tbody><tr><td style='text-align:left;' >wide range of expression values</td><td style='text-align:left;' >x</td></tr><tr><td style='text-align:left;' >x</td><td style='text-align:left;' >saturation of analog-type flourscent signal</td></tr><tr><td style='text-align:left;' >gives information on splicing events</td><td style='text-align:left;' >x</td></tr></tbody></table><p>​</p></li></ul></li><li><p>Limitation</p><ul><li>can tell you about differential gene expression but not protein expression so difficult to say something about the function</li></ul></li><li><p>work flow</p><ul><li>set-up</li><li>wet lab</li><li>seq. stratagy</li><li>bio-info</li><li>statistical measures</li></ul></li></ul><p></p><p><strong>Set Up</strong></p><ul><li><p>purpose:</p><ul><li>coding or regualtory - non coding</li><li>reference genome?</li><li>alternative splicing?</li><li>technology</li><li>population or specific treatments?</li></ul></li><li><p>stat: biological replication</p></li><li><p>choice of tissue</p><ul><li>circaidan rythme </li><li>embrilogical expression in animals </li><li>pooling tissue with small tissue</li></ul></li></ul><p><strong>Wet Lab</strong></p><ul><li><p>RNA Extration</p><ul><li>RNase free envirnment</li><li>DNase treament</li><li>Get rid of Ribosmal RNA and mRNA </li><li>enrich mRNA with poly-A tails</li></ul></li><li><p>cDNA</p><ul><li>reverse transcribe RNA to cDNA</li></ul></li><li><p>library</p><ul><li>single end and paired end</li></ul></li></ul><p><strong>Seq. Strategy</strong></p><ul><li><p>platform</p><ul><li>pyrosequencing by Roche</li><li>Ion torrent</li><li>GA/hiseq by illumina </li></ul></li><li><p>Error profiles</p></li><li><p>seq coverage:</p><ul><li>greater than 1000000 bp</li></ul></li><li><p>programming:</p><ul><li>unix</li><li>python </li><li>R!!!</li></ul></li></ul><h3><a name='header-c8288' class='md-header-anchor '></a>Amplicon SEQ.</h3><ul><li><p>Methods</p><ul><li><p>library prep  -&gt;  Extract -&gt; PCR1 -&gt; clean up product (gel) -&gt; PCR2 (add barcodes + adaptors) -&gt; SEQ</p></li><li><p>sequencing </p></li><li><p>Data analysis </p><ul><li>learning activity </li></ul></li><li><p>Applications </p></li></ul></li><li><p>Data Analysis </p><ul><li>trim adaptor </li><li>allign sequences</li><li>compare genes with the same gene to look for mutations etc. </li></ul></li></ul><h3><a name='header-c8323' class='md-header-anchor '></a>STEVE  GBS rad-seq</h3><p></p><p>WGS					RNAseq			<strong>GBS rad-seq.</strong>		     amplicon</p><p>&lt;————————————————————————————————————&gt; <br/></p><p>everything			gene space					    				one gene      (comleteness of data)</p><p>​					expressed											</p><hr /><p>single indv.			fewer indv.									many indv.     (sampling tradeoffs)															</p><p></p><p>GBS = genotyping by sequencing (genotype by sequencing at each loci)</p><p>RAD-seq = restriction assisted DNA sequencing (restriction enzymes - cuts double strand DNA - sticky ends add barcodes and addaptors like in all other library preps)</p><p> </p><ul><li><p>lots of individuals</p></li><li><p>lots of SNPs across the genome</p></li><li><p>dont care about sepcific genes</p></li><li><p>don&#39;t need complete genome</p><p>​</p></li></ul><h2><a name='header-c8360' class='md-header-anchor '></a>Comand line</h2><p></p><p>Server log in:</p><p>ssh pburnham@pbio381.uvm.edu</p><p>my personal net id password:</p><p></p><p>&quot;top&quot; shows how many cpus are being used and who is on the server</p><p>&quot;q&quot; = quit</p><p>everyone has a home directory ~/mainfolder </p><p>&quot;pwd&quot; finds working directory </p><p>&quot;ll&quot; = list in long format</p><p>make new folder called &quot;mydata&quot; (mkdir mydata)</p><p>cd &quot;directory name&quot; is change directory</p><p>shared space goes to most basel directory in the entire machine /data/</p><p>cp is copy</p><p>how to peak into big files without opening them &quot;head&quot; and -n &quot;number&quot; allows you to specify number of rows</p><p>tail is the last 10</p><p>&quot;&gt;&quot; new file.txt&quot; makes new file</p><p>grep generalized regular expression (search and replace) grep &quot;what im looking for&quot; file.txt</p><p>mv is move</p><p>&quot;anything after * is included&quot; called a wild card</p><p>unix help manual &quot;man&quot; then command </p><p>rm = remove </p><p>-a shows hidden files</p><p>vim is built in text editor vim then file name</p><p>i is insert mode and allows for us to edit </p><p>alias sets comman equal to another command (-i asks for conformation)</p><p>:w save and :q is quit</p><p></p><p>Used 38<em>6-21</em>H<em>0</em>R2.fq.gz as my file for class I missed </p><p></p><pre class='md-fences mock-cm' style='display:block;position:relative'>38_6-21_H_0_R1.fq.gz
+38_6-21_H_0_R2.fq.gz</pre><hr /><p><div id='id-section5'/></p><h3><a name='header-c8425' class='md-header-anchor '></a>Page 5:</h3><h1><a name='header-c8427' class='md-header-anchor '></a>February 13, 2017</h1><p>Lauren info update:</p><p>Transcriptanomics RNAseq experimental design </p><p>OUTLINE:</p><ul><li>background</li><li>issues</li><li>R excersize </li><li>general rules of thumb </li></ul><p><strong>Background:</strong></p><ul><li><p>enables differential expression examination </p><ul><li>disease resistane</li><li>mating behavior</li><li>addaptive significane </li></ul></li><li><p>Molecular mech. -&gt; phenotypic/behavioral plasticity (migration patterns) </p></li><li><p>Some limitations:</p><ul><li>reference genome quality</li><li>gene annotation availablity </li><li>expensive for sample library prep.</li></ul></li></ul><p><strong>Issues:</strong></p><ul><li><p>underutilization of biological replicates (usually differnt indivuals instead of same sample which is a tech replicate)</p><ul><li>reqiuire independant replications</li><li>doesn&#39;t include pooled samples</li><li>only 23/158 studies used greater than 3 biological replications </li><li>most studies derive broad biological conclusions with little to no bio rep.</li></ul></li><li><p>studies usally prioritize seq. depth over replication </p><ul><li>coverage is...</li><li>depth is the amount of reads per sample</li></ul></li><li><p>wide dynamic range of RNA seq data makes it noise (unexplained variation in the data set)</p><ul><li>poisson counting error</li><li>non poisson technical variance (storage, processing, differences in lanes etc.)</li><li>biological variance (natural variance due to difference in genetic or envirnmental variance)</li></ul></li><li><p>power prob of rejecting a FALSE hypothesis (want 80% power)</p></li></ul><p><strong>Rules of Thumb:</strong></p><p>1) More bio reps instead of increasing depths</p><p>2) sequence depth &gt; 10 reads pre transcript (sufficient)<br/></p><p>3) ~ 10-20 mil mapped reads per sample is suffient </p><p>4) 3 biological replicates per condition </p><p>5) conduct a pilot experiment </p><ul><li>what is the best and most powerful experiment that I can afford</li><li>what is the smallest fold change I can detect </li></ul><hr /><p><div id='id-section6'/></p><h3><a name='header-c8546' class='md-header-anchor '></a>Page 6:</h3><h1><a name='header-c8548' class='md-header-anchor '></a>February 15, 2017</h1><h2><a name='header-c8549' class='md-header-anchor '></a>Sam Info Update:</h2><p><strong>SNPs and population Genomics.</strong></p><p>SNPs (single nucleatide polymorphism - different nucs at same locus)</p><p>(Tissue -&gt; sequence -&gt; clean/trim -&gt; assembly -&gt;)(SNP detection/validation)</p><p>===&gt; practical applications</p><p></p><p>1) Tissue: </p><ul><li>breadth of tissue</li><li>different stages (exon skipping)</li></ul><p>2) Pool and sequence libraries </p><ul><li>~30-100 paired end long reads</li></ul><p>3) Process raw sequence data </p><ul><li>for errors</li><li>important for SNP detection</li></ul><p>4) digital normalization </p><ul><li>remove high coverage reads and thus errors contained therein</li><li>reduces sampling variation</li><li>not quantatative info anymore</li></ul><p>5) Assemble clean paired end reads</p><p>6) prune reads to reduce: </p><ul><li>DNA contamination</li><li>non coding RNA </li><li>gene fragments </li></ul><p>7) Assembly Evaluation </p><ul><li>reference genome </li><li>cogs (conserved genes in other eukaryotic species)</li></ul><p><strong>8) SNP Detection and Evaluation</strong></p><ul><li>Find your SNPs</li><li>Software - constant patterns of sequence variations</li><li>probability of sequence error - eliminate SNPs of low frequency </li><li>Artifacts caused by insertions and deletions (InDels) -&gt; filter out SNP near indels</li><li>use quality score</li></ul><p><strong>Practical Application</strong></p><ul><li>differines in pop structure</li><li>natural selection acting on a particular loci?</li></ul><p><strong>Using outliers:</strong></p><ul><li><p>for a given locus, what&#39;s the level of differentiation compared to differances acrros genome (FST)</p></li><li><p>FST -&gt; look up</p></li><li><p>Plotted FST in a a histogram is ~N()</p><ul><li>outliers in this plot can be used to look at differtional selction acting on the populaton of loci</li></ul></li></ul><p><strong>Not Outlier approach:</strong></p><ul><li><p>takes high FST values and tests them for other features associated with seection </p><ul><li>how those features asssociated with inv. fitness</li><li>enrichment for certain functional roles</li></ul></li></ul><h2><a name='header-c8676' class='md-header-anchor '></a>Coding in Unix for today - working with my sam file I made last class:</h2><h4><a name='header-c8677' class='md-header-anchor '></a>Let’s check out our .sam files! Try <code>head</code> and <code>tail</code>.</h4><pre class='md-fences mock-cm' style='display:block;position:relative'>tail -n 100 YOURFILENAME.sam &gt; tail.sam
+vim tail.sam
+
+:set nowrap</pre><h4><a name='header-c8679' class='md-header-anchor '></a>Let’s see how many of our reads map uniquely.</h4><p>Why is it important to consider whether a read maps uniquely (i.e., to one place in the transcriptome) for gene expression studies?</p><pre class='md-fences mock-cm' style='display:block;position:relative'>$ grep -c XT:A:U YOURFILENAME.sam 
+1177827
+
+$ grep -c X0:i:1 YOURFILENAME.sam
+1182952</pre><p>You can check a number of other elements, total number of reads, search for the various flags…</p><h2><a name='header-c8685' class='md-header-anchor '></a>Extract read counts from the .sam file from each sample</h2><p>We will use a custom python script (by my friend Dan Barshis and published with the Simple Fool’s Guide to Population Genomics) called <strong>countxpression.py</strong>. This script will take any number of input *.sam files and, for each .sam file, extract the number of reads that map to each gene (i.e. the “counts”). It will also generate a summary output of useful information including proportion of quality read alignments. The script requires 4 input variables: mapqualitythreshold, lengththreshold, outputstatsfilename, anynumberofinputfiles.</p><pre class='md-fences mock-cm' style='display:block;position:relative'>cd /data/scripts
+cp countxpression_pe.py ~/scripts      #or copy to your directory with the .sam file
+
+python countxpression_pe.py 20 35 countstatssummary.txt YOURFILENAME.sam</pre><p>This python script will generate two files: a .txt file you named (3rd argument you passed the script) and a counts .txt file that includes the number of uniquely mapped reads to each gene in our transcriptome.</p><p>Below are what the files should look like:</p><pre class='md-fences mock-cm' style='display:block;position:relative'>$ head NC_AD4_M3_bwaaln_counts.txt
+ContigName  UniqueTotReads  MultiTotReads   totalreadsgoodmapped
+OTAU000001-RA   11  207 218
+OTAU000002-RA   982 49  1031
+OTAU000003-RA   867 0   867
+OTAU000004-RA   338 0   338
+OTAU000005-RA   154 0   154
+OTAU000006-RA   26  0   26
+OTAU000007-RA   17  0   17
+OTAU000008-RA   1017    55  1072
+OTAU000009-RA   1984    0   1984</pre><p>Once we have all the read counts extracted from each .sam file and in one directory, we can stitch them together with some bash scripting that I wrote.</p><pre class='md-fences mock-cm' style='display:block;position:relative'># This loop takes the second column of data and renames the file to a shorter version of itself
+for filename in *counts.txt; do
+    myShort=`echo $filename | cut -c1-10` 
+    echo &quot;$myShort&quot; &gt; $myShort&quot;_uniqmaps.txt&quot;    
+    cut -f 2 &quot;$filename&quot; &gt; $myShort&quot;_uniqmaps.txt&quot;  
+done 
+# makes many individual files, but they don&#39;t have the header inserted
+
+# This loop uses the tail command to get rid of the the first line
+for filename in *_uniqmaps.txt; do
+    tail -n +2 -- &quot;$filename&quot; &gt; $filename&quot;_uniqmapsNH.txt&quot;  
+done 
+
+# This loop inserts the shortened version of the filename as the first line using the echo (print) and cat functions
+for filename in *_uniqmapsNH.txt; do (myShort=`echo $filename | cut -c1-10`;echo &quot;$myShort&quot;; cat $filename) &gt; tmp; mv tmp $filename; done
+
+# This combines all the single column datafiles into one!
+paste *_uniqmapsNH.txt &gt; allcountsdata.txt
+
+# Add row/gene names to table
+cut -f 1 WA_PP1_M3__bwaaln_counts.txt | paste - allcountsdata.txt &gt; allcountsdataRN.txt
+
+vim allcountsdata.txt
+
+# to view with tabs aligned.
+:set nowrap  
+
+# clean up files, get rid of intermediate files
+rm *uniqmaps*
+</pre><h2><a name='header-c8697' class='md-header-anchor '></a>Processes going on in the background</h2><ol start='' ><li>Making new assembly with more sequence data</li><li>Testing assembly quality several ways:</li></ol><ul><li>stats (N50, number of contigs, etc.)</li><li>proportion with high quality blastp match to (a) uniprot, (b) Patiria miniata, and (c) Strongylocentrotus purpuratus</li><li>Proportion single-copy core eukaryotic genes represented.</li></ul><ol start='' ><li>Cleaning the second half of the samples/reads that just finished downloading 2/14!</li><li>Map all reads to new assembly</li><li>Extract read counts using custom python script.</li></ol><p>Hopefully all of this will be done within a week by our next class session - next Wednesday</p><hr /><p>Clean up file names. Run script for the paired and unpaired files:</p><pre class='md-fences mock-cm' style='display:block;position:relative'>for file in *.fq.gz_*_clean_paired.fq ; do mv $file ${file//.fq.gz_*_clean_paired.fq/.cl.pd.fq} ; done
+
+for file in *.fq.gz_*_clean_unpaired.fq ; do mv $file ${file//.fq.gz_*_clean_unpaired.fq/.cl.un.fq} ; done</pre><pre class='md-fences mock-cm' style='display:block;position:relative'>cat 08_5-08_H_0_R1.cl.pd.fq 08_5-11_S_1_R1.cl.pd.fq 08_5-14_S_1_R1.cl.pd.fq 08_5-17_S_2_R1.cl.pd.fq 08_5-20_S_3_R1.cl.pd.fq 10_5-08_H_0_R1.cl.pd.fq 10_5-11_H_0_R1.cl.pd.fq 10_5-14_H_0_R1.cl.pd.fq 10_5-17_H_0_R1.cl.pd.fq 10_5-20_S_2_R1.cl.pd.fq 35_6-12_H_0_R1.cl.pd.fq 35_6-15_H_0_R1.cl.pd.fq 35_6-18_H_0_R1.cl.pd.fq 35_6-21_H_0_R1.cl.pd.fq 36_6-12_S_1_R1.cl.pd.fq 36_6-15_S_2_R1.cl.pd.fq 36_6-18_S_3_R1.cl.pd.fq &gt; 08-11-35-36_R1.cl.pd.fq
+
+cat 08_5-08_H_0_R2.cl.pd.fq 08_5-11_S_1_R2.cl.pd.fq 08_5-14_S_1_R2.cl.pd.fq 08_5-17_S_2_R2.cl.pd.fq 08_5-20_S_3_R2.cl.pd.fq 10_5-08_H_0_R2.cl.pd.fq 10_5-11_H_0_R2.cl.pd.fq 10_5-14_H_0_R2.cl.pd.fq 10_5-17_H_0_R2.cl.pd.fq 10_5-20_S_2_R2.cl.pd.fq 35_6-12_H_0_R2.cl.pd.fq 35_6-15_H_0_R2.cl.pd.fq 35_6-18_H_0_R2.cl.pd.fq 35_6-21_H_0_R2.cl.pd.fq 36_6-12_S_1_R2.cl.pd.fq 36_6-15_S_2_R2.cl.pd.fq 36_6-18_S_3_R2.cl.pd.fq &gt; 08-11-35-36_R2.cl.pd.fq</pre><p>Install latest Trinity and bowtie2, based on directions <a href='https://github.com/trinityrnaseq/trinityrnaseq/wiki/Installing%20Trinity'>here</a>:</p><pre class='md-fences mock-cm' style='display:block;position:relative'>wget https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v2.4.0.zip
+unzip Trinity-v2.4.0.zip
+rm Trinity-v2.4.0.zip
+cd trinityrnaseq-Trinity-v2.4.0
+make
+make plugins</pre><pre class='md-fences mock-cm' style='display:block;position:relative'>wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.0/bowtie2-2.3.0-linux-x86_64.zip
+unzip bowtie2-2.3.0-linux-x86_64.zip
+rm bowtie2-2.3.0-linux-x86_64.zip
+ln -s /data/popgen/bowtie2-2.3.0/bowtie2 /usr/local/bin
+ln -s /data/popgen/bowtie2-2.3.0/bowtie2-build /usr/local/bin</pre><p>Start screen and run trinity.</p><pre class='md-fences mock-cm' style='display:block;position:relative'>screen -r 30308.pts-1.pbio381
+
+/data/popgen/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --max_memory 50G \
+    --left /data/project_data/fastq/cleanreads/08-11-35-36_R1.cl.pd.fq \
+    --right /data/project_data/fastq/cleanreads/08-11-35-36_R2.cl.pd.fq \
+    --CPU 20 &gt; run.log 2&gt;&amp;1 &amp;</pre><h3><a name='header-c8739' class='md-header-anchor '></a>Let’s install DESeq2 in R studio and look at a script and example data file.</h3><p><a href='https://bioconductor.org/packages/release/bioc/html/DESeq2.html'>Here’s</a> the package website with installation instructions, manual, tutorials, etc.</p><p>Love MI, Huber W and Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” <em>Genome Biology</em>, <strong>15</strong>, pp. 550. <a href='http://doi.org/10.1186/s13059-014-0550-8'>doi: 10.1186/s13059-014-0550-8</a>.</p><pre class='md-fences mock-cm' style='display:block;position:relative'>source(&quot;https://bioconductor.org/biocLite.R&quot;)
+biocLite(&quot;DESeq2&quot;)</pre><hr /><p><div id='id-section7'/></p><h3><a name='header-c8747' class='md-header-anchor '></a>Page 7:</h3><h1><a name='header-c8749' class='md-header-anchor '></a>February 22, 2017</h1><h2><a name='header-c8750' class='md-header-anchor '></a>R Script from today&#39;s work:</h2><pre class='md-fences mock-cm' style='display:block;position:relative'># Eco Genomics - Lecture Script
+# 22, February 2017
+# P. Alexander Burnham
+
+
+##################################################################################
+# Preliminaries:
+# Clear memory of characters:
+ls()
+rm(list=ls())
+
+# set working directory: (files are in /222_Data)
+setwd(&quot;~/EcologicalGenomics&quot;)
+##################################################################################
+
+# source DESeq2 from bioconductor:
+source(&quot;https://bioconductor.org/biocLite.R&quot;)
+biocLite(&quot;DESeq2&quot;)
+
+countsTable &lt;- read.delim(&#39;222_Data/countsdata_trim.txt&#39;, header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData &lt;- as.matrix(countsTable)
+head(countData)
+
+conds &lt;- read.delim(&quot;222_Data/cols_data_trim.txt&quot;, header=TRUE, stringsAsFactors=TRUE, row.names=1)
+head(conds)
+colData &lt;- as.data.frame(conds)
+head(colData)
+
+#################### Build dataset, model, and run analyses
+
+dds &lt;- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ day + location + health)
+# In this typical model, the &quot;sex effect&quot; represents the overall effect controlling for differences due to population and devstage. page 26-27 manual DESeq2.pdf
+# The last term in the model is what is tested.  In this case sex.
+#  This is not the same as an interaction.
+
+
+dim(dds)
+
+
+dds &lt;- dds[ rowSums(counts(dds)) &gt; 100, ]
+dim(dds)
+# at &gt; 100; little more than an average of 10 reads per sample for the 93 samples
+
+colSums(counts(dds))
+hist(colSums(counts(dds)), breaks = 80, xlim=c(0,max(colSums(counts(dds)))))
+
+
+colData(dds)$health &lt;- factor(colData(dds)$health, levels=c(&quot;H&quot;,&quot;S&quot;))
+
+dds &lt;- DESeq(dds)  # this step takes a loooong time ~4 minutes with the trimmed data set
+# estimating size factors
+# estimating dispersions
+# gene-wise dispersion estimates
+# mean-dispersion relationship
+# final dispersion estimates
+# fitting model and testing
+# -- replacing outliers and refitting for 3308 genes
+# -- DESeq argument &#39;minReplicatesForReplace&#39; = 7 
+# -- original counts are preserved in counts(dds)
+# estimating dispersions
+# fitting model and testing
+
+save(dds, file=&quot;dds.trim.Robject&quot;)
+
+res &lt;- results(dds)
+res &lt;- res[order(res$padj),]
+head(res)
+# log2 fold change (MAP): health S vs H 
+# Wald test p-value: health S vs H 
+# DataFrame with 6 rows and 6 columns
+# baseMean log2FoldChange     lfcSE
+# &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt;
+# TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138 1950.0719       2.488783 0.4311875
+# TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110  902.2693       2.475891 0.4599085
+# TRINITY_DN43359_c0_g1_TRINITY_DN43359_c0_g1_i1_g.14658_m.14658  889.9707       1.163219 0.2482335
+# TRINITY_DN47215_c1_g4_TRINITY_DN47215_c1_g4_i3_g.25054_m.25054  774.1126       1.723917 0.3650258
+# TRINITY_DN47215_c0_g1_TRINITY_DN47215_c0_g1_i5_g.25051_m.25051  911.7634       1.586693 0.3431307
+# TRINITY_DN45416_c4_g2_TRINITY_DN45416_c4_g2_i3_g.19333_m.19333 1629.8753       1.775765 0.3873817
+# stat       pvalue         padj
+# &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
+# TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138  5.771927 7.837024e-09 8.691260e-06
+# TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110  5.383443 7.307426e-08 4.051968e-05
+# TRINITY_DN43359_c0_g1_TRINITY_DN43359_c0_g1_i1_g.14658_m.14658  4.685987 2.786136e-06 7.724563e-04
+# TRINITY_DN47215_c1_g4_TRINITY_DN47215_c1_g4_i3_g.25054_m.25054  4.722727 2.327027e-06 7.724563e-04
+# TRINITY_DN47215_c0_g1_TRINITY_DN47215_c0_g1_i5_g.25051_m.25051  4.624166 3.761091e-06 8.342101e-04
+# TRINITY_DN45416_c4_g2_TRINITY_DN45416_c4_g2_i3_g.19333_m.19333  4.584018 4.561241e-06 8.430694e-04
+
+summary(res)
+# out of 13334 with nonzero total read count
+# adjusted p-value &lt; 0.1
+# LFC &gt; 0 (up)     : 50, 0.37% 
+# LFC &lt; 0 (down)   : 8, 0.06% 
+# outliers [1]     : 539, 4% 
+# low counts [2]   : 11686, 88% 
+# (mean count &lt; 80)
+# [1] see &#39;cooksCutoff&#39; argument of ?results
+# [2] see &#39;independentFiltering&#39; argument of ?results
+
+plotMA(res, main=&quot;DESeq2&quot;, ylim=c(-2,2))
+
+## Check out one of the genes to see if it&#39;s behaving as expected....
+d &lt;- plotCounts(dds, gene=&quot;TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138&quot;, intgroup=(c(&quot;health&quot;,&quot;day&quot;,&quot;location&quot;)), returnData=TRUE)
+d
+p &lt;- ggplot(d, aes(x= health, y=count, shape = day)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = &quot;grey&quot;))
+p &lt;- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) + scale_y_log10(breaks=c(25,100,1000)) + ylim(0,2500)
+p
+
+# 2.2 Data quality assessment by sample clustering and visualization 
+
+vsd &lt;- varianceStabilizingTransformation(dds, blind=FALSE)
+
+plotPCA(vsd, intgroup=c(&quot;health&quot;))
+plotPCA(vsd, intgroup=c(&quot;day&quot;))
+plotPCA(vsd, intgroup=c(&quot;location&quot;))
+plotPCA(vsd, intgroup=c(&quot;health&quot;,&quot;location&quot;))
+
+# rld &lt;- rlog(dds, blind=FALSE) # this takes too long with such a large data set!
+# plotPCA(rld, intgroup=c(&quot;status&quot;,&quot;date&quot;))
+
+
+#to save the plot as a pdf
+pdf(file=&quot;PCA_1v2_allgenes.pdf&quot;, height=5.5, width=5.5)
+plotPCA(rld, intgroup=c(&quot;status&quot;,&quot;day&quot;,&quot;location&quot;))
+dev.off()
+
+pdf(file=&quot;PCA_1v2.pdf&quot;, height=5.5, width=5.5)
+data &lt;- plotPCA(rld, intgroup=c(&quot;status&quot;,&quot;day&quot;,&quot;location&quot;), returnData=TRUE)
+percentVar &lt;- round(100 * attr(data, &quot;percentVar&quot;))
+ggplot(data, aes(PC1, PC2, color=sex, shape=devstage)) +
+  geom_point(size=3) +
+  xlab(paste0(&quot;PC1: &quot;,percentVar[1],&quot;% variance&quot;)) +
+  ylab(paste0(&quot;PC2: &quot;,percentVar[2],&quot;% variance&quot;))
+dev.off()
+
+
+
+
+#########
+library(&quot;pheatmap&quot;)
+select &lt;- order(rowMeans(counts(dds,normalized=TRUE)), decreasing=TRUE)[1:20]
+nt &lt;- normTransform(dds) # defaults to log2(x+1)
+log2.norm.counts &lt;- assay(nt)[select,]
+df &lt;- as.data.frame(colData(dds)[,c(&quot;condition&quot;,&quot;type&quot;)])
+pheatmap(log2.norm.counts, cluster_rows=FALSE, show_rownames=FALSE, cluster_cols=FALSE)
+
+pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE, cluster_cols=FALSE)
+pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE)
+pheatmap(assay(vsd)[select,], show_rownames=FALSE)
+
+
+################ testing for interactions between factors
+
+dds &lt;- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ health + location + health:location)
+dds &lt;- dds[ rowSums(counts(dds)) &gt; 100, ]
+dim(dds)
+
+
+dds &lt;- DESeq(dds, parallel=T)
+
+
+resultsNames(dds)
+# [1] &quot;Intercept&quot;           &quot;health_S_vs_H&quot;       &quot;location_sub_vs_int&quot; &quot;healthS.locationsub&quot;
+
+res &lt;- results(dds, name=&quot;healthS.locationsub&quot;)
+res &lt;- res[order(res$padj),]
+head(res)
+# log2 fold change (MLE): healthS.locationsub 
+# Wald test p-value: healthS.locationsub 
+# DataFrame with 6 rows and 6 columns
+# baseMean log2FoldChange     lfcSE
+# &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt;
+#   TRINITY_DN44444_c9_g1_TRINITY_DN44444_c9_g1_i4_g.17034_m.17034 126.60114     -28.469401  2.918454
+# TRINITY_DN2191_c0_g1_TRINITY_DN2191_c0_g1_i1_g.232_m.232        42.12038     -22.438459  3.335695
+# TRINITY_DN41408_c0_g3_TRINITY_DN41408_c0_g3_i1_g.11127_m.11127  23.90548     -21.338403  3.166769
+# TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322 414.33733      -8.743311  1.367619
+# TRINITY_DN47096_c0_g1_TRINITY_DN47096_c0_g1_i7_g.24574_m.24574 106.46107      -9.946944  1.616331
+# TRINITY_DN35881_c0_g1_TRINITY_DN35881_c0_g1_i1_g.5955_m.5955    28.47358     -21.035939  3.441188
+# stat       pvalue         padj
+# &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
+#   TRINITY_DN44444_c9_g1_TRINITY_DN44444_c9_g1_i4_g.17034_m.17034 -9.754959 1.756711e-22 1.468610e-18
+# TRINITY_DN2191_c0_g1_TRINITY_DN2191_c0_g1_i1_g.232_m.232       -6.726773 1.734674e-11 4.833957e-08
+# TRINITY_DN41408_c0_g3_TRINITY_DN41408_c0_g3_i1_g.11127_m.11127 -6.738225 1.603329e-11 4.833957e-08
+# TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322 -6.393089 1.625680e-10 3.397670e-07
+# TRINITY_DN47096_c0_g1_TRINITY_DN47096_c0_g1_i7_g.24574_m.24574 -6.154026 7.554029e-10 1.263034e-06
+# TRINITY_DN35881_c0_g1_TRINITY_DN35881_c0_g1_i1_g.5955_m.5955   -6.112987 9.778343e-10 1.362449e-06
+
+summary(res)
+# out of 13321 with nonzero total read count
+# adjusted p-value &lt; 0.1
+# LFC &gt; 0 (up)     : 2, 0.015% 
+# LFC &lt; 0 (down)   : 111, 0.83% 
+# outliers [1]     : 463, 3.5% 
+# low counts [2]   : 4511, 34% 
+# (mean count &lt; 7)
+# [1] see &#39;cooksCutoff&#39; argument of ?results
+# [2] see &#39;independentFiltering&#39; argument of ?results
+
+
+d &lt;- plotCounts(dds, gene=&quot;TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322&quot;, intgroup=(c(&quot;location&quot;,&quot;health&quot;,&quot;day&quot;)), returnData=TRUE)
+d
+p &lt;- ggplot(d, aes(x= health, y=count, shape = location, colour = day, fill=location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = &quot;grey&quot;))
+p &lt;- p + geom_point(position=position_jitter(w=0.3,h=0), size = 4, alpha=0.9) + scale_y_log10(breaks=c(25,100,4000)) + scale_x_discrete(limits=c(&quot;H&quot;,&quot;S&quot;)) + scale_shape_manual(values=c(21,24))
+p
+
+p &lt;- ggplot(d, aes(x= health, y=count, shape = location, fill=location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = &quot;grey&quot;))
+p &lt;- p + geom_point(position=position_jitter(w=0.3,h=0), size = 4, alpha=0.9) + scale_y_log10(breaks=c(25,100,4000)) + scale_x_discrete(limits=c(&quot;H&quot;,&quot;S&quot;)) + scale_shape_manual(values=c(21,24))
+p
+
+ggsave(&quot;dot_plot-TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322.png&quot;, p, width=8, height=4, dpi=300)
+</pre><p><strong>Terminal Work</strong></p><p>Moved files from server to my desktop to use in my WD in R</p><pre class='md-fences mock-cm' style='display:block;position:relative'>scp pburnham@pbio381.uvm.edu:/data/project_data/DGE/* .</pre><hr /><p><div id='id-section8'/></p><h3><a name='header-c8759' class='md-header-anchor '></a>Page 8:</h3><h1><a name='header-c8761' class='md-header-anchor '></a>February 27, 2017</h1><p><strong>Scott Edwards Talk:</strong></p><p>Coalescent: teo lineage tracing backwards in time tio find common ancestor, can use differnt trees to come up with the average of what the species tree might look like.</p><p>Reticulation: </p><p>Unifying/background selection:</p><p>gene trees vs. species :</p><p>introgression / recombination: </p><p>incomplete lineage sorting ILS: gene green tree in figure two, split in taxa before the species tree branches of creating an ILS.</p><ul><li>how any loci does it take to get a true representation (close to it) of the phylogeny. </li></ul><p>Why would ILS occur (gene tree differnt from species tree):</p><ul><li>gene duplication</li><li>selection (to some extent)</li><li>horizontal gene transfer (from one species to another)</li></ul><p><strong>population size and time lead to ILS</strong> (large population times short time)</p><p>Drift is like pruning the gene tree to match the species tree (Avis)</p><p>when t is small and N is large, small ratio and gene trees are scued to species tree, otherwise could be even proporitons of differnt trees.</p><p>Sample size? -&gt; loci or genes &gt; than populations or indivuduals</p><h2><a name='header-c8800' class='md-header-anchor '></a>Coding:</h2><pre class='md-fences mock-cm' style='display:block;position:relative'>local server: cd ~/Desktop
+scp pburnham@pbio381.uvm.edu:/data/project_data/DGE/* .</pre><p>30% mapping now and have a new R script. -&gt; DESeq_SSW_round2.R</p><p>(5 models using new mapped data)</p><p></p><hr /><p><div id='id-section9'/></p><h3><a name='header-c8811' class='md-header-anchor '></a>Page 9:</h3><h1><a name='header-c8813' class='md-header-anchor '></a>March 1, 2017</h1><p>Talk on WGCNA -&gt; Weighted Correlated network analysis </p><p><strong>Overview</strong></p><ul><li><p>R package -&gt; apply correlation network methods to describe correlation (coexpression) patterns among genes in micro-array (seq data) samples</p><ul><li>network construction -&gt;</li><li>module identification -&gt;</li><li>Relationship of modules to external information -&gt;</li><li>Relationship between/within modules -&gt;</li><li>Finding key drivers in modules of interest -&gt;</li></ul></li></ul><p><strong>Details</strong></p><ul><li><p>Network Construction</p><ul><li><p>node -&gt; gene (shows conection in network theory)</p></li><li><p>edge is how strongly correlated they are in terms of (expression) (absolute value)</p></li><li><p>package provides -&gt; differential coexpression measures</p></li><li><p>signed networks (positive or negative correlations)</p></li><li><p>unsgned networks (absolute values of correlations and just looks at magnatude)</p><p>​</p></li></ul></li></ul><hr /><p><div id='id-section10'/></p><h3><a name='header-c8864' class='md-header-anchor '></a>Page 10:</h3><h1><a name='header-c8866' class='md-header-anchor '></a>March 6, 2017:</h1><h2><a name='header-c8867' class='md-header-anchor '></a>Info Update: Steve</h2><p><strong>population genomics</strong></p><p>What is it?: </p><ul><li><p>SNPs &amp; lots of them (transcriptome wide)</p></li><li><p>individuals are level of sampling </p><ul><li>within species </li></ul></li></ul><p>What processes is it interested in?:</p><ul><li><p>population structure between</p></li><li><p>Diversity within pops</p></li><li><p>selection </p><ul><li>positive</li><li>negative (purifying)</li></ul></li></ul><p>The pipeline:</p><ul><li><p>Raw reads -&gt; clean -&gt; assemble &quot;draft transctiptome&quot; -&gt; mapping reads -&gt;</p><ul><li>transcriptomics (count number of reads per transcript -&gt; DGE)</li><li>population genomics (call SNPs + Genotypes -&gt; allele frequncies and nuecletide div. and SFS)</li></ul></li><li><p>SNPs (stat problem -&gt; sequencing error (illumina=1% (1 in 100 bases is called incorrectly)))</p><ul><li>Filters for this problem:</li><li>Minor Allele Freq. -&gt; how many indv. are they found in</li><li>Depth -&gt; number of reads in a given position </li></ul></li><li><p>Challenges of calling genotypes (AA AT or TT):</p><ul><li>multinomial distribution -&gt; p(genotypes | nT/nA)</li><li>predicts A = T = 0.5</li><li>100% hetero (SNPs where everybody is a hetero and filter out) based on HWE</li></ul></li><li><p>pi = exected heterozygosty (for sequences i + j ) pi = sum x<sub>i</sub>x<sub>j</sub>pi<sub>ij</sub> (estimate of nucleatide diversity)</p><ul><li>why do we care -&gt; pi<sub>synonomous</sub> = 4*N<sub>e</sub>/mu (pi is proportional to N<sub>e</sub>) (not acted on be selection)</li><li>pi<sub>nonsynonomous</sub>  -&gt; acted on by selction (almost always deleterious)</li><li>pi<sub>n</sub>/pi<sub>s</sub>=1 (if no selection)</li></ul></li></ul><h2><a name='header-c8955' class='md-header-anchor '></a>Coding for the day</h2><pre class='md-fences mock-cm' style='display:block;position:relative'># moved to working directory:
+$ cd /data/project_data/snps/reads2snps/
+
+# vim into head of file
+$ vim head_SSW_bamlist.txt.vcf
+: set nowrap # no wrapping on file
+
+# looked at summary of this file 
+$ vcftools --vcf SSW_bamlist.txt.vcf
+
+# search through file and count how many times it sees &quot;unres&quot;
+$ grep &quot;unres&quot; SSW_bamlist.txt.vcf | wc
+# 5631864 times in file (started with 7450000) lost 4354 to parology 
+# leaves us with 1.8 M SNPs
+
+# So, SNPs with &gt;2 alleles probably reflect sequence or mapping errors. Also want to get 
+# rid of SNPs showing &lt;2 alleles.
+$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2
+# After filtering, kept 20319 out of a possible 7472775 Sites
+
+# Minor allele freq. Gets rid of very rare SNPs (based on a user-defined threshold).
+# 20% missing data
+$ vcftools --vcf SSW_bamlist.txt.vcf --maf 0.2
+# After filtering, kept 5647846 out of a possible 7472775 Sites
+
+# Minor allele freq. Gets rid of very rare SNPs (based on a user-defined threshold).
+# 80% missing data
+$ vcftools --vcf SSW_bamlist.txt.vcf --max-missing 0.8
+# After filtering, kept 100219 out of a possible 7472775 Sites
+
+
+# combine filters and output file:
+$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2 --maf 0.2 --max-missing 0.8 --recode --out ~/biallelic.MAF0.02.Miss0.8
+# in home directory (1000 SNPs)
+
+# run vcftool hardy function:
+vcftools --vcf biallelic.MAF0.02.Miss0.8.recode.vcf --hardy
+
+# Outputting HWE statistics (but only for biallelic loci)
+	# HWE: Only using fully diploid SNPs.
+# After filtering, kept 82 out of a possible 82 Sites
+# head out.hwe
+
+# $ R (puts you into R code in terminal) all R comands work...
+
+&gt; hardy &lt;- read.table(&quot;out.hwe&quot;, header=TRUE)
+&gt; str(hardy)
+
+# subset which are greater than 0.001 for p values for excess 
+&gt; hardy[which(hardy$P_HET_EXCESS&lt;0.001),]
+
+# Looking at deficit 
+&gt; hardy[which(hardy$P_HET_DEFICIT&lt;0.001),]
+
+&gt; quit() gets you out of R
+
+$ vcftools --vcf biallelic.MAF0.02.Miss0.8.recode.vcf --geno-r2
+
+# go back into R and do this:
+
+&gt; LD &lt;- read.table(&quot;out.geno.ld&quot;, header=TRUE)
+&gt; str(LD)
+</pre><hr /><p><div id='id-section11'/></p><h3><a name='header-c8960' class='md-header-anchor '></a>Page 11:</h3><h1><a name='header-c8962' class='md-header-anchor '></a>Homework 1 (R Code)</h1><h3><a name='header-c8963' class='md-header-anchor '></a>March 6, 2017</h3><pre class='md-fences mock-cm' style='display:block;position:relative'>##################################################################################
+
+# P. Alexander Burnham
+# Eco Genomics 
+# Homework 1
+# 6, March 2017
+
+##################################################################################
+# Preliminaries:
+# Clear memory of characters:
+ls()
+rm(list=ls())
+
+# set working directory: (files are in /RawData)
+setwd(&quot;~/EcologicalGenomics&quot;)
+
+# plot my quality plots (qual, qualINT and qualSUB together in one pannel)
+par(mfrow=c(1,3))
+
+##################################################################################
+# Loading packages, data and prepping the data
+
+library(&quot;DESeq2&quot;)
+library(&quot;ggplot2&quot;)
+
+countsTable &lt;- read.delim(&quot;RawData/countsdata_trim2.txt&quot;,  
+                          stringsAsFactors=TRUE,
+                          header = TRUE,
+                          row.names=1)
+
+countData &lt;- as.matrix(countsTable)
+
+head(countData)
+
+conds &lt;- read.delim(&quot;RawData/cols_data_trim.txt&quot;,
+                    header=TRUE, 
+                    stringsAsFactors=TRUE, 
+                    row.names=1)
+
+colData &lt;- as.data.frame(conds)
+head(colData)
+
+# dimensions of the two data structures:
+dim(countData)
+dim(colData)
+
+######################################################################################
+# Subsetting colData by health status (H/S)
+
+# colData
+x&lt;- split(colData, colData$location)
+colDataInt &lt;- x$int
+colDataSub &lt;- x$sub
+
+# countData
+# get names of rows for INT and SUB
+i &lt;- rownames(colDataInt)
+s &lt;- rownames(colDataSub)
+
+# subsetting by INT and SUB
+countDataInt &lt;- countData[,i]
+countDataSub &lt;- countData[,s]
+dim(countDataInt)
+dim(countDataSub)
+
+################################################################################
+################# MODEL NUMBER 1: TEST EFFECT OF HEALTH CONTROLLING FOR LOCATION
+################################################################################
+
+# model looks for a main effect of health while controlling for the variance ascociated with location
+dds &lt;- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ location + health)
+
+# check dimensions of data
+dim(dds)
+dds &lt;- dds[ rowSums(counts(dds)) &gt; 100, ]
+dim(dds)
+
+# For practice, let&#39;s work with fewer genes so that the models can run faster...
+#dds &lt;- dds[sample(nrow(dds), 1200), ]
+#dim(dds)
+
+#sets that &quot;healthy is the reference
+colData(dds)$health &lt;- factor(colData(dds)$health, levels=c(&quot;H&quot;,&quot;S&quot;)) 
+
+# Run the model on the data
+dds &lt;- DESeq(dds) 
+
+# summarise data
+res &lt;- results(dds)
+res &lt;- res[order(res$padj),]
+head(res)
+summary(res)
+
+
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------DATA VISUALIZATION (FIGURES) MODEL 1
+#--------------------------------------------------------------------------------
+
+# Data quality assessment by sample clustering and visualization 
+qual &lt;- plotMA(res, main=&quot;DESeq2 Model 1 (controlling for location)&quot;, ylim=c(-2,2))
+
+# PCA plot for health
+vsd &lt;- varianceStabilizingTransformation(dds, blind=FALSE)
+plot &lt;- plotPCA(vsd, intgroup=c(&quot;health&quot;))
+plot
+
+# out of 12946 with nonzero total read count
+# adjusted p-value &lt; 0.1
+# LFC &gt; 0 (up)     : 206, 1.6% 
+# LFC &lt; 0 (down)   : 58, 0.45% 
+# outliers [1]     : 396, 3.1% 
+# low counts [2]   : 7433, 57% 
+# (mean count &lt; 22)
+
+################################################################################
+######################## MODEL NUMBER 2: TEST EFFECT OF HEALTH WITHIN INTERTIDAL
+################################################################################
+
+# model looks for a main effect of health within intertidal population:
+ddsINT &lt;- DESeqDataSetFromMatrix(countData = countDataInt, colData = colDataInt, design = ~ health)
+
+# check dimensions of data
+dim(ddsINT)
+ddsINT &lt;- ddsINT[ rowSums(counts(ddsINT)) &gt; 100, ]
+dim(ddsINT)
+
+# For practice, let&#39;s work with fewer genes so that the models can run faster...
+#ddsINT &lt;- ddsINT[sample(nrow(ddsINT), 1200), ]
+#dim(ddsINT)
+
+#sets that &quot;healthy is the reference
+colData(ddsINT)$health &lt;- factor(colData(ddsINT)$health, levels=c(&quot;H&quot;,&quot;S&quot;)) 
+
+# Run the model on the data
+ddsINT &lt;- DESeq(ddsINT) 
+
+# summarise data
+resINT &lt;- results(ddsINT)
+resINT &lt;- resINT[order(resINT$padj),]
+head(resINT)
+summary(resINT)
+
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------DATA VISUALIZATION (FIGURES) MODEL 2
+#--------------------------------------------------------------------------------
+
+# Data quality assessment by sample clustering and visualization 
+qualINT &lt;- plotMA(resINT, main=&quot;DESeq2 Model 2 (Intertidal Only)&quot;, ylim=c(-2,2))
+
+# PCA plot for health
+vsdINT &lt;- varianceStabilizingTransformation(ddsINT, blind=FALSE)
+plotINT &lt;- plotPCA(vsdINT, intgroup=c(&quot;health&quot;))
+plotINT 
+
+# out of 12396 with nonzero total read count
+# adjusted p-value &lt; 0.1
+# LFC &gt; 0 (up)     : 204, 1.6% 
+# LFC &lt; 0 (down)   : 33, 0.27% 
+# outliers [1]     : 0, 0% 
+# low counts [2]   : 9139, 74% 
+# (mean count &lt; 39)
+
+################################################################################
+########################## MODEL NUMBER 3: TEST EFFECT OF HEALTH WITHIN SUBTIDAL
+################################################################################
+
+# model looks for a main effect of health within subtidal population:
+ddsSUB &lt;- DESeqDataSetFromMatrix(countData = countDataSub, colData = colDataSub, design = ~ health)
+
+# check dimensions of data
+dim(ddsSUB)
+ddsSUB &lt;- ddsSUB[ rowSums(counts(ddsSUB)) &gt; 100, ]
+dim(ddsSUB)
+
+# For practice, let&#39;s work with fewer genes so that the models can run faster...
+#ddsSUB &lt;- ddsSUB[sample(nrow(ddsSUB), 1200), ]
+#dim(ddsSUB)
+
+#sets that &quot;healthy is the reference
+colData(ddsSUB)$health &lt;- factor(colData(ddsSUB)$health, levels=c(&quot;H&quot;,&quot;S&quot;)) 
+
+# Run the model on the data
+ddsSUB &lt;- DESeq(ddsSUB) 
+
+# summarise data
+resSUB &lt;- results(ddsSUB)
+resSUB &lt;- resSUB[order(resSUB$padj),]
+head(resSUB)
+summary(resSUB)
+
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------DATA VISUALIZATION (FIGURES) MODEL 3
+#--------------------------------------------------------------------------------
+
+# Data quality assessment by sample clustering and visualization 
+qualSUB &lt;- plotMA(resSUB, main=&quot;DESeq2 Model 3 (Subtidal Only)&quot;, ylim=c(-2,2))
+
+# PCA plot for health
+vsdSUB &lt;- varianceStabilizingTransformation(ddsSUB, blind=FALSE)
+plotSUB &lt;- plotPCA(vsdSUB, intgroup=c(&quot;health&quot;))
+plotSUB
+
+# out of 12392 with nonzero total read count
+# adjusted p-value &lt; 0.1
+# LFC &gt; 0 (up)     : 20, 0.16% 
+# LFC &lt; 0 (down)   : 113, 0.91% 
+# outliers [1]     : 647, 5.2% 
+# low counts [2]   : 4289, 35% 
+# (mean count &lt; 13)
+
+
+################################################################################
+########################################## FUNCTION TO PLOT GGPLOT FIGS TOGETHER
+################################################################################
+
+multiplot &lt;- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots &lt;- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use &#39;cols&#39; to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout &lt;- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx &lt;- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
+# Plot figures together:
+multiplot(plot, plotINT, plotSUB, cols=3)
+
+
+</pre><hr /><p><div id='id-section12'/></p><h3><a name='header-c8968' class='md-header-anchor '></a>Page 12:</h3><hr /><p><div id='id-section13'/></p><h3><a name='header-c8972' class='md-header-anchor '></a>Page 13:</h3><hr /><p><div id='id-section14'/></p><h3><a name='header-c8976' class='md-header-anchor '></a>Page 14:</h3><hr /><p><div id='id-section15'/></p><h3><a name='header-c8980' class='md-header-anchor '></a>Page 15:</h3><hr /><p><div id='id-section16'/></p><h3><a name='header-c8984' class='md-header-anchor '></a>Page 16:</h3><hr /><p><div id='id-section17'/></p><h3><a name='header-c8988' class='md-header-anchor '></a>Page 17:</h3><hr /><p><div id='id-section18'/></p><h3><a name='header-c8992' class='md-header-anchor '></a>Page 18:</h3><hr /><p><div id='id-section19'/></p><h3><a name='header-c8996' class='md-header-anchor '></a>Page 19:</h3><hr /><p><div id='id-section20'/></p><h3><a name='header-c9000' class='md-header-anchor '></a>Page 20:</h3><hr /><p><div id='id-section21'/></p><h3><a name='header-c9004' class='md-header-anchor '></a>Page 21:</h3><hr /><p><div id='id-section22'/></p><h3><a name='header-c9008' class='md-header-anchor '></a>Page 22:</h3><hr /><p><div id='id-section23'/></p><h3><a name='header-c9012' class='md-header-anchor '></a>Page 23:</h3><hr /><p><div id='id-section24'/></p><h3><a name='header-c9016' class='md-header-anchor '></a>Page 24:</h3><hr /><p><div id='id-section25'/></p><h3><a name='header-c9020' class='md-header-anchor '></a>Page 25:</h3><hr /><p><div id='id-section26'/></p><h3><a name='header-c9024' class='md-header-anchor '></a>Page 26:</h3><hr /><p><div id='id-section27'/></p><h3><a name='header-c9028' class='md-header-anchor '></a>Page 27:</h3><hr /><p><div id='id-section28'/></p><h3><a name='header-c9032' class='md-header-anchor '></a>Page 28:</h3><hr /><p><div id='id-section29'/></p><h3><a name='header-c9036' class='md-header-anchor '></a>Page 29:</h3><hr /><p><div id='id-section30'/></p><h3><a name='header-c9040' class='md-header-anchor '></a>Page 30:</h3><hr /><p><div id='id-section31'/></p><h3><a name='header-c9044' class='md-header-anchor '></a>Page 31:</h3><hr /><p><div id='id-section32'/></p><h3><a name='header-c9048' class='md-header-anchor '></a>Page 32:</h3><hr /><p><div id='id-section33'/></p><h3><a name='header-c9052' class='md-header-anchor '></a>Page 33:</h3><hr /><p><div id='id-section34'/></p><h3><a name='header-c9056' class='md-header-anchor '></a>Page 34:</h3><hr /><p><div id='id-section35'/></p><h3><a name='header-c9060' class='md-header-anchor '></a>Page 35:</h3><hr /><p><div id='id-section36'/></p><h3><a name='header-c9064' class='md-header-anchor '></a>Page 36:</h3><hr /><p><div id='id-section37'/></p><h3><a name='header-c9068' class='md-header-anchor '></a>Page 37:</h3><hr /><p><div id='id-section38'/></p><h3><a name='header-c9072' class='md-header-anchor '></a>Page 38:</h3><hr /><p><div id='id-section39'/></p><h3><a name='header-c9076' class='md-header-anchor '></a>Page 39:</h3><hr /><p><div id='id-section40'/></p><h3><a name='header-c9080' class='md-header-anchor '></a>Page 40:</h3><hr /><p><div id='id-section41'/></p><h3><a name='header-c9084' class='md-header-anchor '></a>Page 41:</h3><hr /><p><div id='id-section42'/></p><h3><a name='header-c9088' class='md-header-anchor '></a>Page 42:</h3><hr /><p><div id='id-section43'/></p><h3><a name='header-c9092' class='md-header-anchor '></a>Page 43:</h3><hr /><p><div id='id-section44'/></p><h3><a name='header-c9096' class='md-header-anchor '></a>Page 44:</h3><hr /><p><div id='id-section45'/></p><h3><a name='header-c9100' class='md-header-anchor '></a>Page 45:</h3><hr /><p><div id='id-section46'/></p><h3><a name='header-c9104' class='md-header-anchor '></a>Page 46:</h3><hr /><p><div id='id-section47'/></p><h3><a name='header-c9108' class='md-header-anchor '></a>Page 47:</h3><hr /><p><div id='id-section48'/></p><h3><a name='header-c9112' class='md-header-anchor '></a>Page 48:</h3><hr /><p><div id='id-section49'/></p><h3><a name='header-c9116' class='md-header-anchor '></a>Page 49:</h3><hr /><p><div id='id-section50'/></p><h3><a name='header-c9120' class='md-header-anchor '></a>Page 50:</h3><hr /><p><div id='id-section51'/></p><h3><a name='header-c9124' class='md-header-anchor '></a>Page 51:</h3><hr /><p><div id='id-section52'/></p><h3><a name='header-c9128' class='md-header-anchor '></a>Page 52:</h3><hr /><p><div id='id-section53'/></p><h3><a name='header-c9132' class='md-header-anchor '></a>Page 53:</h3><hr /><p><div id='id-section54'/></p><h3><a name='header-c9136' class='md-header-anchor '></a>Page 54:</h3><hr /><p><div id='id-section55'/></p><h3><a name='header-c9140' class='md-header-anchor '></a>Page 55:</h3><hr /><p><div id='id-section56'/></p><h3><a name='header-c9144' class='md-header-anchor '></a>Page 56:</h3><hr /><p><div id='id-section57'/></p><h3><a name='header-c9148' class='md-header-anchor '></a>Page 57:</h3><hr /><p><div id='id-section58'/></p><h3><a name='header-c9152' class='md-header-anchor '></a>Page 58:</h3><hr /><p><div id='id-section59'/></p><h3><a name='header-c9156' class='md-header-anchor '></a>Page 59:</h3><hr /><p><div id='id-section60'/></p><h3><a name='header-c9160' class='md-header-anchor '></a>Page 60:</h3><hr /><p><div id='id-section61'/></p><h3><a name='header-c9164' class='md-header-anchor '></a>Page 61:</h3><hr /><p><div id='id-section62'/></p><h3><a name='header-c9168' class='md-header-anchor '></a>Page 62:</h3><hr /><p><div id='id-section63'/></p><h3><a name='header-c9172' class='md-header-anchor '></a>Page 63:</h3><hr /><p><div id='id-section64'/></p><h3><a name='header-c9176' class='md-header-anchor '></a>Page 64:</h3><hr /><p><div id='id-section65'/></p><h3><a name='header-c9180' class='md-header-anchor '></a>Page 65:</h3><hr /><p><div id='id-section66'/></p><h3><a name='header-c9184' class='md-header-anchor '></a>Page 66:</h3><hr /><p><div id='id-section67'/></p><h3><a name='header-c9188' class='md-header-anchor '></a>Page 67:</h3><hr /><p><div id='id-section68'/></p><h3><a name='header-c9192' class='md-header-anchor '></a>Page 68:</h3><hr /><p><div id='id-section69'/></p><h3><a name='header-c9196' class='md-header-anchor '></a>Page 69:</h3><hr /><p><div id='id-section70'/></p><h3><a name='header-c9200' class='md-header-anchor '></a>Page 70:</h3><hr /><p><div id='id-section71'/></p><h3><a name='header-c9204' class='md-header-anchor '></a>Page 71:</h3><hr /><p><div id='id-section72'/></p><h3><a name='header-c9208' class='md-header-anchor '></a>Page 72:</h3><hr /><p><div id='id-section73'/></p><h3><a name='header-c9212' class='md-header-anchor '></a>Page 73:</h3><hr /><p><div id='id-section74'/></p><h3><a name='header-c9216' class='md-header-anchor '></a>Page 74:</h3><hr /><p><div id='id-section75'/></p><h3><a name='header-c9220' class='md-header-anchor '></a>Page 75:</h3><hr /><p><div id='id-section76'/></p><h3><a name='header-c9224' class='md-header-anchor '></a>Page 76:</h3><hr /><p><div id='id-section77'/></p><h3><a name='header-c9228' class='md-header-anchor '></a>Page 77:</h3><hr /><p><div id='id-section78'/></p><h3><a name='header-c9232' class='md-header-anchor '></a>Page 78:</h3><hr /><p><div id='id-section79'/></p><h3><a name='header-c9236' class='md-header-anchor '></a>Page 79:</h3><hr /><p><div id='id-section80'/></p><h3><a name='header-c9240' class='md-header-anchor '></a>Page 80:</h3><hr /><p><div id='id-section81'/></p><h3><a name='header-c9244' class='md-header-anchor '></a>Page 81:</h3><hr /><p><div id='id-section82'/></p><h3><a name='header-c9248' class='md-header-anchor '></a>Page 82:</h3><hr /><p><div id='id-section83'/></p><h3><a name='header-c9252' class='md-header-anchor '></a>Page 83:</h3><hr /><p><div id='id-section84'/></p><h3><a name='header-c9256' class='md-header-anchor '></a>Page 84:</h3><hr /><p><div id='id-section85'/></p><h3><a name='header-c9260' class='md-header-anchor '></a>Page 85:</h3><hr /><p><div id='id-section86'/></p><h3><a name='header-c9264' class='md-header-anchor '></a>Page 86:</h3><hr /><p><div id='id-section87'/></p><h3><a name='header-c9268' class='md-header-anchor '></a>Page 87:</h3><hr /><p><div id='id-section88'/></p><h3><a name='header-c9272' class='md-header-anchor '></a>Page 88:</h3><hr /><p><div id='id-section89'/></p><h3><a name='header-c9276' class='md-header-anchor '></a>Page 89:</h3><hr /><p><div id='id-section90'/></p><h3><a name='header-c9280' class='md-header-anchor '></a>Page 90:</h3><hr /><p><div id='id-section91'/></p><h3><a name='header-c9284' class='md-header-anchor '></a>Page 91:</h3><hr /><p><div id='id-section92'/></p><h3><a name='header-c9288' class='md-header-anchor '></a>Page 92:</h3><hr /><p><div id='id-section93'/></p><h3><a name='header-c9292' class='md-header-anchor '></a>Page 93:</h3><hr /><p><div id='id-section94'/></p><h3><a name='header-c9296' class='md-header-anchor '></a>Page 94:</h3><hr /><p><div id='id-section95'/></p><h3><a name='header-c9300' class='md-header-anchor '></a>Page 95:</h3><hr /><p><div id='id-section96'/></p><h3><a name='header-c9304' class='md-header-anchor '></a>Page 96:</h3><hr /><p><div id='id-section97'/></p><h3><a name='header-c9308' class='md-header-anchor '></a>Page 97:</h3><hr /><p><div id='id-section98'/></p><h3><a name='header-c9312' class='md-header-anchor '></a>Page 98:</h3><hr /><p><div id='id-section99'/></p><h3><a name='header-c9316' class='md-header-anchor '></a>Page 99:</h3><hr /><p><div id='id-section100'/></p><h3><a name='header-c9320' class='md-header-anchor '></a>Page 100:</h3><hr /><p><div id='id-section101'/></p><h3><a name='header-c9324' class='md-header-anchor '></a>Page 101:</h3><hr /><p><div id='id-section102'/></p><h3><a name='header-c9328' class='md-header-anchor '></a>Page 102:</h3><hr /><p><div id='id-section103'/></p><h3><a name='header-c9332' class='md-header-anchor '></a>Page 103:</h3><hr /><p><div id='id-section104'/></p><h3><a name='header-c9336' class='md-header-anchor '></a>Page 104:</h3><hr /><p><div id='id-section105'/></p><h3><a name='header-c9340' class='md-header-anchor '></a>Page 105:</h3><hr /><p><div id='id-section106'/></p><h3><a name='header-c9344' class='md-header-anchor '></a>Page 106:</h3><hr /><p><div id='id-section107'/></p><h3><a name='header-c9348' class='md-header-anchor '></a>Page 107:</h3><hr /><p><div id='id-section108'/></p><h3><a name='header-c9352' class='md-header-anchor '></a>Page 108:</h3><hr /><p><div id='id-section109'/></p><h3><a name='header-c9356' class='md-header-anchor '></a>Page 109:</h3><hr /><p><div id='id-section110'/></p><h3><a name='header-c9360' class='md-header-anchor '></a>Page 110:</h3><hr /><p><div id='id-section111'/></p><h3><a name='header-c9364' class='md-header-anchor '></a>Page 111:</h3><hr /><p><div id='id-section112'/></p><h3><a name='header-c9368' class='md-header-anchor '></a>Page 112:</h3><hr /><p><div id='id-section113'/></p><h3><a name='header-c9372' class='md-header-anchor '></a>Page 113:</h3><hr /><p><div id='id-section114'/></p><h3><a name='header-c9376' class='md-header-anchor '></a>Page 114:</h3><hr /><p><div id='id-section115'/></p><h3><a name='header-c9380' class='md-header-anchor '></a>Page 115:</h3><hr /><p><div id='id-section116'/></p><h3><a name='header-c9384' class='md-header-anchor '></a>Page 116:</h3><hr /><p><div id='id-section117'/></p><h3><a name='header-c9388' class='md-header-anchor '></a>Page 117:</h3><hr /><p><div id='id-section118'/></p><h3><a name='header-c9392' class='md-header-anchor '></a>Page 118:</h3><hr /><p><div id='id-section119'/></p><h3><a name='header-c9396' class='md-header-anchor '></a>Page 119:</h3><hr /><p><div id='id-section120'/></p><h3><a name='header-c9400' class='md-header-anchor '></a>Page 120:</h3><hr /><p><div id='id-section121'/></p><h3><a name='header-c9404' class='md-header-anchor '></a>Page 121:</h3><hr /><p><div id='id-section122'/></p><h3><a name='header-c9408' class='md-header-anchor '></a>Page 122:</h3><hr /><p><div id='id-section123'/></p><h3><a name='header-c9412' class='md-header-anchor '></a>Page 123:</h3><hr /><p><div id='id-section124'/></p><h3><a name='header-c9416' class='md-header-anchor '></a>Page 124:</h3><hr /><p><div id='id-section125'/></p><h3><a name='header-c9420' class='md-header-anchor '></a>Page 125:</h3><hr /><p><div id='id-section126'/></p><h3><a name='header-c9424' class='md-header-anchor '></a>Page 126:</h3><hr /><p><div id='id-section127'/></p><h3><a name='header-c9428' class='md-header-anchor '></a>Page 127:</h3><hr /><p><div id='id-section128'/></p><h3><a name='header-c9432' class='md-header-anchor '></a>Page 128:</h3><hr /><p><div id='id-section129'/></p><h3><a name='header-c9436' class='md-header-anchor '></a>Page 129:</h3><hr /><p><div id='id-section130'/></p><h3><a name='header-c9440' class='md-header-anchor '></a>Page 130:</h3><hr /><p><div id='id-section131'/></p><h3><a name='header-c9444' class='md-header-anchor '></a>Page 131:</h3><hr /><p><div id='id-section132'/></p><h3><a name='header-c9448' class='md-header-anchor '></a>Page 132:</h3><hr /><p><div id='id-section133'/></p><h3><a name='header-c9452' class='md-header-anchor '></a>Page 133:</h3><hr /><p><div id='id-section134'/></p><h3><a name='header-c9456' class='md-header-anchor '></a>Page 134:</h3><hr /><p><div id='id-section135'/></p><h3><a name='header-c9460' class='md-header-anchor '></a>Page 135:</h3><hr /><p><div id='id-section136'/></p><h3><a name='header-c9464' class='md-header-anchor '></a>Page 136:</h3><hr /><p><div id='id-section137'/></p><h3><a name='header-c9468' class='md-header-anchor '></a>Page 137:</h3><hr /><p><div id='id-section138'/></p><h3><a name='header-c9472' class='md-header-anchor '></a>Page 138:</h3><hr /><p><div id='id-section139'/></p><h3><a name='header-c9476' class='md-header-anchor '></a>Page 139:</h3><hr /><p><div id='id-section140'/></p><h3><a name='header-c9480' class='md-header-anchor '></a>Page 140:</h3><hr /><p><div id='id-section141'/></p><h3><a name='header-c9484' class='md-header-anchor '></a>Page 141:</h3><hr /><p><div id='id-section142'/></p><h3><a name='header-c9488' class='md-header-anchor '></a>Page 142:</h3><hr /><p><div id='id-section143'/></p><h3><a name='header-c9492' class='md-header-anchor '></a>Page 143:</h3><hr /><p><div id='id-section144'/></p><h3><a name='header-c9496' class='md-header-anchor '></a>Page 144:</h3><hr /><p><div id='id-section145'/></p><h3><a name='header-c9500' class='md-header-anchor '></a>Page 145:</h3><hr /><p><div id='id-section146'/></p><h3><a name='header-c9504' class='md-header-anchor '></a>Page 146:</h3><hr /><p><div id='id-section147'/></p><h3><a name='header-c9508' class='md-header-anchor '></a>Page 147:</h3><hr /><p><div id='id-section148'/></p><h3><a name='header-c9512' class='md-header-anchor '></a>Page 148:</h3><hr /><p><div id='id-section149'/></p><h3><a name='header-c9516' class='md-header-anchor '></a>Page 149:</h3><hr /><p><div id='id-section150'/></p><h3><a name='header-c9520' class='md-header-anchor '></a>Page 150:</h3><hr /><p><div id='id-section151'/></p><h3><a name='header-c9524' class='md-header-anchor '></a>Page 151:</h3><hr /><p><div id='id-section152'/></p><h3><a name='header-c9528' class='md-header-anchor '></a>Page 152:</h3><hr /><p><div id='id-section153'/></p><h3><a name='header-c9532' class='md-header-anchor '></a>Page 153:</h3><hr /><p><div id='id-section154'/></p><h3><a name='header-c9536' class='md-header-anchor '></a>Page 154:</h3><hr /><p><div id='id-section155'/></p><h3><a name='header-c9540' class='md-header-anchor '></a>Page 155:</h3><hr /><p><div id='id-section156'/></p><h3><a name='header-c9544' class='md-header-anchor '></a>Page 156:</h3><hr /><p><div id='id-section157'/></p><h3><a name='header-c9548' class='md-header-anchor '></a>Page 157:</h3><hr /><p><div id='id-section158'/></p><h3><a name='header-c9552' class='md-header-anchor '></a>Page 158:</h3><hr /><p><div id='id-section159'/></p><h3><a name='header-c9556' class='md-header-anchor '></a>Page 159:</h3><hr /><p><div id='id-section160'/></p><h3><a name='header-c9560' class='md-header-anchor '></a>Page 160:</h3><hr /><p><div id='id-section161'/></p><h3><a name='header-c9564' class='md-header-anchor '></a>Page 161:</h3><hr /><p><div id='id-section162'/></p><h3><a name='header-c9568' class='md-header-anchor '></a>Page 162:</h3><hr /><p><div id='id-section163'/></p><h3><a name='header-c9572' class='md-header-anchor '></a>Page 163:</h3><hr /><p><div id='id-section164'/></p><h3><a name='header-c9576' class='md-header-anchor '></a>Page 164:</h3><hr /><p><div id='id-section165'/></p><h3><a name='header-c9580' class='md-header-anchor '></a>Page 165:</h3><hr /><p><div id='id-section166'/></p><h3><a name='header-c9584' class='md-header-anchor '></a>Page 166:</h3><hr /><p><div id='id-section167'/></p><h3><a name='header-c9588' class='md-header-anchor '></a>Page 167:</h3><hr /><p><div id='id-section168'/></p><h3><a name='header-c9592' class='md-header-anchor '></a>Page 168:</h3><hr /><p><div id='id-section169'/></p><h3><a name='header-c9596' class='md-header-anchor '></a>Page 169:</h3><hr /><p><div id='id-section170'/></p><h3><a name='header-c9600' class='md-header-anchor '></a>Page 170:</h3><hr /><p><div id='id-section171'/></p><h3><a name='header-c9604' class='md-header-anchor '></a>Page 171:</h3><hr /><p><div id='id-section172'/></p><h3><a name='header-c9608' class='md-header-anchor '></a>Page 172:</h3><hr /><p><div id='id-section173'/></p><h3><a name='header-c9612' class='md-header-anchor '></a>Page 173:</h3><hr /><p><div id='id-section174'/></p><h3><a name='header-c9616' class='md-header-anchor '></a>Page 174:</h3><hr /><p><div id='id-section175'/></p><h3><a name='header-c9620' class='md-header-anchor '></a>Page 175:</h3><hr /><p><div id='id-section176'/></p><h3><a name='header-c9624' class='md-header-anchor '></a>Page 176:</h3><hr /><p><div id='id-section177'/></p><h3><a name='header-c9628' class='md-header-anchor '></a>Page 177:</h3><hr /><p><div id='id-section178'/></p><h3><a name='header-c9632' class='md-header-anchor '></a>Page 178:</h3><hr /><p><div id='id-section179'/></p><h3><a name='header-c9636' class='md-header-anchor '></a>Page 179:</h3><hr /><p><div id='id-section180'/></p><h3><a name='header-c9640' class='md-header-anchor '></a>Page 180:</h3><hr /><p><div id='id-section181'/></p><h3><a name='header-c9644' class='md-header-anchor '></a>Page 181:</h3><hr /><p><div id='id-section182'/></p><h3><a name='header-c9648' class='md-header-anchor '></a>Page 182:</h3><hr /><p><div id='id-section183'/></p><h3><a name='header-c9652' class='md-header-anchor '></a>Page 183:</h3><hr /><p><div id='id-section184'/></p><h3><a name='header-c9656' class='md-header-anchor '></a>Page 184:</h3><hr /><p><div id='id-section185'/></p><h3><a name='header-c9660' class='md-header-anchor '></a>Page 185:</h3><hr /><p><div id='id-section186'/></p><h3><a name='header-c9664' class='md-header-anchor '></a>Page 186:</h3><hr /><p><div id='id-section187'/></p><h3><a name='header-c9668' class='md-header-anchor '></a>Page 187:</h3><hr /><p><div id='id-section188'/></p><h3><a name='header-c9672' class='md-header-anchor '></a>Page 188:</h3><hr /><p><div id='id-section189'/></p><h3><a name='header-c9676' class='md-header-anchor '></a>Page 189:</h3><hr /><p><div id='id-section190'/></p><h3><a name='header-c9680' class='md-header-anchor '></a>Page 190:</h3><hr /><p><div id='id-section191'/></p><h3><a name='header-c9684' class='md-header-anchor '></a>Page 191:</h3><hr /><p><div id='id-section192'/></p><h3><a name='header-c9688' class='md-header-anchor '></a>Page 192:</h3><hr /><p><div id='id-section193'/></p><h3><a name='header-c9692' class='md-header-anchor '></a>Page 193:</h3><hr /><p><div id='id-section194'/></p><h3><a name='header-c9696' class='md-header-anchor '></a>Page 194:</h3><hr /><p><div id='id-section195'/></p><h3><a name='header-c9700' class='md-header-anchor '></a>Page 195:</h3><hr /><p><div id='id-section196'/></p><h3><a name='header-c9704' class='md-header-anchor '></a>Page 196:</h3><hr /><p><div id='id-section197'/></p><h3><a name='header-c9708' class='md-header-anchor '></a>Page 197:</h3><hr /><p><div id='id-section198'/></p><h3><a name='header-c9712' class='md-header-anchor '></a>Page 198:</h3><hr /><p><div id='id-section199'/></p><h3><a name='header-c9716' class='md-header-anchor '></a>Page 199:</h3><hr /><p><div id='id-section200'/></p><h3><a name='header-c9720' class='md-header-anchor '></a>Page 200:</h3><p></p></div>
+</body>
+</html>
