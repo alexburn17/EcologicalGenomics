@@ -1594,7 +1594,6 @@ $ vcftools --vcf biallelic.MAF0.02.Miss0.8.recode.vcf --geno-r2
 
 > LD <- read.table("out.geno.ld", header=TRUE)
 > str(LD)
-
 ```
 
 ------
@@ -1870,9 +1869,224 @@ multiplot(plot, plotINT, plotSUB, cols=3)
 ------
 <div id='id-section12'/>
 ### Page 12:
+
+## Lecture for March 20, 2017
+
+### Bill Kilpatrick Info Update: (talking about divergence)
+
+**Outline:**
+
+1. Introduction 
+   * Looking at structure of pop. to look at ancestery 
+   * can objectivly identify what a pop. is (instead of just location)
+   * can ID emigrants and immagrents 
+   * GA (global anscetery) = average over entire population population
+   * LA (local anscetery) = thinking chrmosome as being mosaic -> what anscetor each segment of chrome came from
+2. Methods for GA estimation
+   * Model based 
+     * structure is the program
+       *  baysean
+       *  using allelic and genotypic frequency (HWE)
+       *  ID number of populations in sample
+     * AdMixture is another program
+       * maximum liklehood instead of baysean
+       * optimized 2 matrices (faster than structure)
+     * Non parametric approaches 
+       * multivariate analyses 
+         * clustering (pair-wise data matrix like distances or simalarities)
+         * create phenograms (like a tree but based on overall simalarity
+       * ordination methods like PCA and multi-scale dimensioning can also be used
+3. Methods for LA estimation 
+   * Admixed population 
+     * HNM model (Hidden Markov) -> fits explicit probabilitic model to population
+       * model correction of anscestery by looking at allele configuration 
+       * can used structure (modified)
+       * LAMP is a new program 
+         * uses sliding window of genome and assigns anscteral ascestry using PCA
+       * RFMix
+         * uses discrimination (uses discriminate function analsysis -> maximize seperation between groups)
+4. Problems with these analysis 
+   * makes assumption that we know K and allele frequncies (we rarely know that)
+     * we can do simulations to approximate this
+5. Applications of GA & LA Inference
+   * ID popualtion structure of stratification (made up of sub pops.)
+     * LA = forensics (DNA profiling) what is proportion of a population also has the same DNA profile
+       * human medicine -> mapping genes to diseases (formacogenomics) 
+       * localize sequences -> can be mapped to sequence using LA
+     * GA = looking at larger scale popualtion 
+       * I and E 
+6. Future research challenges 
+   * hopefully much densoer mapping of SNPs
+   * larger sample sizes
+   * new methods and refined old methods for analysis 
+   * Improve modeling linkage etc.
+   * more relaible ways to determine ancestry
+   * Improve ways LA can deal with multi pop. Admixtures
+
+### Coding for the Day:
+
+**PATH TO THE FINAL VCF DATA (all 24 INDS):** 
+
+```
+Login: ssh pburnham@pbio381.uvm.edu
+
+/data/project_data/snps/reads2snps/SSW_by24inds.txt.vcf.gz
+
+# moving VCF files to home dir.
+
+$ cd /data/project_data/snps/reads2snps
+$ vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.8 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.8  
+$ cd ~/
+$ gzip SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf
+# ll to check if it has been zipped -> red if it has zipped
+```
+
+**Estimate allele frequencies in H and S and F~st~and output to R:**
+
+```
+/data/project_data/snps/reads2snps/ssw_healthloc.txt
+
+# create compnaion text files that contain IDs for each group:
+
+# meta data for samples
+$ cd /data/project_data/snps/reads2snps/
+
+# just healthy
+$ grep "HH" ssw_healthloc.txt | cut -f1 >~/H_SampleIDs.txt
+
+# healthy/sick and sick sick 
+$ grep "HS\|SS" ssw_healthloc.txt | cut -f1 >~/S_SampleIDs.txt
+
+# Allele Frequencies between Healthy and Sick individuals:
+$ cd ~/<path to your filtered vcf file in your home directory>
+$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --freq2 --keep H_SampleIDs.txt --out H_AlleleFreqs
+
+# sick
+$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --freq2 --keep S_SampleIDs.txt --out S_AlleleFreqs
+
+# Fst
+vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --weir-fst-pop H_SampleIDs.txt --weir-fst-pop S_SampleIDs.txt --out HvS_Fst
+
+# write everything out into Local Machine for R analysis: scp 
+
+```
+
+Edit headers for R:
+
+1. Download all 3 new results files to your laptop using **scp** or **Fetch** [MacOS] or **WinScp** [PC]
+2. Open the **H_AlleleFreqs.frq** file in a text editor and edit the header line as follows:
+   1. DELETE:   {Freq}
+   2. REPLACE with:   H_REF  H_ALT
+   3. Do the same for the **S_AlleleFreqs.frq** file...
+3. Open **R**, paste the following into an R script, and work through it:
+
+
+
+Estimate Pi at synonomous and nonsynonomous sites - look at ratio, stength of purifying selection**
+
+**-R script in my repo**
+
 ------
 <div id='id-section13'/>
 ### Page 13:
+
+# Info Update: Erin
+
+## 3-22-2017
+
+### **Species Divergence w/geneflow**
+
+* Allopatric speciation - species divergence in the absence of gene flow 
+  * seperated by physical barrier)
+  * formation of new species 
+
+
+* Sympatric speciation - potential for gene flow
+  * not geographicaly isolated 
+  * via diversifying selection 
+  * selected genes appear diverging
+  * neutral alleles appear homogenous 
+
+**Inferring History of Divergence**
+
+* genomic scans
+  * islands of differentiation (area with high F~st~ is being differentiated between pops. of species)
+    * looks at distribution of summary statistics that measure differentiation
+* gene vs population trees
+  * compare assumed pop tree to gene tree
+  * compate different genes
+  * D statistic (whether or not intergression is occuring) ABBA-BABA 
+    * trees are equally likely (D stat and test tests this)
+      * no intergression, D=0 (ABBA=BABA)
+      * is intergression, D!=0 (ABBA!=BABA)
+    * limitations
+      * summary info loses information (throws out data)
+      * requires many genomes (expensive)
+      * could be multiple exlainations for intergression
+* likelyhood/model-based methods
+  * allele frequency spectrum 
+    * uses count data -> distribution w/characterisitc shape
+    * histogram of SNP frequency
+    * no selection (neutral) = neg. exponential distribution 
+    * bottle neck = same shape but even few high counts
+    * selective sweep = has U shape lots of lows and highs (bimodal)
+      * assumptions (not necessarily true in nature)
+        * all NPSs are independant 
+        * free recombination among SNPs
+        * mutation rates are equal
+      * limitations
+        * lots of data (computionaly challenging)
+        * throwing out everything but SNPs
+  * geneology sampling
+    * multiple regions -> 1 gene tree (est. Ne m and admixture)
+    * Assumptions
+      * free recombination amoung SNPs
+      * linkage amount loci 
+      * mutation rates are different between populations 
+      * no recombination since last common anscestor 
+  * likelihood free methods
+    * aproximate baysian computation (ABC)
+      * run multiple simulations of model of interest 
+
+**Historical gene flow + LD patterns**
+
+* distribution of haplotype lengths
+  * based on how differnt haplotype lengths can estimate how long ago I or E occured
+  * recombination -> shorter fragments/time
+  * difficult to ID migrant
+* Approximaiton of conditional likelihoods
+  * uses anscesteral recombination graphs (like a gnee tree)
+    * based on recombination events rather that gene divergence 
+    * limitations 
+      * very complex 
+      * multiple graphs of potential recomb. events (hard to tell which one is correct)
+
+**NGS advantages+limitations**
+
+* Advantages
+  * accurate estimation of recombintation rates
+  * large area for genome scans
+* Limitations 
+  * Ascertainment bias
+  * lots of data (computionaly challenging)
+  * throwing out everything but SNPs
+
+
+
+## Paper discussion 
+
+
+
+
+
+## Coding for the day
+
+
+
+
+
+
+
 ------
 <div id='id-section14'/>
 ### Page 14:
