@@ -23,9 +23,9 @@
 * [Page 11: 2017-06-03](#id-section11). Homework 1 R Code
 * [Page 12:](#id-section12). Class Notes
 * [Page 13:](#id-section13). Class Notes
-* [Page 14:](#id-section14). Class Notes
+* [Page 14:](#id-section14). 
 * [Page 15:](#id-section15). Class Notes
-* [Page 16:](#id-section16). Class Notes
+* [Page 16: 2017-04-04](#id-section16).Homework 3 Code
 * [Page 17:](#id-section17). Class Notes
 * [Page 18:](#id-section18). Class Notes
 * [Page 19:](#id-section19).Class Notes
@@ -1391,7 +1391,6 @@ p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 4, alpha=0.9) + 
 p
 
 ggsave("dot_plot-TRINITY_DN46124_c1_g2_TRINITY_DN46124_c1_g2_i6_g.21322_m.21322.png", p, width=8, height=4, dpi=300)
-
 ```
 
 **Terminal Work**
@@ -2081,6 +2080,60 @@ Estimate Pi at synonomous and nonsynonomous sites - look at ratio, stength of pu
 
 ## Coding for the day
 
+```
+$ screen (to run in background)
+
+$ cd /data/project_data/snps/reads2snps
+$ /data/popgen/dNdSpiNpiS_1.0 -alignment_file=SSW_by24inds.txt.fas -ingroup=sp -out=~/dNdSpiNpiS_output
+
+$ control a and d to get out of screen (detatch)
+to reattatch: $ screen -r
+
+print file:
+$ cat SSW_bamlist.txt.sum
+
+download file:
+
+$ scp pburnham@pbio381.uvm.edu:/data/project_data/snps/reads2snps/Romiguier_nature13685-s3.csv .
+
+read into R:
+
+
+```
+
+```R
+
+# List the files in this directory
+list.files()
+
+# Read in the Romiguier data:
+Rom <- read.csv("Romiguier_nature13685-s3.csv", header=T)
+
+# Import OK?
+str(Rom) 
+head(Rom)
+
+# Looks good!
+# Now let's look at how the strength of purifying selection (piN/piS) compares to the size of Ne (piS). We'll plot these on a log scale to linearize the relationship.
+plot(log(Rom$piS), log(Rom$piNpiS), pch=21, bg="blue", xlab="log Synonymous Nucleotide Diversity (piS)", ylab="log Ratio of Nonysn to Syn Diversity (piN/piS)", main="Purifying Selection vs. Effective Population Size")
+
+# Now let's add our SSW points to the existing plot and give them a different symbol
+points(log(0.00585312), log(0.264041), pch=24, cex=1.5, bg="red") 
+
+# We can also add a regression line to the plot to see how far off the SSW estimates are from expectation
+reg <- lm(log(Rom$piNpiS) ~ log(Rom$piS)) # Fits a linear regression
+abline(reg) # adds the regression line to the plot
+
+# It would be useful to highlight the other echinoderms in the dataset...do our seastars behave similarly?
+echino <- Rom[which(Rom$Phylum=="Echinodermata"),] # subsets the data
+points(log(echino$piS), log(echino$piNpiS), pch=21, bg="red") # adds the points
+
+# Lastly, let's add a legend:
+legend("bottomleft", cex=1, legend=c("Metazoans", "Echinoderms", "P. ochraceus"), pch=c(21,21,24), col=c("blue", "red", "red"))
+
+# Pisaster seems to be in a group with other echinoderms that have relaxed purifying selection (high piN/piS), given their Ne...Interesting! Can we hypothesize why this might be?
+```
+
 
 
 
@@ -2090,12 +2143,488 @@ Estimate Pi at synonomous and nonsynonomous sites - look at ratio, stength of pu
 ------
 <div id='id-section14'/>
 ### Page 14:
+
+# Info Update: Alison
+
+## 3-27-2017
+
+
+
+**Selective Sweeps** 
+
+* Big picture: So what?
+  * disease, pop. health, conservation etc.
+* examples: HIV
+  * whether mutant occurs before or after "selection event"
+  * potential reduction of geneitc diversity that occurs...
+    * increase in allele in quesiton and associated genes (linked)
+    * means decrease in previous genes
+  * hard sweep
+    * happens earlier and everything becomes fixed later in time
+  * soft sweep
+    * more than one addaptive alleles 
+    * less of a steep decline
+  * selective sleep (lactose intolerance-anscesteral)
+    * tolerance is a mustant and swept (soft) through population (most comon now)
+    * can be soft globably and hard localy 
+  * Key parameters
+    * theta - rate at which mutation enters a population
+    * theta = 2 * N~e~ * Mu (affcted by effetive pop size and fitness effects)
+  * Alternative hypothesis:
+    * drift 
+    * cause and effect (did selection opperate on variation that was already there of did they already exist)
+
+## Coding for the Day:
+
+```R
+################################################################################################
+# P. Alexander Burnham
+# March 27, 2017
+# Eco Gen
+# working on PCA:
+################################################################################################
+################################################################################################
+################################################################################################
+
+# set working directory
+setwd("~/EcologicalGenomics/RawData")
+
+# List the files in this directory -- you should see your results output from VCFTools if the download was successful
+list.files()
+
+# We'll need to install 2 packages to work with the SNP data:
+install.packages("vcfR") # reads in vcf files and proides tools for file conversion 
+install.packages("adegenet") # pop-genetics package with some handy routines, including PCA and other multivariate methods (DAPC)
+
+# ...and load the libraries
+library(vcfR)
+library(adegenet)
+
+#Read the vcf SNP data into R
+vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf")
+
+# The adegenet package uses a highly efficient way of storing large SNP datasets in R called a "genlight" object. The following function creates a genlight object from your vcf:
+gl1 <- vcfR2genlight(vcf1)
+print(gl1) # Looks good! Right # of SNPs and individuals!
+
+# For info, try:
+gl1$ind.names
+gl1$loc.names[1:10]
+gl1$chromosome[1:3]
+
+# Notice there's nothing in the field that says "pop"? Let's fix that...
+ssw_meta <- read.table("ssw_healthloc.txt", header=T) # read in the metadata
+ssw_meta <- ssw_meta[order(ssw_meta$Individual),] # sort by Individual ID, just like the VCF file
+
+# Confirm the ID's are ordered the same in gl1 and ssw_meta:
+gl1$ind.names
+ssw_meta$Individual
+
+gl1$pop <- ssw_meta$Location # assign locality info
+gl1$other <- as.list(ssw_meta$Trajectory) # assign disease status
+
+# WE can explore the structure of our SNP data using the glPlot function, which gives us a sample x SNP view of the VCF file
+glPlot(gl1, posi="bottomleft")
+
+# row, let's compute the PCA on the SNP genotypes and plot it:
+pca1 <- glPca(gl1, nf=4) # nf = number of PC axes to retain (here, 4)
+pca1 # prints summary
+
+# Plot the individuals in SNP-PCA space, with locality labels:
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=gl1$pop, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2", 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)")
+
+legend("topleft", 
+       legend=unique(gl1$pop), 
+       pch=20, 
+       col=c("black", "red"))
+
+# perhaps we want to show disease status instead of locality:
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=as.factor(unlist(gl1$other)), 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2", 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)")
+
+legend("topleft", 
+       legend=unique(as.factor(unlist(gl1$other))), 
+       pch=20, 
+       col=as.factor(unique(unlist(gl1$other))))
+
+
+# Which SNPs load most strongly on the 1st PC axis?
+loadingplot(abs(pca1$loadings[,1]),
+            threshold=quantile(abs(pca1$loadings), 0.999))
+
+# Get their locus names
+threshold <- quantile(abs(pca1$loadings), 0.999)
+gl1$loc.names[which(abs(pca1$loadings)>threshold)]
+
+
+# Run the DAPC using disease status to group samples
+disease.dapc <- dapc(gl1, pop=gl1$other$Trajectory, n.pca=8, n.da=3,
+                     var.loadings=T, pca.info=T)
+
+# Scatterplot of results
+scatter.dapc(disease.dapc, grp=gl1$other$Trajectory, legend=T)
+
+# Plot the posterior assignment probabilities to each group
+compoplot(disease.dapc)
+
+# Which loci contribute the most to distinguishing Healthy vs. Sick individuals?
+loadingplot(abs(disease.dapc$var.load), 
+            lab.jitter=1, 
+            threshold=quantile(abs(disease.dapc$var.load), probs=0.999))
+
+```
+
+
+
+
+
+
+
 ------
 <div id='id-section15'/>
 ### Page 15:
+
+
+
+
+
+# Info Update: Lauren Ashlock
+
+## 3-29-2017
+
+**Detecting local adaptation from population genomic outlier analysis**
+
+1) Local Adaptation
+
+* genetic adaptation of a poulation to a selction pressure
+
+2) Different approaches
+
+* genetic-environment association analyses 
+* differentiation oulier method
+  * F~ST~
+
+3) Common obsticles
+
+* confounding factors
+  * demographic history
+  * neutral pop structure
+  * background selection
+* Missing Genome
+  * reduced representation
+  * missing structure (varaints in reference)
+  * less repetative regions or paralogs
+* Missing landscape
+  * low-resolutions
+  * scale of local adapation 
+  * multi corilinary 
+
+4) Solutions
+
+* confounding factors
+  * null demographic models 
+    * if you know the demographic history
+  * relatedness amoung samples 
+    * more flexible 
+    * but need good genome sampling
+* Missing genome
+  * exome capture or RNA-seq (reduced representation)
+    * more targeted for what you are looking for
+  * whole genome sequencing with reference
+    * need good depth of coverage for both of these
+* Missing landscape
+  * know your system 
+  * need better data on envirnment (something better than bioclim)
+
+5) Other Considerations 
+
+* Sampling stratagy is optimized 
+* Multiple comaisons
+  * FDR
+  * sliding window
+* genomic archatecture 
+
+6) Final Notes
+
+
+
+## Coding for the day:
+
+```
+copied spid file, ssw_tidal.pops and vcf2geno.sh file to home directory
+
+unzip .gz with gunzip command
+
+vim into .sh file replave with SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf for incput and SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.geno for output and run bash file.
+
+$ bash vcf2geno.sh
+
+$ head vcf2geno.sh
+
+0=AA
+1=AT
+2=TT
+9=missing
+
+now we need to run ADMIXTURE:
+
+we need to pick our K value (maybe 1:10) 24 indv.
+
+We need to use a for loop, in our bash script to run repeatedly 
+
+copy ADMIX.sh to home directory
+
+####### this is the bash script #############
+
+[pburnham@pbio381 ~]$ vim ADMIX.sh 
+
+#!/bin/bash
+
+# Run ADMIXTURE to determine the number of genetic clusters in the SNP data, 
+# and the ancestry proportions of each individual
+
+# Here's the utility of 'for loops'...
+
+for K in {1..10}
+
+do
+
+admixture -C 0.000001 --cv ./SSW_all_biallelic.MAF0.02.Miss1.0.recode.vcf.geno $K \
+| tee log${K}.out
+
+done
+
+# After the for loop finishes, you can use 'grep' to grab the values of the CV from each separate log file and append them into a new summary text file.
+
+grep CV log*.out >chooseK.txt
+
+
+#####################################################################################
+END SCRIPT
+
+K=1 has lowest error of 0.52967
+
+
+
+
+```
+
+
+
 ------
 <div id='id-section16'/>
 ### Page 16:
+
+# Homework 3 Code:
+
+**Date: 4-4-2017**
+
+### Work in Unix
+
+```
+# moved vcf file to home directory and unzipped:
+[pburnham@pbio381 ~]$ cp /data/project_data/snps/reads2snps/SSW_by24inds.txt.vcf.gz ~/
+[pburnham@pbio381 ~]$ cd ~/
+[pburnham@pbio381 ~]$ gunzip SSW_by24inds.txt.vcf.gz
+
+# look at summary of file
+[pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.txt.vcf
+
+#Filter 1
+# getting rid of a lot of missing data: NO missing allowed
+[pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.txt.vcf --max-missing 1 --recode --out ~/SSW_by24ind.MISS
+
+#Filter 2
+# min and max allele
+[pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.txt.vcf --min-alleles 2 --max-alleles 2 --recode --out ~/SSW_by24inds.minMaxAllele
+
+
+# Write out 2 text files for PCA analysis in R
+$ scp pburnham@pbio381.uvm.edu:~/SSW_by24inds.MISS.txt.recode.vcf .
+$ scp pburnham@pbio381.uvm.edu:~/SSW_by24inds.minMaxAllele.recode.vcf .
+
+```
+
+### Work in R
+
+```R
+#############################################################################################
+# P. Alexander Burnham
+#April 4, 2017
+# Eco Gen
+# Homework 3:
+#############################################################################################
+
+#############################################################################################
+# Prelims and data loading and prepping:
+
+
+# set working directory
+setwd("~/EcologicalGenomics/RawData")
+
+# List the files in this directory -- you should see your results output from VCFTools if the download was successful
+list.files()
+
+# ...and load the libraries
+library(vcfR)
+library(adegenet)
+
+#Read the vcf SNP data into R
+minMaxDat <- read.vcfR("SSW_by24inds.minMaxAllele.recode.vcf")
+lessMiss <- read.vcfR("SSW_by24inds.MISS.txt.recode.vcf")
+
+
+# create genlight object for minMaxDat
+gl1 <- vcfR2genlight(minMaxDat)
+print(gl1) # Looks good! Right # of SNPs and individuals!
+
+
+# create genlight object for lessMiss
+gl2 <- vcfR2genlight(lessMiss)
+print(gl2) # Looks good! Right # of SNPs and individuals!
+
+
+# For info, try:
+gl1$ind.names
+gl1$loc.names[1:10]
+gl1$chromosome[1:3]
+
+# Notice there's nothing in the field that says "pop"? Let's fix that...
+ssw_meta <- read.table("ssw_healthloc.txt", header=T) # read in the metadata
+ssw_meta <- ssw_meta[order(ssw_meta$Individual),] # sort by Individual ID, just like the VCF file
+
+# assigning location and meta data to both lessMiss and mafDat
+
+#mafDat
+gl1$pop <- ssw_meta$Location # assign locality info
+gl1$other <- as.list(ssw_meta$Trajectory) # assign disease status
+
+# lessMiss 
+gl2$pop <- ssw_meta$Location # assign locality info
+gl2$other <- as.list(ssw_meta$Trajectory) # assign disease status
+
+#############################################################################################
+# END OF DATA LOADING ETC.
+
+
+
+#############################################################################################
+# DATA ANALYSIS
+
+# WE can explore the structure of our SNP data using the glPlot function, which gives us a sample x SNP view of the VCF file
+#glPlot(gl2, posi="bottomleft")
+#glPlot(gl1, posi="bottomleft")
+
+
+# row, let's compute the PCA on the SNP genotypes and plot it:
+pca1 <- glPca(gl1, nf=4) # nf = number of PC axes to retain (here, 4)
+pca1 # prints summary
+
+
+# row, let's compute the PCA on the SNP genotypes and plot it:
+pca2 <- glPca(gl2, nf=4) # nf = number of PC axes to retain (here, 4)
+pca2 # prints summary
+
+
+
+#############################################################################################
+# PLOTTING
+
+
+
+#PLOTTING FOR min and max allele freq of (2)
+# Plot the individuals in SNP-PCA space, with locality labels:
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=gl1$pop, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2"
+     #main="PCA on SSW data")
+)
+
+legend("topleft", 
+       legend=unique(gl1$pop), 
+       pch=20, 
+       col=c("black", "red"))
+
+
+
+
+
+
+# perhaps we want to show disease status instead of locality:
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=as.factor(unlist(gl1$other)), 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2"
+     #main="PCA on SSW data")
+)
+
+legend("topleft", 
+       legend=unique(as.factor(unlist(gl1$other))), 
+       pch=20, 
+       col=as.factor(unique(unlist(gl1$other))))
+
+
+
+#--------------------------------------------------------------------------------------------
+
+
+
+#PLOTTING FOR NO MISSING DATA
+# Plot the individuals in SNP-PCA space, with locality labels:
+plot(pca2$scores[,1], pca2$scores[,2], 
+     cex=2, pch=20, col=gl2$pop, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2")
+
+legend("topleft", 
+       legend=unique(gl2$pop), 
+       pch=20, 
+       col=c("black", "red"))
+
+
+
+
+
+
+# perhaps we want to show disease status instead of locality:
+plot(pca2$scores[,1], pca2$scores[,2], 
+     cex=2, pch=20, col=as.factor(unlist(gl2$other)), 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2")
+
+legend("topleft", 
+       legend=unique(as.factor(unlist(gl2$other))), 
+       pch=20, 
+       col=as.factor(unique(unlist(gl2$other))))
+
+
+
+
+
+#############################################################################################
+# EXPLORING RESULTS
+
+# Which SNPs load most strongly on the 1st PC axis?
+loadingplot(abs(pca1$loadings[,1]),
+            threshold=quantile(abs(pca1$loadings), 0.999))
+
+# Get their locus names
+threshold <- quantile(abs(pca1$loadings), 0.999)
+gl1$loc.names[which(abs(pca1$loadings)>threshold)]
+
+
+```
+
+
+
 ------
 <div id='id-section17'/>
 ### Page 17:
