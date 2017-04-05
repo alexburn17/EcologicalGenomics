@@ -21,7 +21,7 @@ library(adegenet)
 
 #Read the vcf SNP data into R
 minMaxDat <- read.vcfR("SSW_by24inds.minMaxAllele.recode.vcf")
-lessMiss <- read.vcfR("SSW_by24inds.MISS.txt.recode.vcf")
+MAFdat <- read.vcfR("SSW_by24inds.MAF.recode.vcf")
 
 
 # create genlight object for minMaxDat
@@ -30,7 +30,7 @@ print(gl1) # Looks good! Right # of SNPs and individuals!
 
 
 # create genlight object for lessMiss
-gl2 <- vcfR2genlight(lessMiss)
+gl2 <- vcfR2genlight(MAFdat)
 print(gl2) # Looks good! Right # of SNPs and individuals!
 
 
@@ -62,8 +62,8 @@ gl2$other <- as.list(ssw_meta$Trajectory) # assign disease status
 # DATA ANALYSIS
 
 # WE can explore the structure of our SNP data using the glPlot function, which gives us a sample x SNP view of the VCF file
-#glPlot(gl2, posi="bottomleft")
-#glPlot(gl1, posi="bottomleft")
+glPlot(gl1, posi="bottomleft")
+glPlot(gl2, posi="bottomleft")
 
 
 # row, let's compute the PCA on the SNP genotypes and plot it:
@@ -87,9 +87,9 @@ pca2 # prints summary
 plot(pca1$scores[,1], pca1$scores[,2], 
      cex=2, pch=20, col=gl1$pop, 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2"
-     #main="PCA on SSW data")
-)
+     ylab="Principal Component 2",
+     main="PCA on SSW data (3375 SNPs)")
+
 
 legend("topleft", 
        legend=unique(gl1$pop), 
@@ -105,8 +105,8 @@ legend("topleft",
 plot(pca1$scores[,1], pca1$scores[,2], 
      cex=2, pch=20, col=as.factor(unlist(gl1$other)), 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2"
-     #main="PCA on SSW data")
+     ylab="Principal Component 2",
+     main="PCA on SSW data (3375 SNPs)"
 )
 
 legend("topleft", 
@@ -125,12 +125,14 @@ legend("topleft",
 plot(pca2$scores[,1], pca2$scores[,2], 
      cex=2, pch=20, col=gl2$pop, 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2")
+     ylab="Principal Component 2",
+     main ="PCA on SSW data (275 SNPs)")
 
 legend("topleft", 
        legend=unique(gl2$pop), 
        pch=20, 
-       col=c("black", "red"))
+       col=c("black", "red")
+       )
 
 
 
@@ -141,7 +143,8 @@ legend("topleft",
 plot(pca2$scores[,1], pca2$scores[,2], 
      cex=2, pch=20, col=as.factor(unlist(gl2$other)), 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2")
+     ylab="Principal Component 2",
+     main="PCA on SSW data (275 SNPs)")
 
 legend("topleft", 
        legend=unique(as.factor(unlist(gl2$other))), 

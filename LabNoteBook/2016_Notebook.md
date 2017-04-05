@@ -2437,32 +2437,35 @@ K=1 has lowest error of 0.52967
 # look at summary of file
 [pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.txt.vcf
 
-#Filter 1
+
 # getting rid of a lot of missing data: NO missing allowed
 [pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.txt.vcf --max-missing 1 --recode --out ~/SSW_by24ind.MISS
 
-#Filter 2
+#Filter 1
 # min and max allele
-[pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.txt.vcf --min-alleles 2 --max-alleles 2 --recode --out ~/SSW_by24inds.minMaxAllele
+[pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.MISS.txt.recode.vcf --min-alleles 2 --max-alleles 2 --recode --out ~/SSW_by24inds.minMaxAllele
+
+#Filter 2
+# Minor allele freq. Gets rid of very rare SNPs (based on a user-defined threshold).
+[pburnham@pbio381 ~]$ vcftools --vcf SSW_by24inds.MISS.txt.recode.vcf --maf 0.2  --recode --out ~/SSW_by24inds.MAF
 
 
 # Write out 2 text files for PCA analysis in R
-$ scp pburnham@pbio381.uvm.edu:~/SSW_by24inds.MISS.txt.recode.vcf .
+$ scp pburnham@pbio381.uvm.edu:~/SSW_by24inds.MAF.recode.vcf .
 $ scp pburnham@pbio381.uvm.edu:~/SSW_by24inds.minMaxAllele.recode.vcf .
-
 ```
 
 ### Work in R
 
 ```R
-#############################################################################################
+################################################################################################
 # P. Alexander Burnham
 #April 4, 2017
 # Eco Gen
 # Homework 3:
-#############################################################################################
+################################################################################################
 
-#############################################################################################
+################################################################################################
 # Prelims and data loading and prepping:
 
 
@@ -2478,7 +2481,7 @@ library(adegenet)
 
 #Read the vcf SNP data into R
 minMaxDat <- read.vcfR("SSW_by24inds.minMaxAllele.recode.vcf")
-lessMiss <- read.vcfR("SSW_by24inds.MISS.txt.recode.vcf")
+MAFdat <- read.vcfR("SSW_by24inds.MAF.recode.vcf")
 
 
 # create genlight object for minMaxDat
@@ -2487,7 +2490,7 @@ print(gl1) # Looks good! Right # of SNPs and individuals!
 
 
 # create genlight object for lessMiss
-gl2 <- vcfR2genlight(lessMiss)
+gl2 <- vcfR2genlight(MAFdat)
 print(gl2) # Looks good! Right # of SNPs and individuals!
 
 
@@ -2510,17 +2513,17 @@ gl1$other <- as.list(ssw_meta$Trajectory) # assign disease status
 gl2$pop <- ssw_meta$Location # assign locality info
 gl2$other <- as.list(ssw_meta$Trajectory) # assign disease status
 
-#############################################################################################
+###############################################################################################
 # END OF DATA LOADING ETC.
 
 
 
-#############################################################################################
+################################################################################################
 # DATA ANALYSIS
 
 # WE can explore the structure of our SNP data using the glPlot function, which gives us a sample x SNP view of the VCF file
-#glPlot(gl2, posi="bottomleft")
-#glPlot(gl1, posi="bottomleft")
+glPlot(gl1, posi="bottomleft")
+glPlot(gl2, posi="bottomleft")
 
 
 # row, let's compute the PCA on the SNP genotypes and plot it:
@@ -2534,7 +2537,7 @@ pca2 # prints summary
 
 
 
-#############################################################################################
+################################################################################################
 # PLOTTING
 
 
@@ -2544,9 +2547,9 @@ pca2 # prints summary
 plot(pca1$scores[,1], pca1$scores[,2], 
      cex=2, pch=20, col=gl1$pop, 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2"
-     #main="PCA on SSW data")
-)
+     ylab="Principal Component 2",
+     main="PCA on SSW data (3375 SNPs)")
+
 
 legend("topleft", 
        legend=unique(gl1$pop), 
@@ -2562,8 +2565,8 @@ legend("topleft",
 plot(pca1$scores[,1], pca1$scores[,2], 
      cex=2, pch=20, col=as.factor(unlist(gl1$other)), 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2"
-     #main="PCA on SSW data")
+     ylab="Principal Component 2",
+     main="PCA on SSW data (3375 SNPs)"
 )
 
 legend("topleft", 
@@ -2582,12 +2585,14 @@ legend("topleft",
 plot(pca2$scores[,1], pca2$scores[,2], 
      cex=2, pch=20, col=gl2$pop, 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2")
+     ylab="Principal Component 2",
+     main ="PCA on SSW data (275 SNPs)")
 
 legend("topleft", 
        legend=unique(gl2$pop), 
        pch=20, 
-       col=c("black", "red"))
+       col=c("black", "red")
+       )
 
 
 
@@ -2598,7 +2603,8 @@ legend("topleft",
 plot(pca2$scores[,1], pca2$scores[,2], 
      cex=2, pch=20, col=as.factor(unlist(gl2$other)), 
      xlab="Principal Component 1", 
-     ylab="Principal Component 2")
+     ylab="Principal Component 2",
+     main="PCA on SSW data (275 SNPs)")
 
 legend("topleft", 
        legend=unique(as.factor(unlist(gl2$other))), 
@@ -2609,7 +2615,7 @@ legend("topleft",
 
 
 
-#############################################################################################
+################################################################################################
 # EXPLORING RESULTS
 
 # Which SNPs load most strongly on the 1st PC axis?
@@ -2619,6 +2625,8 @@ loadingplot(abs(pca1$loadings[,1]),
 # Get their locus names
 threshold <- quantile(abs(pca1$loadings), 0.999)
 gl1$loc.names[which(abs(pca1$loadings)>threshold)]
+
+
 
 
 ```
