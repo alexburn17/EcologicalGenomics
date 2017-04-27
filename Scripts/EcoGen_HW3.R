@@ -88,7 +88,7 @@ plot(pca1$scores[,1], pca1$scores[,2],
      cex=2, pch=20, col=gl1$pop, 
      xlab="Principal Component 1", 
      ylab="Principal Component 2",
-     main="PCA on SSW data (3375 SNPs)")
+     main="PCA on MAF w/no missing data (3375 SNPs)")
 
 
 legend("topleft", 
@@ -106,7 +106,7 @@ plot(pca1$scores[,1], pca1$scores[,2],
      cex=2, pch=20, col=as.factor(unlist(gl1$other)), 
      xlab="Principal Component 1", 
      ylab="Principal Component 2",
-     main="PCA on SSW data (3375 SNPs)"
+     main="PCA on MAF w/no missing data (3375 SNPs)"
 )
 
 legend("topleft", 
@@ -126,7 +126,7 @@ plot(pca2$scores[,1], pca2$scores[,2],
      cex=2, pch=20, col=gl2$pop, 
      xlab="Principal Component 1", 
      ylab="Principal Component 2",
-     main ="PCA on SSW data (275 SNPs)")
+     main ="PCA on Min & Max alleles = 2 (275 SNPs)")
 
 legend("topleft", 
        legend=unique(gl2$pop), 
@@ -144,7 +144,7 @@ plot(pca2$scores[,1], pca2$scores[,2],
      cex=2, pch=20, col=as.factor(unlist(gl2$other)), 
      xlab="Principal Component 1", 
      ylab="Principal Component 2",
-     main="PCA on SSW data (275 SNPs)")
+     main="PCA on Min & Max alleles = 2 (275 SNPs)")
 
 legend("topleft", 
        legend=unique(as.factor(unlist(gl2$other))), 

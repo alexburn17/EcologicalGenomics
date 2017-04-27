@@ -2098,7 +2098,6 @@ $ scp pburnham@pbio381.uvm.edu:/data/project_data/snps/reads2snps/Romiguier_natu
 
 read into R:
 
-
 ```
 
 ```R
@@ -2636,6 +2635,125 @@ gl1$loc.names[which(abs(pca1$loadings)>threshold)]
 ------
 <div id='id-section17'/>
 ### Page 17:
+
+
+
+# Info Update: Me
+
+## 4-19-2017
+
+
+
+Coding for the day:
+
+PICRUST can only work with OTUS that were picked by closed reference OTU picking.
+
+```
+filter_otus_from_otu_table.py -i ~/16s_analysis/otu_table_mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered.biom -o ~/16s_analysis/closed_otu_table.biom --negate_ids_to_exclude -e /usr/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta 
+```
+
+How many closed ref OTUs?
+
+```
+biom summarize-table -i closed_otu_table.biom
+```
+
+normalize by picrust’s method
+
+```
+normalize_by_copy_number.py -i ~/16s_analysis/closed_otu_table.biom -o ~/16s_analysis/closed_otu_table_norm.biom
+```
+
+The output of PICRUST is the same format as an OTU table but instead of OTUS, KEGG Orthology terms are used. For a tab delimited output:
+
+```
+predict_metagenomes.py -f -i ~/16s_analysis/closed_otu_table_norm.biom -o ~/16s_analysis/metagenome_predictions.txt -a nsti_per_sample.txt 
+```
+
+For a .biom output:
+
+```
+predict_metagenomes.py -i ~/16s_analysis/closed_otu_table_norm.biom -o ~/16s_analysis/metagenome_predictions.biom -a nsti_per_sample.txt
+```
+
+We can take a look at the tab delimited otu table
+
+```
+head metagenome_predictions.txt
+```
+
+And count the rows to see how many KO were predicted
+
+```
+wc -l metagenome_predictions.txt
+```
+
+What do you think about the number of KOs predicted considering the number of OTUs we’re using in this analysis? 
+
+Collapse to higher KO hierarchy term
+
+```
+categorize_by_function.py -f -i metagenome_predictions.biom -c KEGG_Pathways -l 3 -o metagenome_predictions.L3.txt
+```
+
+We also want this output in .biom format to use in R
+
+```
+categorize_by_function.py -i metagenome_predictions.biom -c KEGG_Pathways -l 3 -o metagenome_predictions.L3.biom
+```
+
+Move predicted_metagenomes.L3.biom to your desktop to use in R 
+
+R SCRIPT
+
+```R
+##################################################################################
+# Preliminaries:
+# Clear memory of characters:
+ls()
+rm(list=ls())
+
+# set working directory: (files are in /RawData)
+setwd("~/EcologicalGenomics")
+
+##################################################################################
+# Loading packages, data and prepping the data
+
+library("phyloseq"); packageVersion("phyloseq")
+library("DESeq2")
+packageVersion("DESeq2")
+library("ggplot2")
+theme_set(theme_bw())
+library('biom')
+
+x = read_biom("metagenome_predictions.L3.biom")
+otumat = as(biom_data(x), "matrix")
+OTU = otu_table(otumat, taxa_are_rows=TRUE)
+
+
+mapping <- import_qiime_sample_data(mapfilename = 'R_map.txt')
+
+phylo <- merge_phyloseq(OTU, mapping)
+phylo
+
+###############################################################################
+###Test for DE KO terms between individuals that got sick and those that didn't
+###############################################################################
+
+final_pheno = phyloseq_to_deseq2(phylo, ~ Final_phenotype)
+final_pheno_results = DESeq(final_pheno, test="Wald")
+final_pheno_res = results(final_pheno_results)
+summary(final_pheno_res)
+head(final_pheno_res)
+
+alpha = 0.05
+final_pheno_sigtab = final_pheno_res[which(final_pheno_res$padj < alpha), ]
+final_pheno_sigtab= cbind(as(final_pheno_sigtab, "data.frame"), as(tax_table(phylo)[rownames(final_pheno_sigtab), ], "matrix"))
+head(final_pheno_sigtab)
+final_pheno_sigtab
+write.table(final_pheno_sigtab, "Final_pheno_L3.txt", sep="\t")
+```
+
 ------
 <div id='id-section18'/>
 ### Page 18:
